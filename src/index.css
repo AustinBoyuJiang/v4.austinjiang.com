@@ -1,0 +1,49 @@
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #e5e5e5;
+  background-color: #1a1a1a;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a1a;
+  color: #e5e5e5;
+  min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+a {
+  color: #87ceeb;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #5fb3d4;
+}
+
+h1,
+h2,
+h3 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: #cccccc;
+}

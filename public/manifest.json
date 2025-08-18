@@ -1,0 +1,20 @@
+{
+  "name": "Austin Jiang - Personal Portfolio",
+  "short_name": "Austin Jiang",
+  "description": "Computer Science student at University of Waterloo passionate about technology and innovation.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#87ceeb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/icon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "portfolio", "personal"],
+  "lang": "en-US"
+}

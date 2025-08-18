@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/png" href="/images/icon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icon.png" />
+    <link rel="icon" sizes="32x32" href="/images/icon.png" />
+    <link rel="icon" sizes="16x16" href="/images/icon.png" />
+    <link rel="shortcut icon" href="/images/icon.png" />
+    
+    <!-- Viewport and Mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#87ceeb" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- SEO Meta Tags -->
+    <title>Austin Jiang - Computer Science Student | Personal Portfolio</title>
+    <meta name="description" content="Austin Jiang - Computer Science student at University of Waterloo. Passionate about technology, competitive programming, and building innovative solutions." />
+    <meta name="keywords" content="Austin Jiang, Computer Science, University of Waterloo, Software Developer, Portfolio, Projects, Blog" />
+    <meta name="author" content="Austin Jiang" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://austinjiang.dev/" />
+    <meta property="og:title" content="Austin Jiang - Computer Science Student | Personal Portfolio" />
+    <meta property="og:description" content="Passionate computer science student at University of Waterloo, exploring technology and innovation through projects and competitive programming." />
+    <meta property="og:image" content="/images/icon.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://austinjiang.dev/" />
+    <meta property="twitter:title" content="Austin Jiang - Computer Science Student" />
+    <meta property="twitter:description" content="Computer Science student at University of Waterloo passionate about technology and innovation." />
+    <meta property="twitter:image" content="/images/icon.png" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/data/profile.json" as="fetch" type="application/json" crossorigin>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Austin Jiang",
+      "jobTitle": "Computer Science Student",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "University of Waterloo"
+      },
+      "url": "https://austinjiang.dev",
+      "sameAs": [
+        "https://github.com/yourusername",
+        "https://linkedin.com/in/yourusername"
+      ],
+      "description": "Computer Science student at University of Waterloo passionate about technology and innovation."
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

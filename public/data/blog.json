@@ -1,0 +1,42 @@
+[
+  {
+    "id": "competitive-programming-2024",
+    "title": "Getting Into Competitive Programming",
+    "date": "2024-02-10",
+    "excerpt": "My journey into competitive programming and why I love solving algorithmic challenges.",
+    "tags": ["algorithms", "competitive-programming", "codeforces"],
+    "markdownFile": "/blog/competitive-programming.md"
+  },
+  {
+    "id": "learning-react-2024",
+    "title": "Learning React: My Experience",
+    "date": "2024-02-01",
+    "excerpt": "Sharing my experience learning React and building my first personal website.",
+    "tags": ["react", "javascript", "web-development"],
+    "markdownFile": "/blog/learning-react.md"
+  },
+  {
+    "id": "first-post-2024",
+    "title": "My First Blog Post",
+    "date": "2024-01-15",
+    "excerpt": "This is my first blog post where I share my thoughts on starting my journey in computer science.",
+    "tags": ["personal", "cs", "waterloo"],
+    "markdownFile": "/blog/first-post.md"
+  },
+  {
+    "id": "hackathon-experience-2023",
+    "title": "My First Hackathon Experience",
+    "date": "2023-11-20",
+    "excerpt": "Reflecting on my first hackathon experience and what I learned from building under pressure.",
+    "tags": ["hackathon", "teamwork", "learning"],
+    "markdownFile": "/blog/hackathon-experience.md"
+  },
+  {
+    "id": "learning-algorithms-2023",
+    "title": "Data Structures and Algorithms Journey",
+    "date": "2023-09-15",
+    "excerpt": "My experience learning fundamental computer science concepts and problem-solving techniques.",
+    "tags": ["algorithms", "data-structures", "learning"],
+    "markdownFile": "/blog/learning-algorithms.md"
+  }
+]

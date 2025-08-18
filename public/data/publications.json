@@ -1,0 +1,50 @@
+[
+  {
+    "id": "publication-one",
+    "title": "Machine Learning Applications in Computer Vision",
+    "details": "IEEE Conference on Computer Vision, 2024 - Research on applying deep learning techniques to improve object detection accuracy in real-time applications.",
+    "year": 2024,
+    "venue": "IEEE Conference on Computer Vision",
+    "type": "conference"
+  },
+  {
+    "id": "publication-two",
+    "title": "Optimizing Database Query Performance",
+    "details": "ACM Database Systems Journal, 2024 - Analysis of indexing strategies and their impact on query execution time in large-scale databases.",
+    "year": 2024,
+    "venue": "ACM Database Systems Journal",
+    "type": "journal"
+  },
+  {
+    "id": "publication-three",
+    "title": "Blockchain Technology in Supply Chain Management",
+    "details": "International Workshop on Distributed Systems, 2023 - Exploring the potential of blockchain technology to improve transparency and traceability in supply chains.",
+    "year": 2023,
+    "venue": "International Workshop on Distributed Systems",
+    "type": "workshop"
+  },
+  {
+    "id": "publication-three",
+    "title": "Blockchain Technology in Supply Chain Management",
+    "details": "International Workshop on Distributed Systems, 2023 - Exploring the potential of blockchain technology to improve transparency and traceability in supply chains.",
+    "year": 2023,
+    "venue": "International Workshop on Distributed Systems",
+    "type": "workshop"
+  },
+  {
+    "id": "publication-three",
+    "title": "Blockchain Technology in Supply Chain Management",
+    "details": "International Workshop on Distributed Systems, 2023 - Exploring the potential of blockchain technology to improve transparency and traceability in supply chains.",
+    "year": 2023,
+    "venue": "International Workshop on Distributed Systems",
+    "type": "workshop"
+  },
+  {
+    "id": "publication-three",
+    "title": "Blockchain Technology in Supply Chain Management",
+    "details": "International Workshop on Distributed Systems, 2023 - Exploring the potential of blockchain technology to improve transparency and traceability in supply chains.",
+    "year": 2023,
+    "venue": "International Workshop on Distributed Systems",
+    "type": "workshop"
+  }
+]

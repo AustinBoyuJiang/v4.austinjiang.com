@@ -1,0 +1,79 @@
+[
+  {
+    "id": "project-one",
+    "title": "Personal Portfolio Website",
+    "description": "Modern React-based portfolio with smooth navigation, blog functionality, and responsive dark theme design.",
+    "image": "/images/project1.svg",
+    "links": {
+      "github": "https://github.com/yourusername/portfolio",
+      "live": "https://yourportfolio.com",
+      "devpost": null
+    }
+  },
+  {
+    "id": "project-two",
+    "title": "Task Management API",
+    "description": "RESTful API with Python Flask featuring user authentication, SQLite integration, and comprehensive documentation.",
+    "image": "/images/project2.svg",
+    "links": {
+      "github": "https://github.com/yourusername/task-api",
+      "live": null,
+      "devpost": "https://devpost.com/software/task-manager"
+    }
+  },
+  {
+    "id": "project-three",
+    "title": "E-commerce Platform",
+    "description": "Full-stack solution with Java Spring Boot, featuring product catalog, shopping cart, and admin dashboard.",
+    "image": "/images/project3.svg",
+    "links": {
+      "github": "https://github.com/yourusername/ecommerce",
+      "live": "https://demo-ecommerce.com",
+      "devpost": "https://devpost.com/software/ecommerce-platform"
+    }
+  },
+  {
+    "id": "project-two",
+    "title": "Task Management API",
+    "description": "RESTful API with Python Flask featuring user authentication, SQLite integration, and comprehensive documentation.",
+    "image": "/images/project2.svg",
+    "links": {
+      "github": "https://github.com/yourusername/task-api",
+      "live": null,
+      "devpost": "https://devpost.com/software/task-manager"
+    }
+  },
+  {
+    "id": "project-three",
+    "title": "E-commerce Platform",
+    "description": "Full-stack solution with Java Spring Boot, featuring product catalog, shopping cart, and admin dashboard.",
+    "image": "/images/project3.svg",
+    "links": {
+      "github": "https://github.com/yourusername/ecommerce",
+      "live": "https://demo-ecommerce.com",
+      "devpost": "https://devpost.com/software/ecommerce-platform"
+    }
+  },
+  {
+    "id": "project-two",
+    "title": "Task Management API",
+    "description": "RESTful API with Python Flask featuring user authentication, SQLite integration, and comprehensive documentation.",
+    "image": "/images/project2.svg",
+    "links": {
+      "github": "https://github.com/yourusername/task-api",
+      "live": null,
+      "devpost": "https://devpost.com/software/task-manager"
+    }
+  },
+  {
+    "id": "project-three",
+    "title": "E-commerce Platform",
+    "description": "Full-stack solution with Java Spring Boot, featuring product catalog, shopping cart, and admin dashboard.",
+    "image": "/images/project3.svg",
+    "links": {
+      "github": "https://github.com/yourusername/ecommerce",
+      "live": "https://demo-ecommerce.com",
+      "devpost": "https://devpost.com/software/ecommerce-platform"
+    }
+  }
+]

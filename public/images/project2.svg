@@ -1,0 +1,18 @@
+<svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#357abd;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" fill="url(#grad2)"/>
+  <rect x="30" y="30" width="340" height="140" fill="#2a2a2a" rx="8"/>
+  <rect x="50" y="50" width="60" height="40" fill="#87ceeb" rx="4"/>
+  <rect x="130" y="50" width="60" height="40" fill="#87ceeb" rx="4"/>
+  <rect x="210" y="50" width="60" height="40" fill="#87ceeb" rx="4"/>
+  <rect x="290" y="50" width="60" height="40" fill="#87ceeb" rx="4"/>
+  <rect x="50" y="110" width="300" height="6" fill="#87ceeb" rx="3"/>
+  <rect x="50" y="125" width="250" height="6" fill="#87ceeb" rx="3"/>
+  <rect x="50" y="140" width="200" height="6" fill="#87ceeb" rx="3"/>
+  <text x="200" y="185" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Python Flask App</text>
+</svg>

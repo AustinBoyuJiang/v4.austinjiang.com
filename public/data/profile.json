@@ -1,0 +1,30 @@
+{
+  "personal": {
+    "name": "Austin Jiang",
+    "title": "Waterloo CS 1A Student",
+    "description": "Passionate computer science student at the University of Waterloo, exploring the intersection of technology and innovation. I love building projects that solve real-world problems and constantly learning new technologies to expand my skillset.",
+    "email": "a68jiang@uwaterloo.ca",
+    "avatar": {
+      "initials": "AJ",
+      "image": "/images/avatar.gif"
+    },
+    "socialLinks": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/yourusername"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com/in/yourusername"
+      },
+      {
+        "name": "Devpost",
+        "url": "https://devpost.com/yourusername"
+      },
+      {
+        "name": "CV",
+        "url": "/files/Austin_Jiang_CV.pdf"
+      }
+    ]
+  }
+}
