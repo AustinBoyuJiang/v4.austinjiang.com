@@ -386,7 +386,7 @@ function App() {
             <PublicationsSection publications={publications || []} />
 
             {/* Blog Section */}
-            <BlogSection blogPosts={blog || []} onPostClick={navigateToBlogPost} />
+            {/*<BlogSection blogPosts={blog || []} onPostClick={navigateToBlogPost} />*/}
 
             {/* Contact Section */}
             <section id="contact" className="section">
