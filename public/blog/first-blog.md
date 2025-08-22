@@ -1,6 +1,6 @@
 ![My First Blog Cover](./first-blog.jpg)
 
-# My First Blog
+# My First Blog (GPT-generated)
 
 Hello everyone, and welcome to **my very first blog post**!  
 Writing this feels both exciting and a little intimidating, but I believe it’s the perfect opportunity to share my thoughts, experiences, and ideas with anyone who happens to stumble across this space.
