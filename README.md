@@ -1,149 +1,237 @@
-# Personal Portfolio Website
+# Personal Website Configuration Guide
 
-A modern, interactive portfolio website built with React and Vite. Features resizable sidebar, full-screen introduction, and responsive design.
+## Overview
+This personal website features a dynamic theming system and configurable layout. You can easily customize the appearance, layout, and functionality by modifying the `public/data/settings.json` file.
 
-## Key Features
+## Recent Updates & Fixes
 
-- **Full-Screen Introduction**: Desktop users see full-screen profile on first visit
-- **Resizable Sidebar**: Drag to customize width (300px-800px range)
-- **Dot Navigation**: Right-side navigation with smooth scrolling
-- **Responsive Design**: Adapts seamlessly from desktop to mobile
-- **Data-Driven**: All content managed through JSON files
-- **Blog System**: Timeline-style blog with markdown support
-- **CV Download**: One-click PDF download functionality
+### Fixed Issues
+1. **Navigation Bar Initial Tracking**: Fixed navigation bar not correctly tracking the first section on initial page load
+2. **Theme Color Consistency**: Fixed all hardcoded colors across all sections to properly respond to theme changes
+3. **Blog Post Theme Support**: Fixed blog post pages not applying theme colors correctly
+4. **Added Monochrome Theme**: New black and white theme with pure black shooting stars
 
-## Quick Start
+### Enhanced Features
+- **Dynamic Theme System**: All colors now use CSS variables for seamless theme switching
+- **Improved Navigation**: Better scroll-based section detection with proper initial state
+- **Theme-Specific Animations**: Special black shooting star effects for monochrome theme
+- **Comprehensive Color Support**: All components now properly inherit theme colors
 
-```bash
-git clone https://github.com/yourusername/personal-portfolio
-cd personal-portfolio
-npm install
-npm run dev
-```
+## Configuration File Structure
 
-Open `http://localhost:5173` in your browser.
-
-## Project Structure
-
-```
-src/
-├── components/          # React components
-├── hooks/              # Custom hooks
-├── App.jsx            # Main application
-└── App.css            # Styles
-
-public/
-├── data/              # JSON configuration files
-├── files/             # Downloadable files (CV)
-├── images/            # Project assets
-└── blog/              # Markdown blog posts
-```
-
-## Configuration
-
-### Personal Information
-Edit `public/data/profile.json` with your details, social links, and CV file path.
-
-### Projects
-Add projects to `public/data/projects.json` with title, description, image, and links.
-
-### Publications
-Update `public/data/publications.json` with your academic publications.
-
-### Blog Posts
-Configure `public/data/blog.json` and add markdown files to `public/blog/`.
-
-### CV Download
-Replace `public/files/Austin_Jiang_CV.pdf` with your CV file.
-
-## Features
-
-### Interactive Sidebar
-- Drag right edge to resize (300px-800px)
-- Toggle button to collapse to 50px
-- Responsive design adapts to screen size
-
-### Navigation
-- Right-side dot navigation with smooth scrolling
-- Active section highlighting
-- Hover labels for section names
-
-### Content Display
-- Adaptive project count (4 desktop, 3 mobile)
-- Expandable sections
-- Dynamic grid layouts
-
-### Responsive Design
-- Breakpoints: 1024px and 768px
-- Automatic layout switching
-- Touch-optimized mobile interface
-
-## Technology Stack
-
-- React 18 with hooks
-- Vite build tool
-- CSS3 with flexbox and grid
-- JavaScript ES6+
-- Vercel Analytics for website analytics
-
-## Color System
-
-```css
-:root {
-  --primary-blue: #87ceeb;    /* Sky Blue - Primary accent */
-  --accent-blue: #5fb3d4;     /* Darker blue - Secondary accent */
-  --bg-primary: #1a1a1a;      /* Dark background */
-  --bg-secondary: #2a2a2a;    /* Card backgrounds */
-  --text-primary: #ffffff;    /* Primary text */
-  --text-secondary: #cccccc;  /* Secondary text */
-  --border-color: #404040;    /* Subtle borders */
+### Theme System
+```json
+{
+  "theme": {
+    "current": "dark",           // Currently active theme
+    "themes": {
+      "dark": {
+        "name": "Dark Theme",    // Display name
+        "colors": {
+          "primary": "#87ceeb",      // Primary color (links, buttons)
+          "accent": "#5fb3d4",       // Accent color (hover effects)
+          "background": "#1a1a1a",   // Background color
+          "surface": "#2a2a2a",      // Card/surface color
+          "text": {
+            "primary": "#ffffff",    // Primary text color
+            "secondary": "#cccccc",  // Secondary text color
+            "muted": "#999999"       // Muted text color
+          },
+          "border": "#404040"        // Border color
+        }
+      }
+    }
+  }
 }
 ```
 
-## Browser Support
+### Available Built-in Themes
+- **`dark`** - Dark theme (default) - Deep background with sky blue accents
+- **`light`** - Light theme - Clean white background with blue accents  
+- **`monochrome`** - Monochrome theme - Pure black and white with black shooting stars
+- **`ocean`** - Ocean theme - Deep blue color scheme
+- **`sunset`** - Sunset theme - Warm orange/red color scheme
 
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-## Deployment
-
-```bash
-# Build for production
-npm run build
-
-# Preview build
-npm run preview
-
-# Deploy to Vercel
-npm install -g vercel
-vercel --prod
+### Section Configuration
+```json
+{
+  "sections": [
+    {
+      "id": "projects",           // Unique identifier
+      "name": "Projects",         // Display name
+      "enabled": true,            // Whether to show this section
+      "order": 1,                 // Display order (lower numbers first)
+      "component": "ProjectsSection"  // Component name
+    }
+  ]
+}
 ```
 
-### Vercel Analytics
-This project includes Vercel Analytics for tracking website performance and visitor insights. Analytics are automatically enabled when deployed to Vercel. No additional configuration is required.
+### Available Components
+- **`ProjectsSection`** - Project showcase with cards and links
+- **`PublicationsSection`** - Academic publications and articles
+- **`AnimeSection`** - Anime collection with polaroid-style cards
+- **`BlogSection`** - Blog posts in timeline format
+- **`ContactSection`** - Contact information and links
 
-## Development
+### Layout Settings
+```json
+{
+  "layout": {
+    "sidebar": {
+      "defaultWidth": 580,    // Default sidebar width
+      "minWidth": 300,        // Minimum width
+      "maxWidth": 800,        // Maximum width
+      "collapsedWidth": 50    // Width when collapsed
+    },
+    "animations": {
+      "enabled": true,              // Enable animations
+      "shootingStars": true,        // Show shooting star animation
+      "initialLoadAnimation": true  // Show initial load animation
+    }
+  }
+}
+```
 
-### Adding Sections
-1. Create component in `src/components/`
-2. Add data to appropriate JSON file
-3. Import in `App.jsx`
-4. Add to navigation system
+## Usage Examples
 
-### Common Issues
-- Ensure images are in `public/images/`
-- Verify markdown files exist in `public/blog/`
-- Check JSON file paths are correct
-- Clear browser cache after CSS changes
+### 1. Switch to Light Theme
+```json
+{
+  "theme": {
+    "current": "light"
+  }
+}
+```
 
-## License
+### 2. Try the New Monochrome Theme
+```json
+{
+  "theme": {
+    "current": "monochrome"
+  }
+}
+```
 
-MIT License
+### 3. Create Custom Theme
+```json
+{
+  "theme": {
+    "current": "custom",
+    "themes": {
+      "custom": {
+        "name": "My Custom Theme",
+        "colors": {
+          "primary": "#ff6b6b",
+          "accent": "#ee5a52",
+          "background": "#0f0f0f",
+          "surface": "#1f1f1f",
+          "text": {
+            "primary": "#ffffff",
+            "secondary": "#cccccc",
+            "muted": "#888888"
+          },
+          "border": "#333333"
+        }
+      }
+    }
+  }
+}
+```
 
-## Contact
+### 4. Reorder Page Sections
+```json
+{
+  "sections": [
+    {
+      "id": "blog",
+      "name": "Blog", 
+      "enabled": true,
+      "order": 1,
+      "component": "BlogSection"
+    },
+    {
+      "id": "projects",
+      "name": "Projects",
+      "enabled": true, 
+      "order": 2,
+      "component": "ProjectsSection"
+    }
+  ]
+}
+```
 
-- Email: a68jiang@uwaterloo.ca
-- GitHub: [Issues](https://github.com/yourusername/personal-portfolio/issues)
+### 5. Hide a Section
+```json
+{
+  "sections": [
+    {
+      "id": "anime",
+      "name": "Anime",
+      "enabled": false,  // Set to false to hide
+      "order": 3,
+      "component": "AnimeSection"
+    }
+  ]
+}
+```
+
+### 6. Disable Animations
+```json
+{
+  "layout": {
+    "animations": {
+      "enabled": false,
+      "shootingStars": false,
+      "initialLoadAnimation": false
+    }
+  }
+}
+```
+
+## Technical Implementation
+
+### Theme System Features
+- **CSS Variables**: All colors use CSS custom properties for instant theme switching
+- **Automatic Color Derivation**: Shadow and accent background colors are automatically calculated
+- **Theme-Specific Styles**: Special CSS rules for specific themes (e.g., black shooting stars for monochrome)
+- **Backward Compatibility**: Legacy CSS variable names are maintained
+
+### Navigation System
+- **Smart Section Tracking**: Automatically highlights the current section based on scroll position
+- **Initial State Fix**: Properly shows the first section as active on page load
+- **Smooth Scrolling**: Click navigation items to smoothly scroll to sections
+
+### Responsive Design
+- **Mobile Optimized**: All sections adapt to mobile screens
+- **Sidebar Collapse**: Sidebar can be collapsed on desktop for more content space
+- **Flexible Layout**: Content areas expand when sidebar is collapsed
+
+## Important Notes
+
+1. **JSON Format**: Ensure the file is valid JSON format with proper commas and quotes
+2. **Color Format**: Use hexadecimal color values (e.g., `#87ceeb`)
+3. **Order Numbers**: Use sequential numbers (1, 2, 3...) for section ordering
+4. **Component Names**: Use only predefined component names
+5. **Refresh Required**: Refresh the page after making changes to see effects
+6. **Theme Consistency**: All components now properly inherit theme colors including blog posts
+
+## Example Configuration
+Check `public/data/settings.example.json` for an alternative configuration example.
+
+## Troubleshooting
+
+### Colors Not Updating
+- Ensure you're using valid hex color codes
+- Refresh the page after making changes
+- Check that the JSON syntax is correct
+
+### Navigation Issues  
+- Verify section IDs match the component requirements
+- Ensure at least one section is enabled
+- Check that order numbers are unique
+
+### Animation Problems
+- Try disabling animations if performance is poor
+- Ensure your browser supports CSS animations
+- Check if reduced motion is enabled in system preferences

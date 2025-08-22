@@ -1,0 +1,48 @@
+/* Publications Section Component Styles */
+
+.publications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 100%;
+}
+
+/* Match publications width with projects when sidebar is collapsed */
+.sidebar-collapsed .publications-list {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.publication-item {
+  background-color: var(--surface-color);
+  padding: 1.2rem;
+  border-radius: 6px;
+  border-left: 3px solid var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.publication-item:hover {
+  border-left-color: var(--accent-color);
+  background-color: var(--accent-bg-color);
+}
+
+.publication-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-primary);
+}
+
+.publication-details {
+  color: var(--text-secondary);
+  font-style: italic;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .publications-list {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+}

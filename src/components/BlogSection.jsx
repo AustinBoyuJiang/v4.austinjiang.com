@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './BlogSection.css'
 
 const BlogSection = ({ blogPosts, onPostClick }) => {
   const [isExpanded, setIsExpanded] = useState(false)

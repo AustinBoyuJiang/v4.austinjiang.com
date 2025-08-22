@@ -1,0 +1,173 @@
+/* Blog Section Component Styles */
+
+/* Blog Section - Timeline Style */
+.blog-timeline {
+  position: relative;
+  padding-left: 2rem;
+  max-width: 100%;
+}
+
+/* Match blog width with projects when sidebar is collapsed */
+.sidebar-collapsed .blog-timeline {
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
+.blog-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.75rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--primary-blue), color-mix(in srgb, var(--primary-blue) 30%, transparent));
+}
+
+.blog-year {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.blog-year-title {
+  font-size: 1.4rem;
+  color: var(--primary-blue);
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.blog-year-title::before {
+  content: '';
+  position: absolute;
+  left: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: var(--primary-blue);
+  border-radius: 50%;
+  border: 3px solid var(--background-color);
+}
+
+.blog-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.blog-post-item {
+  position: relative;
+  padding-left: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.blog-post-item::before {
+  content: '';
+  position: absolute;
+  left: -1.25rem;
+  top: 0.5rem;
+  width: 8px;
+  height: 8px;
+  background-color: var(--border-color);
+  border-radius: 50%;
+  border: 2px solid var(--background-color);
+  transition: all 0.3s ease;
+}
+
+.blog-post-item:hover::before {
+  background-color: var(--primary-blue);
+  transform: scale(1.2);
+}
+
+.blog-post-item:hover {
+  transform: translateX(0.5rem);
+}
+
+.blog-post-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.blog-post-title {
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.blog-post-item:hover .blog-post-title {
+  color: var(--primary-blue);
+}
+
+.blog-post-excerpt {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.blog-tag {
+  background-color: var(--accent-bg-color);
+  color: var(--primary-color);
+  padding: 0.1rem 0.4rem;
+  border-radius: 8px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .blog-timeline {
+    padding-left: 1.5rem;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .blog-timeline::before {
+    left: 0.5rem;
+  }
+
+  .blog-year-title {
+    font-size: 1.2rem;
+  }
+
+  .blog-year-title::before {
+    left: -1.5rem;
+    width: 10px;
+    height: 10px;
+  }
+
+  .blog-post-item {
+    padding-left: 0.8rem;
+  }
+
+  .blog-post-item::before {
+    left: -1rem;
+    width: 6px;
+    height: 6px;
+  }
+
+  .blog-post-title {
+    font-size: 0.9rem;
+  }
+}

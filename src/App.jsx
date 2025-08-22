@@ -5,7 +5,10 @@ import BlogSection from './components/BlogSection'
 import BlogPost from './components/BlogPost'
 import ProjectsSection from './components/ProjectsSection'
 import PublicationsSection from './components/PublicationsSection'
+import AnimeSection from './components/AnimeSection'
+import ContactSection from './components/ContactSection'
 import { useData } from './hooks/useData'
+import { applyTheme, getSortedSections, getCurrentTheme } from './utils/theme'
 
 function App() {
 
@@ -14,11 +17,35 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
   const [isInitialLoad, setIsInitialLoad] = useState(true)
-  const [activeSection, setActiveSection] = useState('projects')
+  const [activeSection, setActiveSection] = useState('')
   const [sidebarWidth, setSidebarWidth] = useState(580)
   const [isResizing, setIsResizing] = useState(false)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024)
-  const { profile, projects, publications, blog, loading, error } = useData()
+  const { profile, projects, publications, blog, anime, settings, loading, error } = useData()
+
+  // Apply theme when settings are loaded
+  useEffect(() => {
+    const currentTheme = getCurrentTheme(settings)
+    if (currentTheme?.colors) {
+      applyTheme(currentTheme.colors)
+      
+      // Add theme class to body for theme-specific CSS
+      document.body.className = document.body.className.replace(/theme-\w+/g, '')
+      if (settings?.theme?.current) {
+        document.body.classList.add(`theme-${settings.theme.current}`)
+      }
+    }
+  }, [settings])
+
+  // Set initial active section to the first enabled section
+  useEffect(() => {
+    if (settings?.sections) {
+      const firstSection = getSortedSections(settings.sections)[0]
+      if (firstSection && !activeSection) {
+        setActiveSection(firstSection.id)
+      }
+    }
+  }, [settings, activeSection])
 
   // Handle URL routing for blog posts
   useEffect(() => {
@@ -51,24 +78,51 @@ function App() {
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      if (currentPage !== 'home') return
+      if (currentPage !== 'home' || !settings?.sections) return
 
-      const sections = ['projects', 'publications', 'blog', 'contact']
-      const scrollPosition = window.scrollY + window.innerHeight / 2
+      const enabledSections = getSortedSections(settings.sections).map(s => s.id)
+      const scrollPosition = window.scrollY + 200 // Adjust offset for better detection
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const element = document.getElementById(sections[i])
-        if (element && element.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i])
-          break
+      // Find the section that's currently in view
+      let currentSection = enabledSections[0] // Default to first section
+      
+      // If we're at the very top of the page, always show first section
+      if (window.scrollY < 100) {
+        currentSection = enabledSections[0]
+      } else {
+        for (let i = 0; i < enabledSections.length; i++) {
+          const element = document.getElementById(enabledSections[i])
+          if (element) {
+            const elementTop = element.offsetTop
+            const elementBottom = elementTop + element.offsetHeight
+            
+            // Check if section is in viewport
+            if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+              currentSection = enabledSections[i]
+              break
+            }
+            // If we're past this section but before the next one
+            else if (scrollPosition >= elementTop) {
+              currentSection = enabledSections[i]
+            }
+          }
         }
       }
+
+      setActiveSection(currentSection)
     }
 
-    window.addEventListener('scroll', handleScroll)
-    handleScroll() // Check initial position
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [currentPage])
+    // Add a small delay to ensure DOM is ready
+    const timeoutId = setTimeout(() => {
+      window.addEventListener('scroll', handleScroll)
+      handleScroll() // Check initial position
+    }, 100)
+
+    return () => {
+      clearTimeout(timeoutId)
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [currentPage, settings])
 
   // Track screen size changes
   useEffect(() => {
@@ -251,9 +305,29 @@ function App() {
     if (currentPage === 'blog-post' && selectedBlogPost) {
       document.title = `${selectedBlogPost.title} | Austin Jiang`
     } else {
-      document.title = 'Austin Jiang - Computer Science Student | Personal Portfolio'
+      document.title = 'Austin Jiang'
     }
   }, [currentPage, selectedBlogPost])
+
+  // Render section component based on settings
+  const renderSection = (section) => {
+    const commonProps = { key: section.id }
+    
+    switch (section.component) {
+      case 'ProjectsSection':
+        return <ProjectsSection {...commonProps} projects={projects || []} isSidebarCollapsed={isSidebarCollapsed} />
+      case 'PublicationsSection':
+        return <PublicationsSection {...commonProps} publications={publications || []} />
+      case 'AnimeSection':
+        return <AnimeSection {...commonProps} anime={anime || []} isSidebarCollapsed={isSidebarCollapsed} />
+      case 'BlogSection':
+        return <BlogSection {...commonProps} blogPosts={blog || []} onPostClick={navigateToBlogPost} />
+      case 'ContactSection':
+        return <ContactSection {...commonProps} email={profile?.personal?.email} />
+      default:
+        return null
+    }
+  }
 
   // Render blog post page
   if (currentPage === 'blog-post' && selectedBlogPost) {
@@ -358,54 +432,18 @@ function App() {
           {/* Table of Contents Navigation */}
           <div className="toc-container">
             <nav className="toc-nav">
-              <div className={`toc-item ${activeSection === 'projects' ? 'active' : ''}`} data-section="projects">
-                <div className="toc-dot" onClick={() => scrollToSection('projects')}></div>
-                <span className="toc-label">Projects</span>
-              </div>
-              <div className={`toc-item ${activeSection === 'publications' ? 'active' : ''}`} data-section="publications">
-                <div className="toc-dot" onClick={() => scrollToSection('publications')}></div>
-                <span className="toc-label">Publications</span>
-              </div>
-              <div className={`toc-item ${activeSection === 'blog' ? 'active' : ''}`} data-section="blog">
-                <div className="toc-dot" onClick={() => scrollToSection('blog')}></div>
-                <span className="toc-label">Blog</span>
-              </div>
-              <div className={`toc-item ${activeSection === 'contact' ? 'active' : ''}`} data-section="contact">
-                <div className="toc-dot" onClick={() => scrollToSection('contact')}></div>
-                <span className="toc-label">Contact</span>
-              </div>
+              {getSortedSections(settings?.sections).map(section => (
+                <div key={section.id} className={`toc-item ${activeSection === section.id ? 'active' : ''}`} data-section={section.id} onClick={() => scrollToSection(section.id)}>
+                  <div className="toc-dot"></div>
+                  <span className="toc-label">{section.name}</span>
+                </div>
+              ))}
             </nav>
           </div>
 
           <div className="content-container">
-
-            {/* Projects Section */}
-            <ProjectsSection projects={projects || []} isSidebarCollapsed={isSidebarCollapsed} />
-
-            {/* Publications Section */}
-            <PublicationsSection publications={publications || []} />
-
-            {/* Blog Section */}
-            <BlogSection blogPosts={blog || []} onPostClick={navigateToBlogPost} />
-
-            {/* Contact Section */}
-            <section id="contact" className="section">
-              <div className="section-header">
-                <h2 className="section-title">Contact</h2>
-              </div>
-              <div className="contact-content">
-                <p className="contact-description">
-                  Feel free to reach out if you'd like to collaborate on a project,
-                  discuss opportunities, or just have a chat about technology! You can reach me at{' '}
-                  <a 
-                    href={`mailto:${profile?.personal?.email || 'your.email@uwaterloo.ca'}`} 
-                    className="contact-email"
-                  >
-                    {profile?.personal?.email || 'your.email@uwaterloo.ca'}
-                  </a>.
-                </p>
-              </div>
-            </section>
+            {/* Dynamic Sections based on settings */}
+            {getSortedSections(settings?.sections).map(section => renderSection(section))}
           </div>
         </main>
       </div>

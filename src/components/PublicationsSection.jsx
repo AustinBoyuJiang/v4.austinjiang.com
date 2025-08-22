@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './PublicationsSection.css'
 
 const PublicationsSection = ({ publications }) => {
   const [isExpanded, setIsExpanded] = useState(false)

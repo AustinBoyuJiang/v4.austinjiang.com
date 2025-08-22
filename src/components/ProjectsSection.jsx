@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import './ProjectsSection.css'
 
 const ProjectsSection = ({ projects, isSidebarCollapsed }) => {
   const [isExpanded, setIsExpanded] = useState(false)

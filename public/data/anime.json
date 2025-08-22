@@ -1,0 +1,90 @@
+{
+  "config": {
+    "canvas": {
+      "width": 1100,
+      "height": 850
+    },
+    "title": {
+      "text": "My Favourite Animes",
+      "x": 565,
+      "y": 400,
+      "fontSize": 3.2,
+      "rotation": -2.5,
+      "color": "#8B4513"
+    }
+  },
+  "items": [
+    {
+      "name": "ATTACK ON TITAN",
+      "image": "/images/anime/1.jpg",
+      "width": 210,
+      "height": 315,
+      "x": 60,
+      "y": 60,
+      "rotation": -2
+    },
+    {
+      "name": "DEMON SLAYER",
+      "image": "/images/anime/2.jpg",
+      "width": 350,
+      "height": 220,
+      "x": 280,
+      "y": 100,
+      "rotation": 3
+    },
+    {
+      "name": "DEATH NOTE",
+      "image": "/images/anime/4.jpg",
+      "width": 270,
+      "height": 150,
+      "x": 770,
+      "y": 130,
+      "rotation": 1.5
+    },
+    {
+      "name": "YOUR NAME",
+      "image": "/images/anime/3.jpg",
+      "width": 200,
+      "height": 280,
+      "x": 600,
+      "y": 65,
+      "rotation": -1
+    },
+    {
+      "name": "LORD OF MYSTERIES",
+      "image": "/images/anime/6.webp",
+      "width": 180,
+      "height": 350,
+      "x": 70,
+      "y": 420,
+      "rotation": -5
+    },
+    {
+      "name": "WEATHERING WITH YOU",
+      "image": "/images/anime/8.jpg",
+      "width": 200,
+      "height": 280,
+      "x": 275,
+      "y": 500,
+      "rotation": 3
+    },
+    {
+      "name": "SCISSOR SEVIN",
+      "image": "/images/anime/7.webp",
+      "width": 320,
+      "height": 240,
+      "x": 720,
+      "y": 570,
+      "rotation": 0.8
+    },
+    {
+      "name": "DORAEMON",
+      "image": "/images/anime/5.webp",
+      "width": 350,
+      "height": 175,
+      "x": 480,
+      "y": 470,
+      "rotation": -2.5
+    }
+  ]
+}

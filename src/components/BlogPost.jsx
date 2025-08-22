@@ -1,8 +1,26 @@
 import { useEffect, useState } from 'react'
+import './BlogPost.css'
+import { useData } from '../hooks/useData'
+import { applyTheme, getCurrentTheme } from '../utils/theme'
 
 const BlogPost = ({ post, onBack }) => {
+    const { settings } = useData()
     const [content, setContent] = useState('')
     const [loading, setLoading] = useState(true)
+
+    // Apply theme when settings are loaded
+    useEffect(() => {
+        const currentTheme = getCurrentTheme(settings)
+        if (currentTheme?.colors) {
+            applyTheme(currentTheme.colors)
+            
+            // Add theme class to body for theme-specific CSS
+            document.body.className = document.body.className.replace(/theme-\w+/g, '')
+            if (settings?.theme?.current) {
+                document.body.classList.add(`theme-${settings.theme.current}`)
+            }
+        }
+    }, [settings])
 
     useEffect(() => {
         const loadContent = async () => {
@@ -32,7 +50,7 @@ const BlogPost = ({ post, onBack }) => {
             // 处理行内代码
             .replace(/`([^`]+)`/g, '<code>$1</code>')
             // 处理图片 ![alt](src) - 修复相对路径
-            .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
+            .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) => {
                 // 如果是相对路径（以 ./ 开头），则相对于markdown文件目录
                 if (src.startsWith('./')) {
                     src = markdownDir + '/' + src.substring(2)
@@ -41,10 +59,10 @@ const BlogPost = ({ post, onBack }) => {
                 else if (!src.startsWith('/') && !src.startsWith('http')) {
                     src = markdownDir + '/' + src
                 }
-                return `<img src="${src}" alt="${alt}" style="max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);" />`
+                return `<img src="${src}" alt="${alt}" style="max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 16px var(--shadow-color);" />`
             })
             // 处理横线 ---
-            .replace(/^---$/gm, '<hr style="border: none; height: 2px; background: linear-gradient(90deg, transparent 0%, #87ceeb 50%, transparent 100%); margin: 2rem 0; opacity: 0.6;" />')
+            .replace(/^---$/gm, '<hr style="border: none; height: 2px; background: linear-gradient(90deg, transparent 0%, var(--primary-color) 50%, transparent 100%); margin: 2rem 0; opacity: 0.6;" />')
             // 处理标题
             .replace(/^### (.*$)/gm, '<h3>$1</h3>')
             .replace(/^## (.*$)/gm, '<h2>$1</h2>')
@@ -53,9 +71,9 @@ const BlogPost = ({ post, onBack }) => {
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
             .replace(/\*(.*?)\*/g, '<em>$1</em>')
             // 处理链接 [text](url)
-            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color: #87ceeb; text-decoration: none;">$1</a>')
+            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color: var(--primary-color); text-decoration: none;">$1</a>')
             // 处理引用 > text
-            .replace(/^> (.*$)/gm, '<blockquote style="border-left: 4px solid #87ceeb; padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic; color: #ffffff; background-color: rgba(135, 206, 235, 0.05); padding: 1rem 1.5rem; border-radius: 0 8px 8px 0;">$1</blockquote>')
+            .replace(/^> (.*$)/gm, '<blockquote style="border-left: 4px solid var(--primary-color); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic; color: var(--text-primary); background-color: var(--accent-bg-color); padding: 1rem 1.5rem; border-radius: 0 8px 8px 0;">$1</blockquote>')
             // 处理无序列表
             .replace(/^- (.*$)/gm, '<li>$1</li>')
             // 处理有序列表

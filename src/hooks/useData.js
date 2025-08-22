@@ -6,6 +6,8 @@ export const useData = () => {
     projects: [],
     publications: [],
     blog: [],
+    anime: [],
+    settings: null,
     loading: true,
     error: null
   })
@@ -13,18 +15,22 @@ export const useData = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [profileRes, projectsRes, publicationsRes, blogRes] = await Promise.all([
+        const [profileRes, projectsRes, publicationsRes, blogRes, animeRes, settingsRes] = await Promise.all([
           fetch('/data/profile.json'),
           fetch('/data/projects.json'),
           fetch('/data/publications.json'),
-          fetch('/data/blog.json')
+          fetch('/data/blog.json'),
+          fetch('/data/anime.json'),
+          fetch('/data/settings.json')
         ])
 
-        const [profile, projects, publications, blog] = await Promise.all([
+        const [profile, projects, publications, blog, anime, settings] = await Promise.all([
           profileRes.json(),
           projectsRes.json(),
           publicationsRes.json(),
-          blogRes.json()
+          blogRes.json(),
+          animeRes.json(),
+          settingsRes.json()
         ])
 
         setData({
@@ -32,6 +38,8 @@ export const useData = () => {
           projects,
           publications,
           blog,
+          anime,
+          settings,
           loading: false,
           error: null
         })
@@ -54,6 +62,42 @@ export const useData = () => {
                 { name: "Devpost", url: "https://devpost.com/yourusername" },
                 { name: "Codeforces", url: "https://codeforces.com/profile/yourusername" }
               ]
+            }
+          },
+          settings: {
+            theme: {
+              colors: {
+                primary: "#87ceeb",
+                accent: "#5fb3d4",
+                background: "#1a1a1a",
+                surface: "#2a2a2a",
+                text: {
+                  primary: "#ffffff",
+                  secondary: "#cccccc",
+                  muted: "#999999"
+                },
+                border: "#404040"
+              }
+            },
+            sections: [
+              { id: "projects", name: "Projects", enabled: true, order: 1, component: "ProjectsSection" },
+              { id: "publications", name: "Publications", enabled: true, order: 2, component: "PublicationsSection" },
+              { id: "anime", name: "动漫", enabled: true, order: 3, component: "AnimeSection" },
+              { id: "blog", name: "Blog", enabled: true, order: 4, component: "BlogSection" },
+              { id: "contact", name: "Contact", enabled: true, order: 5, component: "ContactSection" }
+            ],
+            layout: {
+              sidebar: {
+                defaultWidth: 580,
+                minWidth: 300,
+                maxWidth: 800,
+                collapsedWidth: 50
+              },
+              animations: {
+                enabled: true,
+                shootingStars: true,
+                initialLoadAnimation: true
+              }
             }
           },
           projects: [
@@ -119,6 +163,28 @@ export const useData = () => {
               excerpt: "Sharing my experience learning React and building my first personal website.",
               tags: ["react", "javascript", "web-development"],
               content: "# Learning React: My Experience\n\nReact has been exciting to learn!"
+            }
+          ],
+          anime: [
+            {
+              id: 1,
+              name: "进击的巨人",
+              image: "/images/anime/attack-on-titan.jpg",
+              rating: 9.5,
+              status: "已完结",
+              genre: ["动作", "剧情", "奇幻"],
+              year: 2013,
+              description: "人类与巨人的生存之战，充满震撼的史诗级作品"
+            },
+            {
+              id: 2,
+              name: "鬼灭之刃",
+              image: "/images/anime/demon-slayer.jpg",
+              rating: 9.2,
+              status: "连载中",
+              genre: ["动作", "超自然", "历史"],
+              year: 2019,
+              description: "炭治郎为了拯救妹妹而踏上的鬼杀之路"
             }
           ],
           loading: false,
