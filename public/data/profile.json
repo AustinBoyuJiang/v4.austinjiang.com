@@ -2,7 +2,7 @@
   "personal": {
     "name": "Austin Jiang",
     "title": "Waterloo CS 1A Student",
-    "description": "Passionate computer science student at the University of Waterloo, exploring the intersection of technology and innovation. I love building projects that solve real-world problems and constantly learning new technologies to expand my skillset.",
+    "description": "Strongly interested in AI infra, distributed systems, and HPC. Currently seeking internship and research opportunities. 2× Canadian Computing Olympiad Silver Medalist with a deep algorithmic background. Conducting long-term research at Wolfram on TCS and system-level computation.",
     "email": "a68jiang@uwaterloo.ca",
     "avatar": {
       "initials": "AJ",
@@ -11,15 +11,15 @@
     "socialLinks": [
       {
         "name": "GitHub",
-        "url": "https://github.com/yourusername"
+        "url": "https://github.com/AustinBoyuJiang"
       },
       {
         "name": "LinkedIn",
-        "url": "https://linkedin.com/in/yourusername"
+        "url": "https://www.linkedin.com/in/austin-boyu-jiang/"
       },
       {
         "name": "Devpost",
-        "url": "https://devpost.com/yourusername"
+        "url": "https://devpost.com/austinjiangboyu"
       },
       {
         "name": "CV",

@@ -1,79 +1,75 @@
 [
   {
-    "id": "project-one",
-    "title": "Personal Portfolio Website",
-    "description": "Modern React-based portfolio with smooth navigation, blog functionality, and responsive dark theme design.",
-    "image": "/images/project1.svg",
+    "title": "Recap",
+    "description": "Recap is an AI-powered memory planning system that simulates how the human brain learns, using layered knowledge graphs and adaptive review to help users retain information across all subjects.",
+    "image": "/images/recap.png",
     "links": {
-      "github": "https://github.com/yourusername/portfolio",
-      "live": "https://yourportfolio.com",
-      "devpost": null
+      "github": "https://github.com/AustinBoyuJiang/Recap",
+      "devpost": "https://devpost.com/software/recap-qa48xw",
+      "live": "https://recap.austinjiang.com"
     }
   },
   {
-    "id": "project-two",
-    "title": "Task Management API",
-    "description": "RESTful API with Python Flask featuring user authentication, SQLite integration, and comprehensive documentation.",
-    "image": "/images/project2.svg",
+    "title": "LookAround AI",
+    "description": "Talk to your AI tour guide — it walks the street, shows the world, and helps you remember what matters.",
+    "youtube": "https://www.youtube.com/watch?v=SyTblvamfjY",
     "links": {
-      "github": "https://github.com/yourusername/task-api",
-      "live": null,
-      "devpost": "https://devpost.com/software/task-manager"
+      "github": "https://github.com/AustinBoyuJiang/LookAround-AI",
+      "youtube": "https://www.youtube.com/watch?v=SyTblvamfjY",
+      "devpost": "https://devpost.com/software/lookaround-ai"
     }
   },
   {
-    "id": "project-three",
-    "title": "E-commerce Platform",
-    "description": "Full-stack solution with Java Spring Boot, featuring product catalog, shopping cart, and admin dashboard.",
-    "image": "/images/project3.svg",
+    "title": "ArtifAI",
+    "description": "ArtifAI helps you trace the origin of any artwork—AI-generated or human-made—while offering expert GPT-powered guidance on copyright and authorship in the age of generative AI.",
+    "image": "/images/artifai.png",
     "links": {
-      "github": "https://github.com/yourusername/ecommerce",
-      "live": "https://demo-ecommerce.com",
-      "devpost": "https://devpost.com/software/ecommerce-platform"
+      "github": "https://github.com/AustinBoyuJiang/ArtifAI",
+      "devpost": "https://devpost.com/software/artifai",
+      "live": "https://artifai.austinjiang.com"
     }
   },
   {
-    "id": "project-two",
-    "title": "Task Management API",
-    "description": "RESTful API with Python Flask featuring user authentication, SQLite integration, and comprehensive documentation.",
-    "image": "/images/project2.svg",
+    "title": "Happy Hackers Programming Challenge",
+    "description": "A rated DMOJ contest I organized and authored, featuring 6  problems ranging from CCC Senior to IOI level and attracting 200+ participants.",
+    "image": "/images/hhpc1.png",
     "links": {
-      "github": "https://github.com/yourusername/task-api",
-      "live": null,
-      "devpost": "https://devpost.com/software/task-manager"
+      "github": "https://github.com/AustinBoyuJiang/Happy-Hackers-Programming-Challenge-1",
+      "live": "https://dmoj.ca/contest/hhpc1"
     }
   },
   {
-    "id": "project-three",
-    "title": "E-commerce Platform",
-    "description": "Full-stack solution with Java Spring Boot, featuring product catalog, shopping cart, and admin dashboard.",
-    "image": "/images/project3.svg",
+    "title": "Competitive Programming Solutions",
+    "description": "My solutions to problems from USACO, CCC, Codeforces, DMOJ, and other competitions.",
+    "image": "/images/cp-sol.png",
     "links": {
-      "github": "https://github.com/yourusername/ecommerce",
-      "live": "https://demo-ecommerce.com",
-      "devpost": "https://devpost.com/software/ecommerce-platform"
+      "github": "https://github.com/AustinBoyuJiang/Competitive-Programming"
     }
   },
   {
-    "id": "project-two",
-    "title": "Task Management API",
-    "description": "RESTful API with Python Flask featuring user authentication, SQLite integration, and comprehensive documentation.",
-    "image": "/images/project2.svg",
+    "title": "FeaChat",
+    "description": "FeaChat is the first full-stack software I developed during COVID-19 using Python.",
+    "image": "/images/feachat.png",
     "links": {
-      "github": "https://github.com/yourusername/task-api",
-      "live": null,
-      "devpost": "https://devpost.com/software/task-manager"
+      "github": "https://github.com/AustinBoyuJiang/FeaChat"
     }
   },
   {
-    "id": "project-three",
-    "title": "E-commerce Platform",
-    "description": "Full-stack solution with Java Spring Boot, featuring product catalog, shopping cart, and admin dashboard.",
-    "image": "/images/project3.svg",
+    "title": "Land of Gladius",
+    "description": "Land of Gladius is a 3D multiplayer, open-world social game featuring multiple world scenes.",
+    "youtube": "https://www.youtube.com/watch?v=FV8X0mRA3MM",
     "links": {
-      "github": "https://github.com/yourusername/ecommerce",
-      "live": "https://demo-ecommerce.com",
-      "devpost": "https://devpost.com/software/ecommerce-platform"
+      "github": "https://github.com/Game-Development-Club-WVSS/Land-of-Gladius",
+      "youtube": "https://www.youtube.com/watch?v=FV8X0mRA3MM"
+    }
+  },
+  {
+    "title": "Forgotten Realms",
+    "description": "Forgotten Realms is a 2D platform game where you control your character to reach the goal across multiple levels.",
+    "youtube": "https://www.youtube.com/watch?v=dYGyprna18o",
+    "links": {
+      "github": "https://github.com/Game-Development-Club-WVSS/Forgotten-Realms",
+      "youtube": "https://www.youtube.com/watch?v=dYGyprna18o"
     }
   }
 ]

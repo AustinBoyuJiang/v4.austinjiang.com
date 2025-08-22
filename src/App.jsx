@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 import BlogSection from './components/BlogSection'
+import BlogPost from './components/BlogPost'
 import ProjectsSection from './components/ProjectsSection'
 import PublicationsSection from './components/PublicationsSection'
 import { useData } from './hooks/useData'
@@ -136,17 +137,8 @@ function App() {
         const postId = path.replace('/blog/', '')
         const post = blog.find(p => p.id === postId)
         if (post) {
-          try {
-            const response = await fetch(post.markdownFile)
-            const markdownContent = await response.text()
-            const postWithContent = { ...post, content: markdownContent }
-            setSelectedBlogPost(postWithContent)
-            setCurrentPage('blog-post')
-          } catch (error) {
-            console.error('Failed to load blog post:', error)
-            // 如果加载失败，重定向到首页
-            navigateToHome(true)
-          }
+          setSelectedBlogPost(post)
+          setCurrentPage('blog-post')
         } else {
           // 如果找不到对应的blog post，重定向到首页
           console.warn(`Blog post with id "${postId}" not found`)
@@ -238,24 +230,11 @@ function App() {
     }
   }
 
-  const navigateToBlogPost = async (post) => {
-    try {
-      // Load markdown content
-      const response = await fetch(post.markdownFile)
-      const markdownContent = await response.text()
-      
-      const postWithContent = {
-        ...post,
-        content: markdownContent
-      }
-      
-      setSelectedBlogPost(postWithContent)
-      setCurrentPage('blog-post')
-      window.history.pushState(null, '', `/blog/${post.id}`)
-      window.scrollTo(0, 0)
-    } catch (error) {
-      console.error('Failed to load blog post:', error)
-    }
+  const navigateToBlogPost = (post) => {
+    setSelectedBlogPost(post)
+    setCurrentPage('blog-post')
+    window.history.pushState(null, '', `/blog/${post.id}`)
+    window.scrollTo(0, 0)
   }
 
   const navigateToHome = (pushState = true) => {
@@ -280,49 +259,7 @@ function App() {
   if (currentPage === 'blog-post' && selectedBlogPost) {
     return (
       <>
-        {/* Back to Home Button */}
-        <div className="back-button-container">
-          <button onClick={navigateToHome} className="back-to-home-button">
-            ← Back to Home
-          </button>
-        </div>
-
-        <div className="blog-post-page">
-          <div className="container">
-            <article className="blog-post-full">
-              <header className="blog-post-header">
-                <h1 className="blog-post-full-title">{selectedBlogPost.title}</h1>
-                <div className="blog-post-meta">
-                  <span className="blog-post-date">{new Date(selectedBlogPost.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                  <div className="blog-post-tags">
-                    {selectedBlogPost.tags.map(tag => (
-                      <span key={tag} className="blog-tag">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </header>
-              <div
-                className="blog-post-content"
-                dangerouslySetInnerHTML={{
-                  __html: selectedBlogPost.content
-                    .replace(/^# (.*$)/gm, '<h1>$1</h1>')
-                    .replace(/^## (.*$)/gm, '<h2>$1</h2>')
-                    .replace(/^### (.*$)/gm, '<h3>$1</h3>')
-                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                    .replace(/^- (.*$)/gm, '<li>$1</li>')
-                    .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
-                    .replace(/\n\n/g, '</p><p>')
-                    .replace(/^(?!<[h|u|l])/gm, '<p>')
-                    .replace(/(?<![>])$/gm, '</p>')
-                    .replace(/<p><\/p>/g, '')
-                    .replace(/<p>(<[h|u])/g, '$1')
-                    .replace(/(<\/[h|u].*>)<\/p>/g, '$1')
-                }}
-              />
-            </article>
-          </div>
-        </div>
+        <BlogPost post={selectedBlogPost} onBack={navigateToHome} />
         <Analytics />
       </>
     )

@@ -456,6 +456,27 @@
   transform: scale(1.05);
 }
 
+/* YouTube Embed Styles */
+.youtube-embed-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a1a;
+  overflow: hidden;
+}
+
+.youtube-embed-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  object-fit: cover;
+}
+
+
+
 .project-content {
   padding: 1.2rem;
   flex-grow: 1;
@@ -929,6 +950,8 @@
   .project-image {
     height: 120px;
   }
+
+  
 
   .project-content {
     padding: 1rem;
@@ -2203,4 +2226,96 @@ ial load animation - FIXED VERSION */
   .layout.initial-load .main-content.hidden {
     display: block !important;
   }
+}/* Yo
+uTube Link Special Styling */
+.project-link.youtube-link {
+  background-color: #ff0000;
+  border-color: #ff0000;
+  color: #ffffff;
+}
+
+.project-link.youtube-link:hover {
+  background-color: #cc0000;
+  border-color: #cc0000;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+/* Blog Post Content Styling */
+.blog-post-content .blog-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.blog-post-content .blog-image:hover {
+  transform: scale(1.02);
+}
+
+.blog-post-content .blog-divider {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #87ceeb 50%, transparent 100%);
+  margin: 2rem 0;
+  opacity: 0.6;
+}
+
+.blog-post-content blockquote {
+  border-left: 4px solid #87ceeb;
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #ffffff;
+  background-color: rgba(135, 206, 235, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.blog-post-content code {
+  background-color: #2a2a2a;
+  color: #87ceeb;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.blog-post-content pre {
+  background-color: #2a2a2a;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  padding: 1.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.blog-post-content pre code {
+  background: none;
+  padding: 0;
+  color: #cccccc;
+}
+
+.blog-post-content a {
+  color: #87ceeb;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.blog-post-content a:hover {
+  color: #5fb3d4;
+  border-bottom-color: #5fb3d4;
+}
+
+.blog-post-content ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.blog-post-content ol li {
+  margin-bottom: 0.5rem;
+  color: #cccccc;
 }
