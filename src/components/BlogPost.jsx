@@ -130,18 +130,42 @@ const BlogPost = ({ post, onBack }) => {
                     <article className="blog-post-full">
                         <header className="blog-post-header">
                             <h1 className="blog-post-full-title">{post.title}</h1>
+                            {post.subtitle && (
+                                <h2 className="blog-post-subtitle">{post.subtitle}</h2>
+                            )}
                             <div className="blog-post-meta">
-                                <span className="blog-post-date">
-                                    {new Date(post.date).toLocaleDateString('en-US', {
-                                        year: 'numeric',
-                                        month: 'long',
-                                        day: 'numeric'
-                                    })}
-                                </span>
-                                <div className="blog-post-tags">
-                                    {post.tags.map(tag => (
-                                        <span key={tag} className="blog-tag">{tag}</span>
-                                    ))}
+                                <div className="blog-post-meta-row">
+                                    {post.author && (
+                                        <span className="blog-post-author">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                            </svg>
+                                            {post.author}
+                                        </span>
+                                    )}
+                                    <span className="blog-post-date">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                                        </svg>
+                                        {new Date(post.date).toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'short',
+                                            day: 'numeric'
+                                        })}
+                                    </span>
+                                    {post.readTime && (
+                                        <span className="blog-post-read-time">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/>
+                                            </svg>
+                                            {post.readTime}
+                                        </span>
+                                    )}
+                                    <div className="blog-post-tags">
+                                        {post.tags.map(tag => (
+                                            <span key={tag} className="blog-tag">{tag}</span>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </header>

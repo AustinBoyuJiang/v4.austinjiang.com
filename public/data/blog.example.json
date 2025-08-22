@@ -34,5 +34,21 @@
     ],
     "type": "external",
     "externalUrl": "https://community.wolfram.com/groups/-/m/t/3216997"
+  },
+  {
+    "id": "first-blog",
+    "title": "Mt first blog",
+    "subtitle": "This is my first blog",
+    "date": "2023-10-14",
+    "author": "Austin Jiang",
+    "readTime": "10 min",
+    "excerpt": "This is my first blog post written in markdown format. Click to read the full article.",
+    "tags": [
+      "computer-science",
+      "turing-machine",
+      "photoshop"
+    ],
+    "type": "markdown",
+    "markdownFile": "/blog/first-blog.md"
   }
 ]

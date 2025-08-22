@@ -53,8 +53,12 @@ function App() {
     if (path.startsWith('/blog/') && blog && blog.length > 0) {
       const postId = path.replace('/blog/', '')
       const post = blog.find(p => p.id === postId)
-      if (post) {
+      if (post && (post.type === 'markdown' || !post.type)) {
+        // 只有markdown类型的文章才进行内部路由
         navigateToBlogPost(post)
+      } else if (post && post.type === 'external') {
+        // 外部链接重定向到外部URL
+        window.location.href = post.externalUrl
       } else {
         // 如果找不到对应的blog post，重定向到首页
         console.warn(`Blog post with id "${postId}" not found`)
@@ -285,10 +289,14 @@ function App() {
   }
 
   const navigateToBlogPost = (post) => {
-    setSelectedBlogPost(post)
-    setCurrentPage('blog-post')
-    window.history.pushState(null, '', `/blog/${post.id}`)
-    window.scrollTo(0, 0)
+    // 只有markdown类型的文章才进行内部路由
+    if (post.type === 'markdown' || !post.type) { // 兼容旧格式
+      setSelectedBlogPost(post)
+      setCurrentPage('blog-post')
+      window.history.pushState(null, '', `/blog/${post.id}`)
+      window.scrollTo(0, 0)
+    }
+    // 外部链接在BlogSection组件中直接处理
   }
 
   const navigateToHome = (pushState = true) => {

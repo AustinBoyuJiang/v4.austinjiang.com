@@ -84,6 +84,26 @@
   transform: translateX(0.5rem);
 }
 
+/* 外部链接样式 */
+.blog-post-item.external-link {
+  position: relative;
+}
+
+.blog-post-item.external-link::after {
+  content: '↗';
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+}
+
+.blog-post-item.external-link:hover::after {
+  color: var(--primary-blue);
+  transform: translate(2px, -2px);
+}
+
 .blog-post-date {
   font-size: 0.75rem;
   color: var(--text-muted);
@@ -128,9 +148,9 @@
 .blog-tag {
   background-color: var(--accent-bg-color);
   color: var(--primary-color);
-  padding: 0.1rem 0.4rem;
-  border-radius: 8px;
-  font-size: 0.65rem;
+  padding: 0.05rem 0.3rem;
+  border-radius: 6px;
+  font-size: 0.6rem;
   font-weight: 500;
   border: 1px solid var(--border-color);
 }

@@ -79,8 +79,14 @@ const BlogSection = ({ blogPosts, onPostClick }) => {
                 .map(post => (
                   <article 
                     key={post.id} 
-                    className="blog-post-item"
-                    onClick={() => onPostClick && onPostClick(post)}
+                    className={`blog-post-item ${post.type === 'external' ? 'external-link' : ''}`}
+                    onClick={() => {
+                      if (post.type === 'external' && post.externalUrl) {
+                        window.open(post.externalUrl, '_blank', 'noopener,noreferrer')
+                      } else if (onPostClick) {
+                        onPostClick(post)
+                      }
+                    }}
                   >
                     <div className="blog-post-date">
                       {formatDate(post.date)}

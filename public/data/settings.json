@@ -68,7 +68,7 @@
         {
             "id": "blog",
             "name": "Blog",
-            "enabled": false,
+            "enabled": true,
             "order": 1,
             "component": "BlogSection"
         },
@@ -82,7 +82,7 @@
         {
             "id": "publications",
             "name": "Publications",
-            "enabled": true,
+            "enabled": false,
             "order": 3,
             "component": "PublicationsSection"
         },
@@ -96,7 +96,7 @@
         {
             "id": "anime",
             "name": "Image Gallery",
-            "enabled": true,
+            "enabled": false,
             "order": 5,
             "component": "AnimeSection"
         }
