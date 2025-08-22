@@ -211,7 +211,7 @@
 /* 美丽手写标题样式 */
 .handwritten-title {
   position: absolute;
-  font-family: 'Dancing Script', 'Satisfy', cursive;
+  font-family: 'Dancing Script', 'Satisfy', 'Brush Script MT', 'Lucida Handwriting', 'Apple Chancery', 'Segoe Script', cursive, fantasy, serif;
   font-weight: 700;
   z-index: 1;
   pointer-events: none;
@@ -273,7 +273,20 @@
 }
 
 /* 导入优美的手写字体 */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Satisfy&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Satisfy&family=Great+Vibes&family=Kalam:wght@400;700&display=swap');
+
+/* 字体加载失败时的备用样式 */
+@font-face {
+  font-family: 'fallback-handwriting';
+  src: local('Brush Script MT'), local('Lucida Handwriting'), local('Apple Chancery');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'fallback-comic';
+  src: local('Comic Sans MS'), local('Marker Felt'), local('Bradley Hand');
+  font-display: swap;
+}
 
 .anime-card-absolute {
   position: absolute;
@@ -415,7 +428,7 @@
   white-space: normal; /* 允许换行 */
   word-wrap: break-word; /* 长单词自动换行 */
   overflow-wrap: break-word; /* 现代浏览器的换行属性 */
-  font-family: 'Kalam', 'Comic Sans MS', cursive;
+  font-family: 'Kalam', 'Comic Sans MS', 'Marker Felt', 'Bradley Hand', 'Trebuchet MS', 'Arial Rounded MT Bold', cursive, sans-serif;
 }
 
 
