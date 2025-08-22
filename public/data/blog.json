@@ -2,7 +2,7 @@
   {
     "id": "first-bloh",
     "title": "My first blog",
-    "date": "2025-8-21",
+    "date": "2025-08-21",
     "excerpt": "This is the first blog I ever had",
     "tags": ["taf1", "tag2", "tag3"],
     "markdownFile": "/blog/first-blog.md"
