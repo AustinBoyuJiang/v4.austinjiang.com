@@ -2318,4 +2318,27 @@ uTube Link Special Styling */
 .blog-post-content ol li {
   margin-bottom: 0.5rem;
   color: #cccccc;
+}/* Blo
+g Post Page Mobile Margins */
+@media (max-width: 768px) {
+  .blog-post-page .container {
+    padding: 1rem 1.5rem !important;
+    margin: 0 auto !important;
+  }
+  
+  .blog-post-full {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .blog-post-content {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-post-page .container {
+    padding: 1rem 1rem !important;
+  }
 }
