@@ -5,8 +5,7 @@
     "excerpt": "Explores mapping Church numerals to arbitrary bitwise function compositions using SK combinators. Introduces binary numerals to generically construct unary and binary bitwise operations, leveraging fixed-point combinators for recursion and a new successor-based conversion method.",
     "tags": [
       "Wolfram",
-      "lambda calculus",
-      "sk combinator"
+      "TCS"
     ],
     "type": "external",
     "externalUrl": "https://community.wolfram.com/groups/-/m/t/3520635"
@@ -18,7 +17,7 @@
     "tags": [
       "Wolfram",
       "WELP '25",
-      "celluar automata"
+      "software"
     ],
     "type": "external",
     "externalUrl": "https://community.wolfram.com/groups/-/m/t/3379925"
@@ -30,7 +29,7 @@
     "tags": [
       "Wolfram",
       "WSRP '24",
-      "sk combinator"
+      "TCS"
     ],
     "type": "external",
     "externalUrl": "https://community.wolfram.com/groups/-/m/t/3216997"
