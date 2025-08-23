@@ -206,8 +206,6 @@
   }
 
   .project-footer {
-    flex-direction: column;
-    align-items: flex-start;
     gap: 0.8rem;
   }
 
@@ -222,7 +220,6 @@
 
   .project-links {
     gap: 0.6rem;
-    align-self: flex-end;
   }
 
   .project-link {
