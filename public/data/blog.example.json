@@ -5,8 +5,7 @@
     "excerpt": "Explores mapping Church numerals to arbitrary bitwise function compositions using SK combinators. Introduces binary numerals to generically construct unary and binary bitwise operations, leveraging fixed-point combinators for recursion and a new successor-based conversion method.",
     "tags": [
       "Wolfram",
-      "lambda calculus",
-      "sk combinator"
+      "TCS"
     ],
     "type": "external",
     "externalUrl": "https://community.wolfram.com/groups/-/m/t/3520635"
@@ -17,11 +16,12 @@
     "excerpt": "Introduces a CA-based method for generating optimized 3D printer infill structures. Implements voxel-based modeling with Marching Cubes to produce STL files, achieving lightness, flexibility, and strength compared to traditional geometric patterns.",
     "tags": [
       "Wolfram",
-      "WELP'25",
-      "celluar automata"
+      "WELP '25",
+      "software"
     ],
     "type": "external",
-    "externalUrl": "https://community.wolfram.com/groups/-/m/t/3379925"
+    "externalUrl": "https://community.wolfram.com/groups/-/m/t/3379925",
+    "coverImage": "/images/blog/2.png"
   },
   {
     "title": "Constructing combinators for arithmetic and arbitrary-length bitwise operations",
@@ -29,8 +29,8 @@
     "excerpt": "Investigates SK combinators for arithmetic on Church numerals, introducing efficient combinators and a novel construction method for arbitrary-length binary representations supporting bitwise operations. Includes complexity analysis and performance comparisons for arithmetic operations.",
     "tags": [
       "Wolfram",
-      "WSRP'24",
-      "sk combinator"
+      "WSRP '24",
+      "TCS"
     ],
     "type": "external",
     "externalUrl": "https://community.wolfram.com/groups/-/m/t/3216997"
@@ -49,6 +49,7 @@
       "photoshop"
     ],
     "type": "markdown",
-    "markdownFile": "/blog/first-blog.md"
+    "markdownFile": "/blog/first-blog/first-blog.md",
+    "coverImage": "/images/blog/0.jpg"
   }
 ]

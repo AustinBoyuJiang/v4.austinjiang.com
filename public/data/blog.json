@@ -20,7 +20,8 @@
       "software"
     ],
     "type": "external",
-    "externalUrl": "https://community.wolfram.com/groups/-/m/t/3379925"
+    "externalUrl": "https://community.wolfram.com/groups/-/m/t/3379925",
+    "coverImage": "/images/blog/2.png"
   },
   {
     "title": "Constructing combinators for arithmetic and arbitrary-length bitwise operations",

@@ -139,6 +139,27 @@
   overflow: hidden;
 }
 
+.blog-post-cover {
+  margin: 0.8rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.blog-cover-image {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.blog-post-item:hover .blog-cover-image {
+  transform: scale(1.02);
+}
+
 .blog-post-tags {
   display: flex;
   flex-wrap: wrap;
@@ -189,5 +210,9 @@
 
   .blog-post-title {
     font-size: 0.9rem;
+  }
+
+  .blog-cover-image {
+    max-height: 150px;
   }
 }

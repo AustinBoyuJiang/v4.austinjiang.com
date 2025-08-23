@@ -93,6 +93,16 @@ const BlogSection = ({ blogPosts, onPostClick }) => {
                     </div>
                     <h4 className="blog-post-title">{post.title}</h4>
                     <p className="blog-post-excerpt">{post.excerpt}</p>
+                    {post.coverImage && (
+                      <div className="blog-post-cover">
+                        <img 
+                          src={post.coverImage} 
+                          alt={`Cover for ${post.title}`}
+                          className="blog-cover-image"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
                     <div className="blog-post-tags">
                       {post.tags.map(tag => (
                         <span key={tag} className="blog-tag">{tag}</span>
