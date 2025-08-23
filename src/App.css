@@ -110,9 +110,10 @@
 }
 
 .sidebar-content {
-  padding: 3rem 2.5rem;
+  padding: 1.5rem 2.5rem;
   width: 100%;
   opacity: 1;
+  transform: translateY(-1vh);
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -712,7 +713,7 @@
   }
 
   .sidebar-content {
-    padding: 2rem 1.5rem !important;
+    padding: 1.5rem 1.5rem !important;
     opacity: 1 !important;
     pointer-events: auto !important;
     display: flex !important;

@@ -168,22 +168,31 @@ const ProjectsSection = ({ projects, isSidebarCollapsed }) => {
               <div className="project-content">
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-description">{project.description}</p>
-                <div className="project-links">
-                  {Object.entries(project.links).map(([type, url]) => {
-                    if (!url) return null
-                    return (
-                      <a
-                        key={type}
-                        href={url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link"
-                        title={getLinkText(type)}
-                      >
-                        {getLinkIcon(type)}
-                      </a>
-                    )
-                  })}
+                <div className="project-footer">
+                  <div className="project-tags">
+                    {project.tags && project.tags.length > 0 && 
+                      project.tags.map(tag => (
+                        <span key={tag} className="project-tag">{tag}</span>
+                      ))
+                    }
+                  </div>
+                  <div className="project-links">
+                    {Object.entries(project.links).map(([type, url]) => {
+                      if (!url) return null
+                      return (
+                        <a
+                          key={type}
+                          href={url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link"
+                          title={getLinkText(type)}
+                        >
+                          {getLinkIcon(type)}
+                        </a>
+                      )
+                    })}
+                  </div>
                 </div>
               </div>
             </div>
