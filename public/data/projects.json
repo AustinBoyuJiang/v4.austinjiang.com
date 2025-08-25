@@ -3,7 +3,10 @@
     "title": "Recap: Memory Planning System",
     "description": "Recap is an AI-powered memory planning system that simulates how the human brain learns, using layered knowledge graphs and adaptive review to help users retain information across all subjects.",
     "image": "/images/projects/recap.png",
-    "tags": ["Hackathon", "ADVX '25"],
+    "tags": [
+      "Hackathon",
+      "ADVX '25"
+    ],
     "links": {
       "github": "https://github.com/AustinBoyuJiang/Recap",
       "devpost": "https://devpost.com/software/recap-qa48xw",
@@ -14,7 +17,10 @@
     "title": "LookAround AI",
     "description": "Talk to your AI tour guide — it walks the street, shows the world, and helps you remember what matters.",
     "youtube": "https://www.youtube.com/watch?v=SyTblvamfjY",
-    "tags": ["Hackathon", "ADVX '25"],
+    "tags": [
+      "Hackathon",
+      "ADVX '25"
+    ],
     "links": {
       "github": "https://github.com/AustinBoyuJiang/LookAround-AI",
       "youtube": "https://www.youtube.com/watch?v=SyTblvamfjY",
@@ -25,7 +31,10 @@
     "title": "Binary Combinator",
     "description": "Binary Combinator is a Mathematica library that implements SK combinator constructions for binary bitwise operations, translating theoretical results into a practical, modular, and well-documented toolkit.",
     "image": "/images/projects/binaryCombinator.png",
-    "tags": ["Open-Source", "Mathematica"],
+    "tags": [
+      "Open-Source",
+      "Mathematica"
+    ],
     "links": {
       "live": "https://resources.wolframcloud.com/FunctionRepository/resources/BinaryCombinator/"
     }
@@ -34,7 +43,9 @@
     "title": "ArtifAI",
     "description": "ArtifAI helps you trace the origin of any artwork—AI-generated or human-made—while offering expert GPT-powered guidance on copyright and authorship in the age of generative AI.",
     "image": "/images/projects/artifai.png",
-    "tags": ["Independent Project"],
+    "tags": [
+      "Independent Project"
+    ],
     "links": {
       "github": "https://github.com/AustinBoyuJiang/ArtifAI",
       "devpost": "https://devpost.com/software/artifai",
@@ -45,7 +56,9 @@
     "title": "Happy Hackers Programming Challenge",
     "description": "A rated DMOJ contest I organized and authored, featuring 6  problems ranging from CCC Senior to IOI level and attracting 200+ participants.",
     "image": "/images/projects/hhpc1.png",
-    "tags": ["Competitive Programming"],
+    "tags": [
+      "Competitive Programming"
+    ],
     "links": {
       "github": "https://github.com/AustinBoyuJiang/Happy-Hackers-Programming-Challenge-1",
       "live": "https://dmoj.ca/contest/hhpc1"
@@ -55,7 +68,9 @@
     "title": "Competitive Programming Solutions",
     "description": "My solutions to problems from USACO, CCC, Codeforces, DMOJ, and other competitions.",
     "image": "/images/projects/cp-sol.png",
-    "tags": ["Competitive Programming"],
+    "tags": [
+      "Competitive Programming"
+    ],
     "links": {
       "github": "https://github.com/AustinBoyuJiang/Competitive-Programming"
     }
@@ -64,7 +79,9 @@
     "title": "Land of Gladius",
     "description": "Land of Gladius is a 3D multiplayer, open-world social game featuring multiple world scenes.",
     "youtube": "https://www.youtube.com/watch?v=FV8X0mRA3MM",
-    "tags": ["Game"],
+    "tags": [
+      "Game"
+    ],
     "links": {
       "github": "https://github.com/Game-Development-Club-WVSS/Land-of-Gladius",
       "youtube": "https://www.youtube.com/watch?v=FV8X0mRA3MM"
@@ -74,7 +91,9 @@
     "title": "Forgotten Realms",
     "description": "Forgotten Realms is a 2D platform game where you control your character to reach the goal across multiple levels.",
     "youtube": "https://www.youtube.com/watch?v=dYGyprna18o",
-    "tags": ["Game"],
+    "tags": [
+      "Game"
+    ],
     "links": {
       "github": "https://github.com/Game-Development-Club-WVSS/Forgotten-Realms",
       "youtube": "https://www.youtube.com/watch?v=dYGyprna18o"
@@ -84,7 +103,9 @@
     "title": "FeaChat",
     "description": "FeaChat is the first full-stack software I developed during COVID-19 using Python.",
     "image": "/images/projects/feachat.png",
-    "tags": ["Independent Project"],
+    "tags": [
+      "Independent Project"
+    ],
     "links": {
       "github": "https://github.com/AustinBoyuJiang/FeaChat"
     }
