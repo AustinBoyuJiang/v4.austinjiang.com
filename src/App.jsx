@@ -17,6 +17,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
   const [isInitialLoad, setIsInitialLoad] = useState(true)
+  const [isHintFadingOut, setIsHintFadingOut] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [sidebarWidth, setSidebarWidth] = useState(580)
   const [isResizing, setIsResizing] = useState(false)
@@ -69,7 +70,15 @@ function App() {
 
   // Initial load animation - show full screen profile until clicked (desktop only)
   const handleInitialClick = () => {
-    setIsInitialLoad(false)
+    if (!isMobile) {
+      // Start fade out animation
+      setIsHintFadingOut(true)
+      // Remove hint after animation completes
+      setTimeout(() => {
+        setIsInitialLoad(false)
+        setIsHintFadingOut(false)
+      }, 800)
+    }
   }
 
   // Handle touch events for mobile swipe detection
@@ -87,7 +96,13 @@ function App() {
     
     // If swipe up (deltaY > 50) and not too much horizontal movement
     if (deltaY > 50 && deltaX < 100) {
-      setIsInitialLoad(false)
+      // Start fade out animation
+      setIsHintFadingOut(true)
+      // Remove hint after animation completes
+      setTimeout(() => {
+        setIsInitialLoad(false)
+        setIsHintFadingOut(false)
+      }, 800)
     }
     setTouchStart(null)
   }
@@ -441,7 +456,7 @@ function App() {
                   {/* Profile interaction hints - only show during initial load */}
                   {isInitialLoad && (
                     <>
-                      <div className="profile-hint-desktop">
+                      <div className={`profile-hint-desktop ${isHintFadingOut ? 'fade-out' : ''}`}>
                         <div className="hint-dots">
                           <div className="hint-dot"></div>
                           <div className="hint-dot"></div>
@@ -449,7 +464,7 @@ function App() {
                         </div>
                         <span className="hint-text">Click</span>
                       </div>
-                      <div className="profile-hint-mobile">
+                      <div className={`profile-hint-mobile ${isHintFadingOut ? 'fade-out' : ''}`}>
                         <span className="hint-text">Swipe up</span>
                         <div className="hint-dots hint-dots-horizontal">
                           <div className="hint-dot"></div>

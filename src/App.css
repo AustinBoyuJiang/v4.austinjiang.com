@@ -245,6 +245,12 @@
   gap: 0.8rem;
   opacity: 0.7;
   animation: gentleFloat 3s ease-in-out infinite;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.profile-hint-desktop.fade-out {
+  opacity: 0;
+  transform: translateY(-50%) translateX(20px);
 }
 
 .profile-hint-mobile {
@@ -259,6 +265,12 @@
   opacity: 0.7;
   animation: gentleFloat 3s ease-in-out infinite;
   pointer-events: none;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.profile-hint-mobile.fade-out {
+  opacity: 0;
+  transform: translateX(-50%) translateY(20px);
 }
 
 .hint-dots {
