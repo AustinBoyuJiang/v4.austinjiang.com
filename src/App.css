@@ -267,8 +267,37 @@
   transition: opacity 0.3s ease;
 }
 
+/* 桌面版默认隐藏手机版提示 */
+@media (min-width: 1025px) {
+  .profile-hint-mobile {
+    display: none !important;
+  }
+}
+
 .profile-hint-mobile.fade-out {
   opacity: 0;
+}
+
+.hint-line {
+  height: 2px;
+  background-color: var(--text-primary);
+  border-radius: 1px;
+  opacity: 0.6;
+  animation: lineExpand 2s ease-in-out infinite;
+}
+
+@keyframes lineExpand {
+
+  0%,
+  100% {
+    width: 20px;
+    opacity: 0.4;
+  }
+
+  50% {
+    width: 60px;
+    opacity: 0.8;
+  }
 }
 
 .hint-dots {
@@ -1016,6 +1045,19 @@
     border-top-width: 5px;
     border-bottom-width: 5px;
     border-left-width: 6px;
+  }
+}
+
+/* 确保在1024px以下都显示手机版提示 */
+@media (max-width: 1024px) {
+  .profile-hint-desktop {
+    display: none !important;
+  }
+
+  .profile-hint-mobile {
+    display: flex !important;
+    opacity: 0.9 !important;
+    z-index: 10 !important;
   }
 }
 

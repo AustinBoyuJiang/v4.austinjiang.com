@@ -79,39 +79,13 @@ function App() {
     }
   }
 
-  // Handle touch events for mobile swipe detection
-  const handleTouchStart = (e) => {
-    if (!isMobile || !isInitialLoad) return
-    const touch = e.touches[0]
-    setTouchStart({ x: touch.clientX, y: touch.clientY })
-  }
-
-  const handleTouchEnd = (e) => {
-    if (!isMobile || !isInitialLoad || !touchStart) return
-    const touch = e.changedTouches[0]
-    const deltaY = touchStart.y - touch.clientY
-    const deltaX = Math.abs(touchStart.x - touch.clientX)
-    
-    // If swipe up (deltaY > 50) and not too much horizontal movement
-    if (deltaY > 50 && deltaX < 100) {
-      setIsHintFadingOut(true)
-      setTimeout(() => {
-        setIsInitialLoad(false)
-        setIsHintFadingOut(false)
-      }, 300)
-    }
-    setTouchStart(null)
-  }
-
-  const [touchStart, setTouchStart] = useState(null)
+  // 移除手机版滑动消失功能
 
   // Disable initial load on mobile
-  // 移除自动关闭初始加载状态的逻辑，让手机版也能显示提示
-  // useEffect(() => {
-  //   if (isMobile) {
-  //     setIsInitialLoad(false)
-  //   }
-  // }, [])
+  // 手机版保持提示显示，桌面版可以点击关闭
+  useEffect(() => {
+    // 不自动关闭，让手机版也显示提示
+  }, [])
 
   // Track active section on scroll
   useEffect(() => {
@@ -390,8 +364,7 @@ function App() {
         <aside 
           className={`sidebar ${isSidebarCollapsed ? 'collapsed' : ''} ${isInitialLoad ? 'fullscreen' : ''} ${isResizing ? 'resizing' : ''}`}
           onClick={isInitialLoad && !isMobile ? handleInitialClick : undefined}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+
           style={
             isInitialLoad && !isMobile
               ? { cursor: 'pointer' } 
@@ -449,8 +422,8 @@ function App() {
                     )) || []}
                   </div>
                   
-                  {/* Profile interaction hints - only show during initial load */}
-                  {isInitialLoad && (
+                  {/* Profile interaction hints - show during initial load and fade out */}
+                  {(isInitialLoad || isHintFadingOut) && (
                     <>
                       <div className={`profile-hint-desktop ${isHintFadingOut ? 'fade-out' : ''}`}>
                         <div className="hint-dots">
@@ -461,12 +434,7 @@ function App() {
                         <span className="hint-text">Click</span>
                       </div>
                       <div className={`profile-hint-mobile ${isHintFadingOut ? 'fade-out' : ''}`}>
-                        <span className="hint-text">Swipe up</span>
-                        <div className="hint-dots hint-dots-horizontal">
-                          <div className="hint-dot"></div>
-                          <div className="hint-dot"></div>
-                          <div className="hint-dot"></div>
-                        </div>
+                        <div className="hint-line"></div>
                       </div>
                     </>
                   )}
