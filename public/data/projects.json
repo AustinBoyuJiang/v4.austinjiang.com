@@ -28,6 +28,19 @@
     }
   },
   {
+    "title": "Zebra Giraffe Swap",
+    "description": "A Stable Diffusion fine-tuning solution that swaps giraffe and zebra concepts while preserving all other learned representations through selective UNet training.",
+    "image": "/images/projects/zg-swap.png",
+    "tags": [
+      "AI",
+      "model",
+      "IOAI '25"
+    ],
+    "links": {
+      "github": "https://github.com/AustinBoyuJiang/Zebra-Giraffe-Swap"
+    }
+  },
+  {
     "title": "Binary Combinator",
     "description": "Binary Combinator is a Mathematica library that implements SK combinator constructions for binary bitwise operations, translating theoretical results into a practical, modular, and well-documented toolkit.",
     "image": "/images/projects/binaryCombinator.png",
