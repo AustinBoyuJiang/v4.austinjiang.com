@@ -71,13 +71,11 @@ function App() {
   // Initial load animation - show full screen profile until clicked (desktop only)
   const handleInitialClick = () => {
     if (!isMobile) {
-      // Start fade out animation
       setIsHintFadingOut(true)
-      // Remove hint after animation completes
       setTimeout(() => {
         setIsInitialLoad(false)
         setIsHintFadingOut(false)
-      }, 800)
+      }, 300)
     }
   }
 
@@ -96,13 +94,11 @@ function App() {
     
     // If swipe up (deltaY > 50) and not too much horizontal movement
     if (deltaY > 50 && deltaX < 100) {
-      // Start fade out animation
       setIsHintFadingOut(true)
-      // Remove hint after animation completes
       setTimeout(() => {
         setIsInitialLoad(false)
         setIsHintFadingOut(false)
-      }, 800)
+      }, 300)
     }
     setTouchStart(null)
   }
