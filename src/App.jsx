@@ -426,12 +426,8 @@ function App() {
                   {(isInitialLoad || isHintFadingOut) && (
                     <>
                       <div className={`profile-hint-desktop ${isHintFadingOut ? 'fade-out' : ''}`}>
-                        <div className="hint-dots">
-                          <div className="hint-dot"></div>
-                          <div className="hint-dot"></div>
-                          <div className="hint-dot"></div>
-                        </div>
                         <span className="hint-text">Click</span>
+                        <div className="hint-line"></div>
                       </div>
                       <div className={`profile-hint-mobile ${isHintFadingOut ? 'fade-out' : ''}`}>
                         <div className="hint-line"></div>
