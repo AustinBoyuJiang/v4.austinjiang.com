@@ -136,7 +136,7 @@
 .content-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0rem;
+  padding: 3rem 2rem;
   transition: max-width 0.3s ease;
 }
 
@@ -872,7 +872,7 @@
   }
 
   .content-container {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
     max-width: 100% !important;
     margin: 0 !important;
   }
@@ -981,7 +981,7 @@
   }
 
   .content-container {
-    padding: 1.5rem !important;
+    padding: 2rem 1.5rem !important;
   }
 
   .section {
