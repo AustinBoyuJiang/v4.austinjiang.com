@@ -73,11 +73,12 @@ function App() {
   }
 
   // Disable initial load on mobile
-  useEffect(() => {
-    if (isMobile) {
-      setIsInitialLoad(false)
-    }
-  }, [])
+  // 移除自动关闭初始加载状态的逻辑，让手机版也能显示提示
+  // useEffect(() => {
+  //   if (isMobile) {
+  //     setIsInitialLoad(false)
+  //   }
+  // }, [])
 
   // Track active section on scroll
   useEffect(() => {
@@ -412,6 +413,28 @@ function App() {
                       </a>
                     )) || []}
                   </div>
+                  
+                  {/* Profile interaction hints - only show during initial load */}
+                  {isInitialLoad && (
+                    <>
+                      <div className="profile-hint-desktop">
+                        <div className="hint-dots">
+                          <div className="hint-dot"></div>
+                          <div className="hint-dot"></div>
+                          <div className="hint-dot"></div>
+                        </div>
+                        <span className="hint-text">Click</span>
+                      </div>
+                      <div className="profile-hint-mobile">
+                        <span className="hint-text">Swipe up</span>
+                        <div className="hint-dots hint-dots-horizontal">
+                          <div className="hint-dot"></div>
+                          <div className="hint-dot"></div>
+                          <div className="hint-dot"></div>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </>
               ) : (
                 <div className="error">Failed to load profile data</div>

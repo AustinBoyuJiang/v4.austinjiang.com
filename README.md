@@ -1,119 +1,254 @@
-# Personal Website Configuration Guide
+# Personal Portfolio Website
 
-## Overview
-This personal website features a dynamic theming system and configurable layout. You can easily customize the appearance, layout, and functionality by modifying the `public/data/settings.json` file.
+A modern, responsive personal portfolio website built with React and Vite.
 
-## Recent Updates & Fixes
+## Features
 
-### Fixed Issues
-1. **Navigation Bar Initial Tracking**: Fixed navigation bar not correctly tracking the first section on initial page load
-2. **Theme Color Consistency**: Fixed all hardcoded colors across all sections to properly respond to theme changes
-3. **Blog Post Theme Support**: Fixed blog post pages not applying theme colors correctly
-4. **Added Monochrome Theme**: New black and white theme with pure black shooting stars
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **Dynamic Content**: All content is loaded from JSON configuration files
+- **Modern UI**: Clean, professional design with smooth animations
+- **Blog Support**: Built-in blog system with external link support
+- **Project Showcase**: Display your projects with images, descriptions, and links
+- **Image Gallery**: Customizable polaroid-style image gallery
+- **Contact Integration**: Easy contact form and social media links
+- **Theme Support**: Multiple built-in themes with customization options
+- **Performance Optimized**: Fast loading with modern build tools
 
-### Enhanced Features
-- **Dynamic Theme System**: All colors now use CSS variables for seamless theme switching
-- **Improved Navigation**: Better scroll-based section detection with proper initial state
-- **Theme-Specific Animations**: Special black shooting star effects for monochrome theme
-- **Comprehensive Color Support**: All components now properly inherit theme colors
+## Getting Started
 
-## Configuration File Structure
+### Prerequisites
 
-### Theme System
+- Node.js (version 14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <your-repo-url>
+cd personal-portfolio
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Configuration
+
+### Profile Configuration
+
+Edit `public/data/profile.json` to customize your personal information:
+
+```json
+{
+  "personal": {
+    "name": "Your Name",
+    "title": "Your Title",
+    "description": "Your description here",
+    "email": "your.email@example.com",
+    "avatar": {
+      "initials": "YN",
+      "image": "/images/avatar.jpg"
+    },
+    "socialLinks": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/yourusername"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com/in/yourusername"
+      },
+      {
+        "name": "CV",
+        "url": "/files/your_cv.pdf"
+      }
+    ]
+  }
+}
+```
+
+### Settings Configuration
+
+Edit `public/data/settings.json` to customize themes, sections, and layout:
+
 ```json
 {
   "theme": {
-    "current": "dark",           // Currently active theme
+    "current": "dark",
     "themes": {
       "dark": {
-        "name": "Dark Theme",    // Display name
+        "name": "Dark Theme",
         "colors": {
-          "primary": "#87ceeb",      // Primary color (links, buttons)
-          "accent": "#5fb3d4",       // Accent color (hover effects)
-          "background": "#1a1a1a",   // Background color
-          "surface": "#2a2a2a",      // Card/surface color
+          "primary": "#87ceeb",
+          "accent": "#5fb3d4",
+          "background": "#1a1a1a",
+          "surface": "#2a2a2a",
           "text": {
-            "primary": "#ffffff",    // Primary text color
-            "secondary": "#cccccc",  // Secondary text color
-            "muted": "#999999"       // Muted text color
+            "primary": "#ffffff",
+            "secondary": "#cccccc",
+            "muted": "#999999"
           },
-          "border": "#404040"        // Border color
+          "border": "#404040"
         }
       }
+    }
+  },
+  "sections": [
+    {
+      "id": "blog",
+      "name": "Blog",
+      "enabled": true,
+      "order": 1,
+      "component": "BlogSection"
+    }
+  ],
+  "layout": {
+    "sidebar": {
+      "defaultWidth": 580,
+      "minWidth": 300,
+      "maxWidth": 800,
+      "collapsedWidth": 50
+    },
+    "animations": {
+      "enabled": true,
+      "shootingStars": true,
+      "initialLoadAnimation": true
     }
   }
 }
 ```
 
-### Available Built-in Themes
-- **`dark`** - Dark theme (default) - Deep background with sky blue accents
-- **`light`** - Light theme - Clean white background with blue accents  
-- **`monochrome`** - Monochrome theme - Pure black and white with black shooting stars
-- **`ocean`** - Ocean theme - Deep blue color scheme
-- **`sunset`** - Sunset theme - Warm orange/red color scheme
+### Blog Configuration
 
-### Section Configuration
+Edit `public/data/blog.json` to add your blog posts:
+
+```json
+[
+  {
+    "title": "Blog Post Title",
+    "date": "2024-01-15",
+    "excerpt": "Brief description of the blog post content",
+    "tags": ["tag1", "tag2", "tag3"],
+    "type": "external",
+    "externalUrl": "https://example.com/blog-post",
+    "coverImage": "/images/blog/cover.png"
+  }
+]
+```
+
+**Blog Post Fields:**
+- `title`: Post title
+- `date`: Publication date (YYYY-MM-DD format)
+- `excerpt`: Brief description
+- `tags`: Array of tags
+- `type`: Currently supports "external"
+- `externalUrl`: URL to external blog post
+- `coverImage`: Optional cover image path
+
+### Projects Configuration
+
+Edit `public/data/projects.json` to showcase your projects:
+
+```json
+[
+  {
+    "title": "Project Name",
+    "description": "Project description explaining what it does and technologies used",
+    "image": "/images/projects/project.png",
+    "tags": ["React", "Node.js", "MongoDB"],
+    "links": {
+      "github": "https://github.com/username/project",
+      "live": "https://project.example.com",
+      "devpost": "https://devpost.com/software/project"
+    }
+  },
+  {
+    "title": "Video Project",
+    "description": "Project with YouTube video instead of image",
+    "youtube": "https://youtube.com/watch?v=VIDEO_ID",
+    "tags": ["Unity", "C#", "Game Development"],
+    "links": {
+      "github": "https://github.com/username/game",
+      "youtube": "https://youtube.com/watch?v=VIDEO_ID"
+    }
+  }
+]
+```
+
+**Project Fields:**
+- `title`: Project name
+- `description`: Project description
+- `image`: Project screenshot/image path
+- `youtube`: YouTube video URL (alternative to image)
+- `tags`: Array of technology/category tags
+- `links`: Object with various link types
+
+**Supported Link Types:**
+- `github`: GitHub repository
+- `live`: Live demo/website
+- `devpost`: Devpost submission
+- `youtube`: YouTube video
+
+### Image Gallery Configuration
+
+Edit `public/data/anime.json` to customize the polaroid-style image gallery:
+
 ```json
 {
-  "sections": [
+  "config": {
+    "canvas": {
+      "width": 1100,
+      "height": 850
+    },
+    "title": {
+      "text": "My Gallery Title",
+      "x": 565,
+      "y": 400,
+      "fontSize": 3.2,
+      "rotation": -2.5,
+      "color": "#8B4513"
+    }
+  },
+  "items": [
     {
-      "id": "projects",           // Unique identifier
-      "name": "Projects",         // Display name
-      "enabled": true,            // Whether to show this section
-      "order": 1,                 // Display order (lower numbers first)
-      "component": "ProjectsSection"  // Component name
+      "name": "ITEM NAME",
+      "image": "/images/gallery/1.jpg",
+      "width": 210,
+      "height": 315,
+      "x": 60,
+      "y": 60,
+      "rotation": -2
     }
   ]
 }
 ```
 
-### Available Components
-- **`ProjectsSection`** - Project showcase with cards and links
-- **`PublicationsSection`** - Academic publications and articles
-- **`AnimeSection`** - Anime collection with polaroid-style cards
-- **`BlogSection`** - Blog posts in timeline format
-- **`ContactSection`** - Contact information and links
+**Gallery Configuration:**
+- `config.canvas`: Canvas dimensions
+- `config.title`: Title text, position, and styling
+- `items`: Array of gallery items with position and rotation
 
-### Layout Settings
-```json
-{
-  "layout": {
-    "sidebar": {
-      "defaultWidth": 580,    // Default sidebar width
-      "minWidth": 300,        // Minimum width
-      "maxWidth": 800,        // Maximum width
-      "collapsedWidth": 50    // Width when collapsed
-    },
-    "animations": {
-      "enabled": true,              // Enable animations
-      "shootingStars": true,        // Show shooting star animation
-      "initialLoadAnimation": true  // Show initial load animation
-    }
-  }
-}
-```
+## Available Themes
 
-## Usage Examples
+### Built-in Themes
+- **`dark`** - Dark theme with sky blue accents (default)
+- **`light`** - Clean light theme with blue accents
+- **`ocean`** - Deep blue ocean theme
+- **`monochrome`** - Pure black and white theme
 
-### 1. Switch to Light Theme
-```json
-{
-  "theme": {
-    "current": "light"
-  }
-}
-```
+### Creating Custom Themes
 
-### 2. Try the New Monochrome Theme
-```json
-{
-  "theme": {
-    "current": "monochrome"
-  }
-}
-```
+Add your custom theme to the `themes` object in `settings.json`:
 
-### 3. Create Custom Theme
 ```json
 {
   "theme": {
@@ -139,85 +274,170 @@ This personal website features a dynamic theming system and configurable layout.
 }
 ```
 
-### 4. Reorder Page Sections
+## Section Management
+
+### Available Components
+- **`BlogSection`** - Blog posts in timeline format
+- **`ProjectsSection`** - Project showcase with cards and links
+- **`PublicationsSection`** - Academic publications (can be enabled/disabled)
+- **`ContactSection`** - Contact information and links
+- **`AnimeSection`** - Polaroid-style image gallery
+
+### Reordering Sections
+
+Change the `order` property in `settings.json`:
+
 ```json
 {
   "sections": [
+    {
+      "id": "projects",
+      "name": "Projects",
+      "enabled": true,
+      "order": 1,
+      "component": "ProjectsSection"
+    },
     {
       "id": "blog",
       "name": "Blog", 
       "enabled": true,
-      "order": 1,
-      "component": "BlogSection"
-    },
-    {
-      "id": "projects",
-      "name": "Projects",
-      "enabled": true, 
       "order": 2,
-      "component": "ProjectsSection"
+      "component": "BlogSection"
     }
   ]
 }
 ```
 
-### 5. Hide a Section
+### Hiding Sections
+
+Set `enabled` to `false`:
+
 ```json
 {
-  "sections": [
-    {
-      "id": "anime",
-      "name": "Anime",
-      "enabled": false,  // Set to false to hide
-      "order": 3,
-      "component": "AnimeSection"
-    }
-  ]
+  "id": "anime",
+  "name": "Image Gallery",
+  "enabled": false,
+  "order": 5,
+  "component": "AnimeSection"
 }
 ```
 
-### 6. Disable Animations
+## File Structure
+
+```
+public/
+├── data/
+│   ├── settings.json          # Main site configuration
+│   ├── profile.json          # Personal information
+│   ├── blog.json             # Blog posts data
+│   ├── projects.json         # Projects data
+│   └── anime.json            # Image gallery data
+├── images/
+│   ├── pfp.jpg               # Profile avatar
+│   ├── blog/                 # Blog post cover images
+│   ├── projects/             # Project screenshots
+│   └── anime/                # Gallery images
+└── files/                    # CV and other files
+
+src/
+├── components/               # React components
+├── hooks/                    # Custom React hooks
+└── App.jsx                   # Main application component
+```
+
+## Adding Content
+
+### Adding a Blog Post
+
+1. Add an entry to `public/data/blog.json`
+2. Optionally add a cover image to `public/images/blog/`
+
+### Adding a Project
+
+1. Add project data to `public/data/projects.json`
+2. Add project image to `public/images/projects/`
+3. For video projects, use the `youtube` field instead of `image`
+
+### Adding Gallery Images
+
+1. Add image data to `public/data/anime.json`
+2. Add images to `public/images/anime/`
+3. Adjust position, size, and rotation as needed
+
+## Layout Customization
+
+### Sidebar Settings
+
 ```json
 {
   "layout": {
-    "animations": {
-      "enabled": false,
-      "shootingStars": false,
-      "initialLoadAnimation": false
+    "sidebar": {
+      "defaultWidth": 580,    // Default sidebar width
+      "minWidth": 300,        // Minimum width when resizing
+      "maxWidth": 800,        // Maximum width when resizing
+      "collapsedWidth": 50    // Width when collapsed
     }
   }
 }
 ```
 
-## Technical Implementation
+### Animation Settings
 
-### Theme System Features
-- **CSS Variables**: All colors use CSS custom properties for instant theme switching
-- **Automatic Color Derivation**: Shadow and accent background colors are automatically calculated
-- **Theme-Specific Styles**: Special CSS rules for specific themes (e.g., black shooting stars for monochrome)
-- **Backward Compatibility**: Legacy CSS variable names are maintained
+```json
+{
+  "layout": {
+    "animations": {
+      "enabled": true,              // Enable/disable all animations
+      "shootingStars": true,        // Show shooting star background
+      "initialLoadAnimation": true  // Show initial load animation
+    }
+  }
+}
+```
 
-### Navigation System
-- **Smart Section Tracking**: Automatically highlights the current section based on scroll position
-- **Initial State Fix**: Properly shows the first section as active on page load
-- **Smooth Scrolling**: Click navigation items to smoothly scroll to sections
+## Deployment
 
-### Responsive Design
-- **Mobile Optimized**: All sections adapt to mobile screens
-- **Sidebar Collapse**: Sidebar can be collapsed on desktop for more content space
-- **Flexible Layout**: Content areas expand when sidebar is collapsed
+### Build for Production
 
-## Important Notes
+```bash
+npm run build
+```
 
-1. **JSON Format**: Ensure the file is valid JSON format with proper commas and quotes
-2. **Color Format**: Use hexadecimal color values (e.g., `#87ceeb`)
-3. **Order Numbers**: Use sequential numbers (1, 2, 3...) for section ordering
-4. **Component Names**: Use only predefined component names
-5. **Refresh Required**: Refresh the page after making changes to see effects
-6. **Theme Consistency**: All components now properly inherit theme colors including blog posts
+The built files will be in the `dist` directory, ready for deployment.
 
-## Example Configuration
-Check `public/data/settings.example.json` for an alternative configuration example.
+### Deploy to GitHub Pages
+
+1. Install the GitHub Pages deployment package:
+```bash
+npm install --save-dev gh-pages
+```
+
+2. Add deployment scripts to your `package.json`:
+```json
+{
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  }
+}
+```
+
+3. Deploy:
+```bash
+npm run deploy
+```
+
+### Deploy to Netlify
+
+1. Build the project: `npm run build`
+2. Drag and drop the `dist` folder to Netlify
+3. Or connect your GitHub repository for automatic deployments
+
+### Deploy to Vercel
+
+1. Install Vercel CLI: `npm i -g vercel`
+2. Run: `vercel`
+3. Follow the prompts to deploy
 
 ## Troubleshooting
 
@@ -235,3 +455,20 @@ Check `public/data/settings.example.json` for an alternative configuration examp
 - Try disabling animations if performance is poor
 - Ensure your browser supports CSS animations
 - Check if reduced motion is enabled in system preferences
+
+### Gallery Layout Issues
+- Adjust x, y coordinates to position items
+- Use rotation values between -10 and 10 degrees for best results
+- Ensure image paths are correct
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
