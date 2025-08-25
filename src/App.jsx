@@ -72,6 +72,28 @@ function App() {
     setIsInitialLoad(false)
   }
 
+  // Handle touch events for mobile swipe detection
+  const handleTouchStart = (e) => {
+    if (!isMobile || !isInitialLoad) return
+    const touch = e.touches[0]
+    setTouchStart({ x: touch.clientX, y: touch.clientY })
+  }
+
+  const handleTouchEnd = (e) => {
+    if (!isMobile || !isInitialLoad || !touchStart) return
+    const touch = e.changedTouches[0]
+    const deltaY = touchStart.y - touch.clientY
+    const deltaX = Math.abs(touchStart.x - touch.clientX)
+    
+    // If swipe up (deltaY > 50) and not too much horizontal movement
+    if (deltaY > 50 && deltaX < 100) {
+      setIsInitialLoad(false)
+    }
+    setTouchStart(null)
+  }
+
+  const [touchStart, setTouchStart] = useState(null)
+
   // Disable initial load on mobile
   // 移除自动关闭初始加载状态的逻辑，让手机版也能显示提示
   // useEffect(() => {
@@ -356,9 +378,11 @@ function App() {
         {/* Left Sidebar */}
         <aside 
           className={`sidebar ${isSidebarCollapsed ? 'collapsed' : ''} ${isInitialLoad ? 'fullscreen' : ''} ${isResizing ? 'resizing' : ''}`}
-          onClick={isInitialLoad ? handleInitialClick : undefined}
+          onClick={isInitialLoad && !isMobile ? handleInitialClick : undefined}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
           style={
-            isInitialLoad 
+            isInitialLoad && !isMobile
               ? { cursor: 'pointer' } 
               : !isSidebarCollapsed && !isMobile
                 ? { width: `${sidebarWidth}px` }
