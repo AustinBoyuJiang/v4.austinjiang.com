@@ -57,7 +57,8 @@
     "description": "ArtifAI helps you trace the origin of any artwork—AI-generated or human-made—while offering expert GPT-powered guidance on copyright and authorship in the age of generative AI.",
     "image": "/images/projects/artifai.png",
     "tags": [
-      "Independent Project"
+      "Independent Project",
+      "AI model"
     ],
     "links": {
       "github": "https://github.com/AustinBoyuJiang/ArtifAI",
