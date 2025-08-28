@@ -248,4 +248,78 @@
   .blog-post-full {
     padding: 0 1rem;
   }
+}/* M
+ath Formula Styles */
+.blog-post-content .katex {
+  font-size: 1.1em;
+}
+
+.blog-post-content .katex-display {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.blog-post-content .katex-display > .katex {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.math-error {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ffcdd2;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+/* Table styles - clean and minimal */
+.blog-post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background-color: transparent;
+  font-size: 0.95rem;
+}
+
+.blog-post-content table th,
+.blog-post-content table td {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.blog-post-content table th {
+  background-color: var(--surface-color);
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  border-bottom: 2px solid var(--primary-blue);
+}
+
+.blog-post-content table td {
+  color: var(--text-secondary);
+}
+
+.blog-post-content table tr:hover {
+  background-color: rgba(135, 206, 235, 0.03);
+}
+
+.blog-post-content table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Mobile table responsiveness */
+@media (max-width: 768px) {
+  .blog-post-content table {
+    font-size: 0.85rem;
+  }
+  
+  .blog-post-content table th,
+  .blog-post-content table td {
+    padding: 0.8rem 1rem;
+  }
 }

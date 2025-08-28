@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import './BlogPost.css'
 import { useData } from '../hooks/useData'
 import { applyTheme, getCurrentTheme } from '../utils/theme'
+import katex from 'katex'
+import 'katex/dist/katex.min.css'
 
 const BlogPost = ({ post, onBack }) => {
     const { settings } = useData()
@@ -47,8 +49,32 @@ const BlogPost = ({ post, onBack }) => {
         let html = markdown
             // 首先处理代码块，避免其内容被其他规则影响
             .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
-            // 处理行内代码
-            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            // 处理行内代码（但不处理数学公式中的反引号）
+            .replace(/`([^`$]+)`/g, '<code>$1</code>')
+            // 处理数学公式 - 块级公式 $$...$$
+            .replace(/\$\$([\s\S]*?)\$\$/g, (match, formula) => {
+                try {
+                    return katex.renderToString(formula.trim(), {
+                        displayMode: true,
+                        throwOnError: false
+                    })
+                } catch (error) {
+                    console.error('KaTeX render error:', error)
+                    return `<div class="math-error">Math render error: ${formula}</div>`
+                }
+            })
+            // 处理数学公式 - 行内公式 $...$
+            .replace(/\$([^$\n]+)\$/g, (match, formula) => {
+                try {
+                    return katex.renderToString(formula.trim(), {
+                        displayMode: false,
+                        throwOnError: false
+                    })
+                } catch (error) {
+                    console.error('KaTeX render error:', error)
+                    return `<span class="math-error">Math render error: ${formula}</span>`
+                }
+            })
             // 处理图片 ![alt](src) - 修复相对路径
             .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) => {
                 // 如果是相对路径（以 ./ 开头），则相对于markdown文件目录

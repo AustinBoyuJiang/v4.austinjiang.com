@@ -135,11 +135,15 @@ Edit `public/data/blog.json` to add your blog posts:
 [
   {
     "title": "Blog Post Title",
+    "subtitle": "IB Mathematics Analysis & Approaches HL Internal Assessment",
     "date": "2024-01-15",
+    "author": "Austin Jiang",
+    "readTime": "10 min",
     "excerpt": "Brief description of the blog post content",
     "tags": ["tag1", "tag2", "tag3"],
     "type": "external",
     "externalUrl": "https://example.com/blog-post",
+    "markdownFile": "/blog/math-ia.md",
     "coverImage": "/images/blog/cover.png"
   }
 ]
@@ -147,12 +151,14 @@ Edit `public/data/blog.json` to add your blog posts:
 
 **Blog Post Fields:**
 - `title`: Post title
+- `subtitle`: Post subtitle for markdown type
 - `date`: Publication date (YYYY-MM-DD format)
 - `excerpt`: Brief description
 - `tags`: Array of tags
-- `type`: Currently supports "external"
+- `type`: Currently supports "external" / "markdown"
 - `externalUrl`: URL to external blog post
 - `coverImage`: Optional cover image path
+- `markdownFile`: File path to markdown file
 
 ### Projects Configuration
 
