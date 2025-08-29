@@ -15,7 +15,7 @@ const BlogSection = ({ blogPosts, onPostClick }) => {
 
   // Group posts by year
   const postsByYear = blogPosts.reduce((acc, post) => {
-    const year = new Date(post.date).getFullYear()
+    const year = post.date.split('-')[0]
     if (!acc[year]) {
       acc[year] = []
     }
@@ -24,20 +24,19 @@ const BlogSection = ({ blogPosts, onPostClick }) => {
   }, {})
 
   const formatDate = (dateString) => {
-    const date = new Date(dateString)
-    const day = date.getDate().toString().padStart(2, '0')
-    const month = date.toLocaleDateString('en-US', { month: 'short' })
-    return `${day} ${month}`
+    const [year, month, day] = dateString.split('-')
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    return `${day} ${monthNames[parseInt(month) - 1]}`
   }
 
   // Get all posts in chronological order for limiting
-  const allPostsChronological = blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date))
+  const allPostsChronological = blogPosts.sort((a, b) => b.date.localeCompare(a.date))
   const displayedPosts = isExpanded ? allPostsChronological : allPostsChronological.slice(0, 3)
   const hasMoreItems = blogPosts.length > 3
   
   // Group displayed posts by year
   const displayedPostsByYear = displayedPosts.reduce((acc, post) => {
-    const year = new Date(post.date).getFullYear()
+    const year = post.date.split('-')[0]
     if (!acc[year]) {
       acc[year] = []
     }
@@ -75,7 +74,7 @@ const BlogSection = ({ blogPosts, onPostClick }) => {
             <h3 className="blog-year-title">{year}</h3>
             <div className="blog-posts">
               {displayedPostsByYear[year]
-                .sort((a, b) => new Date(b.date) - new Date(a.date))
+                .sort((a, b) => b.date.localeCompare(a.date))
                 .map(post => (
                   <article 
                     key={post.id} 
