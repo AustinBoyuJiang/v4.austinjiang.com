@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://austinjiang.dev/sitemap.xml
+Sitemap: https://austinjiang.com/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1
