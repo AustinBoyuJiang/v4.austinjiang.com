@@ -7,6 +7,7 @@ import ProjectsSection from './components/ProjectsSection'
 import PublicationsSection from './components/PublicationsSection'
 import AnimeSection from './components/AnimeSection'
 import ContactSection from './components/ContactSection'
+import ProfileBackground from './components/ProfileBackground'
 import { useData } from './hooks/useData'
 import { applyTheme, getSortedSections, getCurrentTheme } from './utils/theme'
 
@@ -364,7 +365,6 @@ function App() {
         <aside 
           className={`sidebar ${isSidebarCollapsed ? 'collapsed' : ''} ${isInitialLoad ? 'fullscreen' : ''} ${isResizing ? 'resizing' : ''}`}
           onClick={isInitialLoad && !isMobile ? handleInitialClick : undefined}
-
           style={
             isInitialLoad && !isMobile
               ? { cursor: 'pointer' } 
@@ -373,6 +373,9 @@ function App() {
                 : {}
           }
         >
+          {/* Profile Background Layer */}
+          <ProfileBackground />
+          
           {/* Sidebar Toggle Button */}
           {!isInitialLoad && (
             <button

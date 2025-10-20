@@ -1,0 +1,227 @@
+/* Starry Background Component Styles */
+.starry-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--background-color) 0%, color-mix(in srgb, var(--background-color) 90%, var(--surface-color) 10%) 50%, var(--background-color) 100%);
+  pointer-events: none;
+}
+
+/* First layer of shooting stars */
+.starry-background::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background:
+    radial-gradient(circle, var(--primary-color) 0px, color-mix(in srgb, var(--primary-color) 90%, transparent) 2px, transparent 3px),
+    radial-gradient(circle, color-mix(in srgb, var(--primary-color) 80%, transparent) 0px, transparent 2px),
+    radial-gradient(circle, var(--primary-color) 0px, color-mix(in srgb, var(--primary-color) 95%, transparent) 2px, transparent 4px),
+    radial-gradient(circle, color-mix(in srgb, var(--primary-color) 70%, transparent) 0px, transparent 2px),
+    radial-gradient(circle, color-mix(in srgb, var(--primary-color) 85%, transparent) 0px, color-mix(in srgb, var(--primary-color) 60%, transparent) 3px, transparent 5px);
+  background-position:
+    23px 37px,
+    167px 89px,
+    334px 23px,
+    89px 156px,
+    245px 167px;
+  background-size:
+    400px 300px,
+    350px 280px,
+    450px 320px,
+    380px 290px,
+    420px 310px;
+  animation:
+    shootingStars1 18s linear infinite,
+    twinkle1 3s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform, opacity;
+}
+
+/* Second layer of floating particles */
+.starry-background::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--primary-color) 70%, transparent) 0px, color-mix(in srgb, var(--primary-color) 40%, transparent) 2px, transparent 3px),
+    radial-gradient(circle, color-mix(in srgb, var(--primary-color) 60%, transparent) 0px, transparent 2px),
+    radial-gradient(circle, color-mix(in srgb, var(--primary-color) 80%, transparent) 0px, color-mix(in srgb, var(--primary-color) 30%, transparent) 3px, transparent 4px),
+    radial-gradient(circle, color-mix(in srgb, var(--primary-color) 65%, transparent) 0px, transparent 2px),
+    radial-gradient(circle, color-mix(in srgb, var(--primary-color) 55%, transparent) 0px, transparent 2px);
+  background-position:
+    134px 78px,
+    323px 134px,
+    98px 267px,
+    267px 189px,
+    445px 234px;
+  background-size:
+    380px 280px,
+    420px 300px,
+    360px 270px,
+    400px 290px,
+    440px 320px;
+  animation:
+    floatingParticles2 22s linear infinite reverse,
+    twinkle2 4s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 2;
+  will-change: transform, opacity;
+}
+
+/* Content wrapper to ensure proper z-index */
+.starry-background>* {
+  position: relative;
+  z-index: 3;
+}
+
+/* Animations */
+@keyframes shootingStars1 {
+  0% {
+    transform: translate3d(-300px, -250px, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(50px, 50px, 0) rotate(180deg);
+  }
+
+  100% {
+    transform: translate3d(300px, 250px, 0) rotate(360deg);
+  }
+}
+
+@keyframes floatingParticles2 {
+  0% {
+    transform: translate3d(-150px, 180px, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(0px, 0px, 0) rotate(-180deg);
+  }
+
+  100% {
+    transform: translate3d(150px, -180px, 0) rotate(-360deg);
+  }
+}
+
+@keyframes twinkle1 {
+  0% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes twinkle2 {
+  0% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Theme-specific styles */
+.theme-monochrome .starry-background::before {
+  background:
+    radial-gradient(circle, #000000 0px, rgba(0, 0, 0, 0.8) 1px, transparent 2px),
+    radial-gradient(circle, rgba(0, 0, 0, 0.6) 0px, transparent 1px),
+    radial-gradient(circle, #000000 0px, rgba(0, 0, 0, 0.9) 1px, transparent 3px),
+    radial-gradient(circle, rgba(0, 0, 0, 0.4) 0px, transparent 1px),
+    radial-gradient(circle, rgba(0, 0, 0, 0.7) 0px, rgba(0, 0, 0, 0.3) 2px, transparent 4px);
+  background-position:
+    23px 37px,
+    167px 89px,
+    334px 23px,
+    89px 156px,
+    245px 167px;
+  background-size:
+    400px 300px,
+    350px 280px,
+    450px 320px,
+    380px 290px,
+    420px 310px;
+}
+
+.theme-monochrome .starry-background::after {
+  background:
+    radial-gradient(circle, rgba(0, 0, 0, 0.5) 0px, rgba(0, 0, 0, 0.2) 1px, transparent 2px),
+    radial-gradient(circle, rgba(0, 0, 0, 0.3) 0px, transparent 1px),
+    radial-gradient(circle, rgba(0, 0, 0, 0.6) 0px, rgba(0, 0, 0, 0.1) 2px, transparent 3px),
+    radial-gradient(circle, rgba(0, 0, 0, 0.4) 0px, transparent 1px),
+    radial-gradient(circle, rgba(0, 0, 0, 0.3) 0px, transparent 1px);
+  background-position:
+    134px 78px,
+    323px 134px,
+    98px 267px,
+    267px 189px,
+    445px 234px;
+  background-size:
+    380px 280px,
+    420px 300px,
+    360px 270px,
+    400px 290px,
+    440px 320px;
+}
+
+/* Additional random stars layer */
+.starry-background-extra::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  background:
+    radial-gradient(2px 2px at 43px 67px, color-mix(in srgb, var(--primary-color) 60%, transparent), transparent),
+    radial-gradient(1px 1px at 156px 23px, color-mix(in srgb, var(--primary-color) 50%, transparent), transparent),
+    radial-gradient(2px 2px at 234px 189px, color-mix(in srgb, var(--primary-color) 70%, transparent), transparent),
+    radial-gradient(1px 1px at 89px 134px, color-mix(in srgb, var(--primary-color) 45%, transparent), transparent);
+  background-repeat: repeat;
+  background-size: 300px 200px;
+  animation: randomStars3 30s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+@keyframes randomStars3 {
+  0% {
+    transform: translate3d(-200px, 150px, 0) rotate(0deg);
+  }
+
+  33% {
+    transform: translate3d(100px, -100px, 0) rotate(120deg);
+  }
+
+  66% {
+    transform: translate3d(-50px, 200px, 0) rotate(240deg);
+  }
+
+  100% {
+    transform: translate3d(200px, -150px, 0) rotate(360deg);
+  }
+}
+
+.theme-monochrome .starry-background-extra::before {
+  background:
+    radial-gradient(1px 1px at 43px 67px, rgba(0, 0, 0, 0.3), transparent),
+    radial-gradient(1px 1px at 156px 23px, rgba(0, 0, 0, 0.2), transparent),
+    radial-gradient(1px 1px at 234px 189px, rgba(0, 0, 0, 0.4), transparent),
+    radial-gradient(1px 1px at 89px 134px, rgba(0, 0, 0, 0.2), transparent);
+  background-repeat: repeat;
+  background-size: 300px 200px;
+}
+
