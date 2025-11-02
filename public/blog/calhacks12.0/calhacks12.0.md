@@ -45,8 +45,6 @@ Anyway, that is enough of a detour. Let us get back to Cal Hacks.
 
 After visiting Something Great, I took a bus to the Palace of Fine Arts.
 
-
-
 <img src="./images/2.jpg" alt="drawing" width="400"/>
 
 
@@ -143,5 +141,10 @@ During these three days at Cal Hacks, I not only saw countless opportunities fro
 In the end, experiences like this are incredibly rare. They remind me how much joy there is in creating something out of chaos and exhaustion. If I ever get the chance again, I would choose this journey without hesitation.
 
 My photo at Cal Hacks:
+
+![](./images/4.jpg)
+![](images/4.jpg)
+
+<img src="images/4.jpg" alt="drawing" width="500"/>
 
 <img src="./images/4.jpg" alt="drawing" width="500"/>
