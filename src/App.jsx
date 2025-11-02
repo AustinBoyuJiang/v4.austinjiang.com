@@ -8,6 +8,7 @@ import PublicationsSection from './components/PublicationsSection'
 import AnimeSection from './components/AnimeSection'
 import ContactSection from './components/ContactSection'
 import ProfileBackground from './components/ProfileBackground'
+import Footer from './components/Footer'
 import { useData } from './hooks/useData'
 import { applyTheme, getSortedSections, getCurrentTheme } from './utils/theme'
 
@@ -351,6 +352,7 @@ function App() {
     return (
       <>
         <BlogPost post={selectedBlogPost} onBack={navigateToHome} />
+        <Footer />
         <Analytics />
       </>
     )
@@ -478,6 +480,9 @@ function App() {
             {/* Dynamic Sections based on settings */}
             {getSortedSections(settings?.sections).map(section => renderSection(section))}
           </div>
+          
+          {/* Footer */}
+          <Footer />
         </main>
       </div>
       <Analytics />

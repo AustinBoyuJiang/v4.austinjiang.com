@@ -1,0 +1,41 @@
+.footer {
+  width: 100%;
+  margin-top: -3rem;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.footer-text {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer:hover .footer-text {
+  opacity: 1;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .footer-content {
+    padding: 1.5rem;
+  }
+  
+  .footer-text {
+    font-size: 0.85rem;
+  }
+}
+
+/* 确保footer在sidebar collapsed时也正确显示 */
+.sidebar-collapsed ~ .main-content .footer {
+  margin-left: 0;
+}
