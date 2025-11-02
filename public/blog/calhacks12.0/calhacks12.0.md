@@ -1,10 +1,10 @@
 
-This is the first blog I’ve written to record my personal experiences. I plan to write more regularly from now on. In this post, I want to share my journey participating in Cal Hacks 12.0.
+This is the first blog I've written to record my personal experiences. I plan to write more regularly from now on. In this post, I want to share my journey participating in Cal Hacks 12.0.
 
 
 ## Introduction
 
-Cal Hacks 12.0 (October 24–26) was the second hackathon I’ve ever joined. The first one was AdventureX in China during the previous summer, known as the largest hackathon in the country. It was a 72-hour event, and to my surprise, my team won the Ten Framework First Place award. The experience left me both thrilled and hungry for more. So when the semester began at Waterloo, I signed up for more hackathons.
+Cal Hacks 12.0 (October 24–26) was the second hackathon I've ever joined. The first one was AdventureX in China during the previous summer, known as the largest hackathon in the country. It was a 72-hour event, and to my surprise, my team won the Ten Framework First Place award. The experience left me both thrilled and hungry for more. So when the semester began at Waterloo, I signed up for more hackathons.
 
 When I applied for Cal Hacks, most of my essay responses were copied from my Tree Hacks application. I submitted it quite early, but I initially got deferred to the regular round. A few days later, I received the acceptance email.
 
@@ -12,14 +12,14 @@ I was excited when I got in, but then I realized a serious problem: Cal Hacks to
 
 I had to choose between staying home to prepare for CS midterm or flying across the continent for the hackathon. At that moment, I remembered something I deeply believe in: life is a journey. There will be countless exams, but not many chances to cross a continent for a weekend. So, I opened Expedia and bought the flight ticket without hesitation.
 
-There were still two weeks left before Cal Hacks, but I didn’t think about any project ideas and hadn’t found teammates yet. Partly because I was busy preparing for Math 147 (which I ended up getting full marks on 😆), and partly because I wanted to see what it would be like to come up with an idea entirely on the spot.
+There were still two weeks left before Cal Hacks, but I didn't think about any project ideas and hadn't found teammates yet. Partly because I was busy preparing for Math 147 (which I ended up getting full marks on 😆), and partly because I wanted to see what it would be like to come up with an idea entirely on the spot.
 
 On the night before the hackathon, October 23, I finally finished everything else on my to-do list around 3 a.m. I spent the next thirty minutes buying my ticket from Waterloo to YYZ, went to bed at 4, and woke up again at 5...
 
 
 ## Departure for San Francisco
 
-After sleeping for just an hour, I got up, ate the leftover dinner from the night before as breakfast, took a quick shower, and headed out. Honestly, I’ve had this kind of schedule plenty of times before, so it didn’t really bother me. I reached Kitchener at 6:30, took a FlixBus, and arrived at YYZ airport by 7:30 sharp. I waited there until 8, did my Nexus interview, and then went through security to the boarding area.
+After sleeping for just an hour, I got up, ate the leftover dinner from the night before as breakfast, took a quick shower, and headed out. Honestly, I've had this kind of schedule plenty of times before, so it didn't really bother me. I reached Kitchener at 6:30, took a FlixBus, and arrived at YYZ airport by 7:30 sharp. I waited there until 8, did my Nexus interview, and then went through security to the boarding area.
 
 For this trip to SFO, I wore my UWaterloo hoodie that I had bought on campus. At the border, an older officer noticed it and started chatting with me about my school. During Cal Hacks, several people also noticed the hoodie and spoke highly of Waterloo. Finally, at 10 a.m., I boarded the flight.
 
@@ -29,14 +29,14 @@ As soon as I sat down, I fell into a deep sleep. When I opened my eyes again, th
 
 By the way, this was my second time visiting San Francisco. The first time was during the summer of Grade 11, right after I finished the Wolfram Summer Research Program in the U.S. After that, my mom and I toured a few universities known for computer science. We visited UC Berkeley and Stanford — both of which ultimately rejected me :(
 
-Anyway, that’s not the point. After arriving at SFO, I quickly got on the BART, the city’s main train system. But my first destination wasn’t the Palace of Fine Arts (this year’s Cal Hacks venue). It was my friend’s startup.
+Anyway, that's not the point. After arriving at SFO, I quickly got on the BART, the city's main train system. But my first destination wasn't the Palace of Fine Arts (this year's Cal Hacks venue). It was my friend's startup.
 
 
 ## Visiting Something Great
 
-Yes, you read that right, the company is literally called *Something Great*. The first time I heard the name, I was surprised too. It was founded by Ryan Zhu, a student at USC and also the founder of AdventureX, which happens to be China’s largest hackathon and the first one I ever joined.
+Yes, you read that right, the company is literally called *Something Great*. The first time I heard the name, I was surprised too. It was founded by Ryan Zhu, a student at USC and also the founder of AdventureX, which happens to be China's largest hackathon and the first one I ever joined.
 
-A while ago, Ryan and his cofounder Daniel from UPenn’s M&T program reached out to me, asking if I was interested in joining their team. I completed the coding challenge for their GMT Engineer position and even received an offer. But honestly, I had not yet decided whether to join them, mainly because I have been too busy with school and my URA research work. So when I came to San Francisco, I thought it would be a good chance to visit and see what their startup was like in person.
+A while ago, Ryan and his cofounder Daniel from UPenn's M&T program reached out to me, asking if I was interested in joining their team. I completed the coding challenge for their GMT Engineer position and even received an offer. But honestly, I had not yet decided whether to join them, mainly because I have been too busy with school and my URA research work. So when I came to San Francisco, I thought it would be a good chance to visit and see what their startup was like in person.
 
 Anyway, that is enough of a detour. Let us get back to Cal Hacks.
 
@@ -63,34 +63,34 @@ My friend from Berkeley, Celine, was actually my old neighbor. Her mom and my mo
 
 <img src="./images/3.jpg" alt="drawing" width="500"/>
 
-I suddenly realized I had been using my phone hotspot the entire time and needed to connect to WiFi. I found the WiFi name and password on Slack, entered them, and waited. After a long pause, the connection failed. What? I checked carefully, typed the password again, and it failed once more. Then I saw messages flooding Slack — apparently too many people were trying to connect, and the organizers said there was nothing they could do. Nothing they could do? This was UC Berkeley’s biggest hackathon with nearly three thousand participants, and we had no WiFi? That was unbelievable. For a moment, I started to regret coming all the way here. Without WiFi, there was nothing we could build.
+I suddenly realized I had been using my phone hotspot the entire time and needed to connect to WiFi. I found the WiFi name and password on Slack, entered them, and waited. After a long pause, the connection failed. What? I checked carefully, typed the password again, and it failed once more. Then I saw messages flooding Slack — apparently too many people were trying to connect, and the organizers said there was nothing they could do. Nothing they could do? This was UC Berkeley's biggest hackathon with nearly three thousand participants, and we had no WiFi? That was unbelievable. For a moment, I started to regret coming all the way here. Without WiFi, there was nothing we could build.
 
 Fortunately, two of our teammates were from UC Berkeley. Celine suggested that we go to her student apartment and work in the study room there. So, Anish and I followed Celine, while Kim decided to work from home. We agreed to communicate through Discord.
 
-On the way, Celine introduced us to Waymo, San Francisco’s autonomous ride service. I had never been in a self-driving car before, so I downloaded the app and requested one. A few minutes later, a driverless Waymo arrived to pick us up. It was incredibly cool: the car was spotless, modern, and even let us play music. It was an experience I had never had before, and I hope it spreads across North America soon. Waymo dropped us off at the BART station, and we took the train the rest of the way.
+On the way, Celine introduced us to Waymo, San Francisco's autonomous ride service. I had never been in a self-driving car before, so I downloaded the app and requested one. A few minutes later, a driverless Waymo arrived to pick us up. It was incredibly cool: the car was spotless, modern, and even let us play music. It was an experience I had never had before, and I hope it spreads across North America soon. Waymo dropped us off at the BART station, and we took the train the rest of the way.
 
 Once we arrived at the study room, we sat down on the sofa and started brainstorming project ideas. Everyone had different suggestions, but I proposed one shared principle: we should pick a sponsor track to target, ideally one with fewer competitors. Everyone agreed. After carefully reviewing all the sponsor tracks, we decided on Bright Data. It was less well-known compared to Cursor or Claude Code, and it offered three separate prizes, while most other tracks had only one. That gave us a much better chance.
 
-For the rest of the day, I began shaping our project idea, starting from Bright Data’s capabilities. Bright Data provides developers with a powerful web scraping infrastructure, offering a wide range of APIs. These include proxies to avoid IP bans, a SERP API that simulates search engines, a Web Unlocker API for rendering dynamic pages, a Browser API for simulating user behavior, and even data pipelines for collecting real-time information from different platforms. My goal was to use as many of their APIs as possible.
+For the rest of the day, I began shaping our project idea, starting from Bright Data's capabilities. Bright Data provides developers with a powerful web scraping infrastructure, offering a wide range of APIs. These include proxies to avoid IP bans, a SERP API that simulates search engines, a Web Unlocker API for rendering dynamic pages, a Browser API for simulating user behavior, and even data pipelines for collecting real-time information from different platforms. My goal was to use as many of their APIs as possible.
 
 That led me to an idea: to build a framework for an AI agent with internet access. The agent would be able to browse and retrieve information on its own. The internet access layer would rely on Bright Data, which is our main target for the sponsor prize. With this framework, we could extend it to many different applications: for instance, an agent that makes music by studying the latest trends, or one that summarizes recent research papers. For the agent itself, I suggested combining Reka, Letta Cloud, and Composio.
 
 Everyone agreed with the plan, so this became our official project. By then, it was already 11 p.m. Celine went back to her room, while Anish and I stayed in the study room for the night (thanks to Celine for letting us stay). Anish quickly fell asleep on one of the chairs, and after exploring Bright Data for a while, I decided to leave the rest of the work for the morning. Little did we know what was coming next.
 
-At 1:30 a.m., while I was half asleep in the chair, Anish and I were suddenly startled awake by the dorm administrator. He demanded our residence cards, which we didn’t have. Then he asked for our student IDs, which we also couldn’t provide. So, at 1:30 in the morning, we were kicked out of the building and left standing on the streets of Berkeley, completely lost. I messaged Celine, and she came downstairs quickly, but it was clear we couldn’t stay there for the night.
+At 1:30 a.m., while I was half asleep in the chair, Anish and I were suddenly startled awake by the dorm administrator. He demanded our residence cards, which we didn't have. Then he asked for our student IDs, which we also couldn't provide. So, at 1:30 in the morning, we were kicked out of the building and left standing on the streets of Berkeley, completely lost. I messaged Celine, and she came downstairs quickly, but it was clear we couldn't stay there for the night.
 
-Thankfully, Anish called an Uber and said his uncle lived in San Francisco. He offered to let me stay with him. I was incredibly grateful. We drove to his uncle’s house, and since it was already late, we went straight to sleep. What a night — it was both terrifying and unforgettable.
+Thankfully, Anish called an Uber and said his uncle lived in San Francisco. He offered to let me stay with him. I was incredibly grateful. We drove to his uncle's house, and since it was already late, we went straight to sleep. What a night — it was both terrifying and unforgettable.
 
 
 ## Day 2
 
-The next morning I woke up around 10 a.m. Following Anish’s suggestion I took a shower and had breakfast, bread and eggs, which I really appreciated. We sat down at his dining table and started working. I began implementing the API layer. After coding for a while something felt missing. Only two of us were working together while the other half of our team was elsewhere. Then Kim messaged us that she had returned to the Palace of Fine Arts and that the WiFi there was finally usable, not perfect but good enough. Maybe everyone else had gone back too, forcing the organizers to fix it. So we decided to drive back to the Palace of Fine Arts.
+The next morning I woke up around 10 a.m. Following Anish's suggestion I took a shower and had breakfast, bread and eggs, which I really appreciated. We sat down at his dining table and started working. I began implementing the API layer. After coding for a while something felt missing. Only two of us were working together while the other half of our team was elsewhere. Then Kim messaged us that she had returned to the Palace of Fine Arts and that the WiFi there was finally usable, not perfect but good enough. Maybe everyone else had gone back too, forcing the organizers to fix it. So we decided to drive back to the Palace of Fine Arts.
 
 By 1 p.m. we arrived. The WiFi was indeed much better, at least stable enough to work. After dividing up our tasks I was responsible for the agent logic and internet integration, Celine handled backend and frontend connections, and Kim and Anish focused on the frontend. Then I continued working.
 
-I implemented the search functionality using Bright Data’s SERP API first. For each search result link I added three different crawling strategies based on Bright Data’s proxy, web unlocker, and browser APIs. If one failed, the system automatically switched to the next. This approach maximized efficiency and minimized cost. My goal was to demonstrate the most extensive use of Bright Data’s APIs to win the Best Use of Bright Data award. Since every fetched webpage contained a lot of irrelevant text, I added an extra LLM layer to summarize each page’s content. After that I started working on enabling the agent to switch between different search strategies automatically.
+I implemented the search functionality using Bright Data's SERP API first. For each search result link I added three different crawling strategies based on Bright Data's proxy, web unlocker, and browser APIs. If one failed, the system automatically switched to the next. This approach maximized efficiency and minimized cost. My goal was to demonstrate the most extensive use of Bright Data's APIs to win the Best Use of Bright Data award. Since every fetched webpage contained a lot of irrelevant text, I added an extra LLM layer to summarize each page's content. After that I started working on enabling the agent to switch between different search strategies automatically.
 
-By the time I finished that part it was already 6 p.m. Except for Kim who went home, the rest of us decided to return to Celine’s student apartment to stay up all night together. This time, since Celine would be there with us, we would not get kicked out.
+By the time I finished that part it was already 6 p.m. Except for Kim who went home, the rest of us decided to return to Celine's student apartment to stay up all night together. This time, since Celine would be there with us, we would not get kicked out.
 
 Anish drove us back to Berkeley. It took a while to find parking, so we decided to get drinks at Heytea. Celine kindly treated me, and I thanked her sincerely. After that we had dinner at a Japanese ramen place nearby. Once we finished, we went back to the study room, ready for another long night of work.
 
@@ -106,7 +106,7 @@ Because the internet enabled agent was just the core system, we needed to wrap i
 
 With some AI assisted coding, I quickly completed the backend interface for the agent, while Anish and Kim finished the frontend. By then Anish was exhausted, so he went to his car to take a nap. That left Celine and me to polish the remaining details.
 
-I soon completed the API for fetching stock information using the Python library yfinance, which Celine had just learned about from someone in her dorm. I integrated it into the frontend, and by that time it was already 2 a.m. During the night, we made two trips to a nearby McDonald’s. Celine kindly bought me an ice cream, which I really appreciated.
+I soon completed the API for fetching stock information using the Python library yfinance, which Celine had just learned about from someone in her dorm. I integrated it into the frontend, and by that time it was already 2 a.m. During the night, we made two trips to a nearby McDonald's. Celine kindly bought me an ice cream, which I really appreciated.
 
 At 3 a.m., there was only one feature left, having the AI assign a credibility score to each news source. Honestly, by then we were too tired to keep coding. I suggested a simpler solution, a random number generator centered around 70 that produced a score for each source. The reasoning was simple. Each judge would only spend three to five minutes at a booth. They would not have time to inspect the implementation in detail, especially for such a small feature.
 
@@ -116,10 +116,10 @@ In the final thirty minutes before submission, we finally completed everything. 
 
 ![StockExplain Demo](https://gifdb.com/images/thumbnail/shake-my-head-498-x-373-gif-ifeav9im8g6cp73q.gif)
 
-Lmao, pretty funny, isn’t it.
+Lmao, pretty funny, isn't it.
 
 
-Anish drove us back to the Palace of Fine Arts. By that time my work was mostly done, and I still had about thirty minutes before leaving for the airport. So I walked around the venue and met my high school friend Eric. He had also flown all the way from the University of Toronto to join the hackathon and had just pulled an all-nighter. His team’s project was impressive, an anti cheating tool that used a camera to track a person’s eye movements during online interviews.
+Anish drove us back to the Palace of Fine Arts. By that time my work was mostly done, and I still had about thirty minutes before leaving for the airport. So I walked around the venue and met my high school friend Eric. He had also flown all the way from the University of Toronto to join the hackathon and had just pulled an all-nighter. His team's project was impressive, an anti cheating tool that used a camera to track a person's eye movements during online interviews.
 
 I introduced Celine to Eric, and to my surprise, Eric immediately recognized her. Celine had been his mentor when he was in eighth grade. I was completely shocked. The world suddenly felt very small, especially since Celine is four years older than me. Celine was just as surprised as I was.
 
