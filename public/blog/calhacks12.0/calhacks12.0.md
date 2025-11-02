@@ -140,6 +140,6 @@ During these three days at Cal Hacks, I not only saw countless opportunities fro
 
 In the end, experiences like this are incredibly rare. They remind me how much joy there is in creating something out of chaos and exhaustion. If I ever get the chance again, I would choose this journey without hesitation.
 
-My photo at Cal Hacks:
+Oh I forgot, my photo at Cal Hacks:
 
 <img src="./images/4.jpg" alt="drawing" width="500"/>
