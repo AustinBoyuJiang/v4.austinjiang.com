@@ -1,4 +1,3 @@
-# A Journey of Code and Courage: My Cal Hacks Journey
 
 This is the first blog I’ve written to record my personal experiences. I plan to write more regularly from now on. In this post, I want to share my journey participating in Cal Hacks 12.0.
 
