@@ -75,7 +75,33 @@ const BlogPost = ({ post, onBack }) => {
                     return `<span class="math-error">Math render error: ${formula}</span>`
                 }
             })
-            // 处理图片 ![alt](src) - 修复相对路径
+            // 处理HTML img标签 - 修复相对路径并添加样式
+            .replace(/<img\s+([^>]*?)src=["']([^"']+)["']([^>]*?)>/g, (match, beforeSrc, src, afterSrc) => {
+                // 修复相对路径
+                if (src.startsWith('./')) {
+                    src = markdownDir + '/' + src.substring(2)
+                } else if (!src.startsWith('/') && !src.startsWith('http')) {
+                    src = markdownDir + '/' + src
+                }
+                
+                // 提取其他属性
+                const allAttrs = beforeSrc + afterSrc
+                const altMatch = allAttrs.match(/alt=["']([^"']*)["']/)
+                const widthMatch = allAttrs.match(/width=["']?([^"'\s>]+)["']?/)
+                const heightMatch = allAttrs.match(/height=["']?([^"'\s>]+)["']?/)
+                
+                const alt = altMatch ? altMatch[1] : ''
+                let style = 'max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 16px var(--shadow-color);'
+                
+                // 如果指定了width，使用指定的宽度但保持响应式
+                if (widthMatch) {
+                    const width = widthMatch[1]
+                    style = `max-width: min(${width}px, 100%); height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 16px var(--shadow-color);`
+                }
+                
+                return `<img src="${src}" alt="${alt}" style="${style}" />`
+            })
+            // 处理Markdown图片 ![alt](src) - 修复相对路径
             .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) => {
                 // 如果是相对路径（以 ./ 开头），则相对于markdown文件目录
                 if (src.startsWith('./')) {

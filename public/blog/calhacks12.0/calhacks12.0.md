@@ -142,9 +142,4 @@ In the end, experiences like this are incredibly rare. They remind me how much j
 
 My photo at Cal Hacks:
 
-![](./images/4.jpg)
-![](images/4.jpg)
-
-<img src="images/4.jpg" alt="drawing" width="500"/>
-
 <img src="./images/4.jpg" alt="drawing" width="500"/>
