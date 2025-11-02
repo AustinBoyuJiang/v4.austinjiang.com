@@ -91,12 +91,12 @@ const BlogPost = ({ post, onBack }) => {
                 const heightMatch = allAttrs.match(/height=["']?([^"'\s>]+)["']?/)
                 
                 const alt = altMatch ? altMatch[1] : ''
-                let style = 'max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 16px var(--shadow-color);'
+                let style = 'max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem auto; display: block;'
                 
                 // 如果指定了width，使用指定的宽度但保持响应式
                 if (widthMatch) {
                     const width = widthMatch[1]
-                    style = `max-width: min(${width}px, 100%); height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 16px var(--shadow-color);`
+                    style = `max-width: min(${width}px, 100%); height: auto; border-radius: 8px; margin: 1.5rem auto; display: block;`
                 }
                 
                 return `<img src="${src}" alt="${alt}" style="${style}" />`
@@ -111,7 +111,7 @@ const BlogPost = ({ post, onBack }) => {
                 else if (!src.startsWith('/') && !src.startsWith('http')) {
                     src = markdownDir + '/' + src
                 }
-                return `<img src="${src}" alt="${alt}" style="max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 16px var(--shadow-color);" />`
+                return `<img src="${src}" alt="${alt}" style="max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem auto; display: block;" />`
             })
             // 处理横线 ---
             .replace(/^---$/gm, '<hr style="border: none; height: 2px; background: linear-gradient(90deg, transparent 0%, var(--primary-color) 50%, transparent 100%); margin: 2rem 0; opacity: 0.6;" />')
