@@ -1,5 +1,7 @@
 
-This is the first blog I've written to record my personal experiences. I plan to write more regularly from now on. In this post, I want to share my journey participating in Cal Hacks 12.0.
+This is the first blog I've written to record my personal experiences. I plan to write more regularly from now on.
+
+From Waterloo to San Francisco, I embarked on one of the craziest journeys of my life during midterm season. This post captures my three days at Cal Hacks 12.0, filled with chaos, exhaustion, and a deep sense of fulfillment.
 
 <img src="./images/4.jpg" alt="drawing" width="500"/>
 
@@ -12,7 +14,7 @@ When I applied for Cal Hacks, most of my essay responses were copied from my Tre
 
 I was excited when I got in, but then I realized a serious problem: Cal Hacks took place right after our Reading Week, meaning I would have to fly from Waterloo to San Francisco and back within a single weekend, missing Friday classes. Even worse, it was right in the middle of midterm season. I had my Math 147 exam two days before Cal Hacks and my CS 145 exam the day after returning.
 
-I had to choose between staying home to prepare for CS midterm or flying across the continent for the hackathon. At that moment, I remembered something I deeply believe in: life is a journey. There will be countless exams, but not many chances to cross a continent for a weekend. So, I opened Expedia and bought the flight ticket without hesitation.
+I had to choose between staying home to prepare for CS midterm or flying across the continent for the hackathon. At that moment, I remembered something I deeply believe in: life is a journey. There will be countless exams, but not many chances to cross a continent for a weekend. And so, without much hesitation, I booked that flight across the continent.
 
 There were still two weeks left before Cal Hacks, but I didn't think about any project ideas and hadn't found teammates yet. Partly because I was busy preparing for Math 147 (which I ended up getting full marks on 😆), and partly because I wanted to see what it would be like to come up with an idea entirely on the spot.
 
