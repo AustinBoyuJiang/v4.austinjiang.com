@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
+import { createRoot } from 'react-dom/client'
 import './BlogPost.css'
 import { useData } from '../hooks/useData'
 import { applyTheme, getCurrentTheme } from '../utils/theme'
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
+import Masonry from './Masonry'
 
 const BlogPost = ({ post, onBack }) => {
     const { settings } = useData()
@@ -41,6 +43,49 @@ const BlogPost = ({ post, onBack }) => {
             loadContent()
         }
     }, [post])
+
+    // 渲染Masonry组件
+    useEffect(() => {
+        if (!content) return
+
+        const masonryElements = document.querySelectorAll('.masonry-component')
+        const roots = []
+
+        masonryElements.forEach(element => {
+            try {
+                const config = JSON.parse(element.dataset.config)
+                const root = createRoot(element)
+                roots.push(root)
+                
+                root.render(
+                    <Masonry
+                        items={config.items || []}
+                        ease={config.ease || 'power3.out'}
+                        duration={config.duration || 0.6}
+                        stagger={config.stagger || 0.05}
+                        animateFrom={config.animateFrom || 'bottom'}
+                        scaleOnHover={config.scaleOnHover !== false}
+                        hoverScale={config.hoverScale || 0.95}
+                        blurToFocus={config.blurToFocus !== false}
+                        colorShiftOnHover={config.colorShiftOnHover || false}
+                        columns={config.columns}
+                    />
+                )
+            } catch (error) {
+                console.error('Failed to render Masonry component:', error)
+            }
+        })
+
+        return () => {
+            roots.forEach(root => {
+                try {
+                    root.unmount()
+                } catch (error) {
+                    console.error('Failed to unmount Masonry component:', error)
+                }
+            })
+        }
+    }, [content])
 
     const parseMarkdown = (markdown) => {
         // 获取markdown文件的目录路径
@@ -91,12 +136,20 @@ const BlogPost = ({ post, onBack }) => {
                 const heightMatch = allAttrs.match(/height=["']?([^"'\s>]+)["']?/)
                 
                 const alt = altMatch ? altMatch[1] : ''
+                // 检查是否已有style属性
+                const styleMatch = allAttrs.match(/style=["']([^"']*)["']/)
                 let style = 'max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem auto; display: block;'
                 
-                // 如果指定了width，使用指定的宽度但保持响应式
                 if (widthMatch) {
+                    // 如果指定了width，使用指定的宽度
                     const width = widthMatch[1]
                     style = `max-width: min(${width}px, 100%); height: auto; border-radius: 8px; margin: 1.5rem auto; display: block;`
+                }
+                
+                if (styleMatch) {
+                    // 如果用户指定了style，保留用户的style并添加到默认样式后面
+                    const userStyle = styleMatch[1]
+                    style = `${style} ${userStyle}`
                 }
                 
                 return `<img src="${src}" alt="${alt}" style="${style}" />`
@@ -114,7 +167,31 @@ const BlogPost = ({ post, onBack }) => {
                 return `<img src="${src}" alt="${alt}" style="max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem auto; display: block;" />`
             })
             // 处理横线 ---
-            .replace(/^---$/gm, '<hr style="border: none; height: 2px; background: linear-gradient(90deg, transparent 0%, var(--primary-color) 50%, transparent 100%); margin: 2rem 0; opacity: 0.6;" />')
+            .replace(/^---$/gm, '<hr />')
+            // 处理Masonry组件 - 格式: :::masonry 配置JSON :::
+            .replace(/:::masonry\s*([\s\S]*?)\s*:::/g, (match, configStr) => {
+                try {
+                    const config = JSON.parse(configStr.trim())
+                    
+                    // 处理Masonry配置中的图片路径
+                    if (config.items) {
+                        config.items = config.items.map(item => {
+                            if (item.img && item.img.startsWith('./')) {
+                                item.img = markdownDir + '/' + item.img.substring(2)
+                            } else if (item.img && !item.img.startsWith('/') && !item.img.startsWith('http')) {
+                                item.img = markdownDir + '/' + item.img
+                            }
+                            return item
+                        })
+                    }
+                    
+                    const componentId = `masonry-${Math.random().toString(36).substr(2, 9)}`
+                    return `<div id="${componentId}" class="masonry-component" data-config='${JSON.stringify(config)}'></div>`
+                } catch (error) {
+                    console.error('Masonry config parse error:', error, 'Config string:', configStr)
+                    return `<div class="error">Invalid Masonry configuration: ${error.message}</div>`
+                }
+            })
             // 处理标题
             .replace(/^### (.*$)/gm, '<h3>$1</h3>')
             .replace(/^## (.*$)/gm, '<h2>$1</h2>')
@@ -138,22 +215,29 @@ const BlogPost = ({ post, onBack }) => {
             return `<ol>${cleanMatch}</ol>`
         })
 
-        // 处理段落
-        html = html
-            .split('\n\n')
+        // 处理段落 - 先按双换行分割成段落
+        const paragraphs = html.split(/\n\s*\n/)
+        
+        html = paragraphs
             .map(paragraph => {
                 paragraph = paragraph.trim()
                 if (!paragraph) return ''
 
                 // 如果已经是HTML标签，不要包装
-                if (paragraph.match(/^<(h[1-6]|ul|ol|blockquote|pre|hr|img)/)) {
+                if (paragraph.match(/^<(h[1-6]|ul|ol|blockquote|pre|hr|img|div)/)) {
                     return paragraph
                 }
+
+                // 在段落内处理换行：两个空格+换行 = <br>，单个换行 = 空格
+                paragraph = paragraph
+                    .replace(/  \n/g, '<br>') // 两个空格+换行转为<br>
+                    .replace(/\n/g, ' ') // 单个换行转为空格
 
                 // 包装成段落
                 return `<p>${paragraph}</p>`
             })
-            .join('\n')
+            .filter(p => p) // 移除空段落
+            .join('\n\n')
 
         return html
     }

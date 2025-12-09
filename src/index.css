@@ -44,6 +44,18 @@ h3 {
 }
 
 p {
-  margin-bottom: 1rem;
+  margin-bottom: 1rem !important;
   color: #cccccc;
+  line-height: 1.6 !important;
+}
+
+/* Global hr styles for markdown content */
+hr {
+  border: none !important;
+  height: 1px !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  background-image: none !important;
+  margin: 2rem 0 !important;
+  width: 100% !important;
+  box-shadow: none !important;
 }

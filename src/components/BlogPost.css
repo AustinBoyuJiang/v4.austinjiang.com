@@ -132,6 +132,17 @@
   margin-bottom: 3rem;
 }
 
+/* Horizontal rule (hr) styles - simple white line */
+.blog-post-content hr {
+  border: none !important;
+  height: 1px !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  background-image: none !important;
+  margin: 2rem 0 !important;
+  width: 100% !important;
+  box-shadow: none !important;
+}
+
 .blog-post-content h1 {
   color: var(--primary-blue);
   font-size: 2rem;
@@ -143,7 +154,9 @@
 .blog-post-content h2 {
   color: var(--text-primary);
   font-size: 1.5rem;
-  margin: 1.5rem 0 1rem 0;
+  margin: 3rem 0 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.5rem;
 }
 
 .blog-post-content h3 {
@@ -153,17 +166,25 @@
 }
 
 .blog-post-content p {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.2rem !important;
+  line-height: 1.7 !important;
+  margin-top: 0 !important;
 }
 
 .blog-post-content ul {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+}
+
+.blog-post-content ol {
+  margin: 1.5rem 0;
   padding-left: 2rem;
 }
 
 .blog-post-content li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
   color: var(--text-secondary);
+  line-height: 1.7;
 }
 
 .blog-post-content strong {
@@ -313,6 +334,13 @@ ath Formula Styles */
 
 .blog-post-content table tr:last-child td {
   border-bottom: none;
+}
+
+/* Line break spacing - more natural */
+.blog-post-content br {
+  line-height: 1.5 !important;
+  margin: 0.3rem 0 !important;
+  display: block !important;
 }
 
 /* Mobile table responsiveness */
