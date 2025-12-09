@@ -4,10 +4,8 @@ From Waterloo to San Francisco, I embarked on one of the craziest journeys of my
 
 
 <div align="center">
-    <br>
     <video src="https://drive.austinjiang.com/f/Gdig/story.mp4" controls width="600"></video>
-    <br>
-    (this was my COMMST 223 assignment)
+    <div style="margin-top: -24px">(this was my COMMST 223 assignment)</div>
 </div>
 
 ## Introduction

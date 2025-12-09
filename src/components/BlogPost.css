@@ -132,6 +132,21 @@
   margin-bottom: 3rem;
 }
 
+
+
+/* 自定义间距类 */
+.blog-post-content .negative-margin-top {
+  margin-top: -5px !important;
+}
+
+.blog-post-content .small-negative-margin {
+  margin-top: -10px !important;
+}
+
+.blog-post-content .large-negative-margin {
+  margin-top: -15px !important;
+}
+
 /* Horizontal rule (hr) styles - simple white line */
 .blog-post-content hr {
   border: none !important;
@@ -165,10 +180,15 @@
   margin: 1.2rem 0 0.8rem 0;
 }
 
-.blog-post-content p {
+.blog-post-content p:not([style*="margin-top"]) {
   margin-bottom: 1.2rem !important;
   line-height: 1.7 !important;
-  margin-top: 0 !important;
+  margin-top: 0;
+}
+
+.blog-post-content p[style*="margin-top"] {
+  margin-bottom: 1.2rem !important;
+  line-height: 1.7 !important;
 }
 
 .blog-post-content ul {
