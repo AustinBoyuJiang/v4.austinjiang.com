@@ -36,11 +36,12 @@ const useMeasure = () => {
 };
 
 const preloadImages = async urls => {
-  await Promise.all(urls.map(src =>
+  return await Promise.all(urls.map(src =>
     new Promise(resolve => {
       const img = new Image();
       img.src = src;
-      img.onload = img.onerror = () => resolve();
+      img.onload = () => resolve({ src, width: img.naturalWidth, height: img.naturalHeight });
+      img.onerror = () => resolve({ src, width: 400, height: 300 }); // 默认尺寸
     })
   ));
 };
@@ -58,26 +59,30 @@ const Masonry = ({
   columns: customColumns = null
 }) => {
   const defaultColumns = useMedia(
-    ['(min-width:1500px)', '(min-width:1000px)', '(min-width:600px)', '(min-width:400px)'],
-    [5, 4, 3, 2],
-    1
+    ['(min-width:1500px)', '(min-width:1200px)', '(min-width:769px)'],
+    [5, 4, 2],
+    1  // 手机端强制使用单列 (768px以下)
   );
   
-  // 如果提供了自定义列数配置，使用自定义的，否则使用默认的响应式配置
-  const columns = customColumns ? (
+  // 检测是否为移动设备
+  const isMobile = useMedia(['(max-width: 768px)'], [true], false);
+  
+  // 如果提供了自定义列数配置，使用自定义的，但在移动端强制使用单列
+  const columns = isMobile ? 1 : (customColumns ? (
     typeof customColumns === 'number' ? customColumns : useMedia(
-      customColumns.breakpoints || ['(min-width:1500px)', '(min-width:1000px)', '(min-width:600px)', '(min-width:400px)'],
-      customColumns.values || [5, 4, 3, 2],
+      customColumns.breakpoints || ['(min-width:1500px)', '(min-width:1200px)', '(min-width:769px)'],
+      customColumns.values || [5, 4, 2],
       customColumns.default || 1
     )
-  ) : defaultColumns;
+  ) : defaultColumns);
   
   const [containerRef, { width }] = useMeasure();
   const [imagesReady, setImagesReady] = useState(false);
+  const [imageDimensions, setImageDimensions] = useState({});
   
   const getInitialPosition = item => {
     const containerRect = containerRef.current?.getBoundingClientRect();
-    if (!containerRect) return { x: item.x, y: item.y };
+    if (!containerRect) return { x: item.x || 0, y: item.y || 0 };
     
     let direction = animateFrom;
     if (animateFrom === 'random') {
@@ -87,25 +92,40 @@ const Masonry = ({
     
     switch (direction) {
       case 'top':
-        return { x: item.x, y: -200 };
+        return { x: item.x || 0, y: -200 };
       case 'bottom':
-        return { x: item.x, y: window.innerHeight + 200 };
+        return { x: item.x || 0, y: window.innerHeight + 200 };
       case 'left':
-        return { x: -200, y: item.y };
+        return { x: -200, y: item.y || 0 };
       case 'right':
-        return { x: window.innerWidth + 200, y: item.y };
+        return { x: window.innerWidth + 200, y: item.y || 0 };
       case 'center':
         return {
-          x: containerRect.width / 2 - item.w / 2,
-          y: containerRect.height / 2 - item.h / 2
+          x: containerRect.width / 2 - (item.w || 300) / 2,
+          y: containerRect.height / 2 - (item.h || 200) / 2
         };
       default:
-        return { x: item.x, y: item.y + 100 };
+        return { x: item.x || 0, y: (item.y || 0) + 100 };
     }
   };
   
   useEffect(() => {
-    preloadImages(items.map(i => i.img)).then(() => setImagesReady(true));
+    if (!items || items.length === 0) {
+      setImagesReady(true);
+      return;
+    }
+    
+    preloadImages(items.map(i => i.img)).then(dimensions => {
+      const dimensionsMap = {};
+      dimensions.forEach(dim => {
+        dimensionsMap[dim.src] = { width: dim.width, height: dim.height };
+      });
+      setImageDimensions(dimensionsMap);
+      setImagesReady(true);
+    }).catch(error => {
+      console.error('Error preloading images:', error);
+      setImagesReady(true); // 即使出错也要设置为ready
+    });
   }, [items]);
   
   const grid = useMemo(() => {
@@ -117,9 +137,19 @@ const Masonry = ({
     const gridItems = items.map(child => {
       const col = colHeights.indexOf(Math.min(...colHeights));
       const x = columnWidth * col;
-      const height = child.height / 2;
-      const y = colHeights[col];
       
+      let height;
+      if (isMobile && imageDimensions[child.img]) {
+        // 手机端使用原始宽高比
+        const imgDim = imageDimensions[child.img];
+        const aspectRatio = imgDim.height / imgDim.width;
+        height = columnWidth * aspectRatio;
+      } else {
+        // 桌面端使用配置的高度
+        height = child.height / 2;
+      }
+      
+      const y = colHeights[col];
       colHeights[col] += height;
       
       return { ...child, x, y, w: columnWidth, h: height };
@@ -128,42 +158,57 @@ const Masonry = ({
     const maxHeight = Math.max(...colHeights);
     
     return { items: gridItems, height: maxHeight };
-  }, [columns, items, width]);
+  }, [columns, items, width, isMobile, imageDimensions]);
   
   const hasMounted = useRef(false);
+  const prevColumns = useRef(columns);
   
   useLayoutEffect(() => {
-    if (!imagesReady) return;
+    if (!imagesReady || !width) return;
+    
+    // 检测是否是列数变化（布局变化）
+    const isLayoutChange = prevColumns.current !== columns;
+    prevColumns.current = columns;
     
     grid.items.forEach((item, index) => {
       const selector = `[data-key="${item.id}"]`;
+      const element = document.querySelector(selector);
+      
+      if (!element) return;
+      
       const animationProps = {
         x: item.x,
         y: item.y,
         width: item.w,
-        height: item.h
+        height: item.h,
+        opacity: 1
       };
       
-      if (!hasMounted.current) {
-        const initialPos = getInitialPosition(item, index);
+      if (!hasMounted.current || isLayoutChange) {
+        // 首次加载或布局变化时的动画
+        const initialPos = !hasMounted.current ? getInitialPosition(item, index) : { x: item.x, y: item.y };
         const initialState = {
-          opacity: 0,
+          opacity: !hasMounted.current ? 0 : 1,
           x: initialPos.x,
           y: initialPos.y,
           width: item.w,
           height: item.h,
-          ...(blurToFocus && { filter: 'blur(10px)' })
+          ...(blurToFocus && !hasMounted.current && { filter: 'blur(10px)' })
         };
         
-        gsap.fromTo(selector, initialState, {
-          opacity: 1,
+        // 先设置初始状态
+        gsap.set(selector, initialState);
+        
+        // 然后动画到目标状态
+        gsap.to(selector, {
           ...animationProps,
-          ...(blurToFocus && { filter: 'blur(0px)' }),
-          duration: 0.8,
-          ease: 'power3.out',
-          delay: index * stagger
+          ...(blurToFocus && !hasMounted.current && { filter: 'blur(0px)' }),
+          duration: isLayoutChange ? 0.4 : 0.8,
+          ease: isLayoutChange ? 'power2.out' : 'power3.out',
+          delay: isLayoutChange ? index * 0.02 : index * stagger
         });
       } else {
+        // 正常的位置更新动画
         gsap.to(selector, {
           ...animationProps,
           duration: duration,
@@ -175,7 +220,7 @@ const Masonry = ({
     
     hasMounted.current = true;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
+  }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease, columns, width]);
   
   const handleMouseEnter = (e, item) => {
     const element = e.currentTarget;
@@ -223,14 +268,35 @@ const Masonry = ({
     }
   };
   
+  // 确保在图片未准备好时也显示占位符
+  const displayItems = imagesReady ? grid.items : (items || []).map((item, index) => ({
+    ...item,
+    x: 0,
+    y: index * 200,
+    w: width || 300,
+    h: 200
+  }));
+
+  if (!items || items.length === 0) {
+    return <div ref={containerRef} className="masonry-list" style={{ height: '0px' }}></div>;
+  }
+
   return (
     <div ref={containerRef} className="masonry-list" style={{ height: grid.height + 'px' }}>
-      {grid.items.map(item => {
+      {displayItems.map(item => {
         return (
           <div
             key={item.id}
             data-key={item.id}
             className={`masonry-item-wrapper ${item.url ? 'clickable' : ''}`}
+            style={{
+              position: 'absolute',
+              left: 0,
+              top: 0,
+              width: item.w || 300,
+              height: item.h || 200,
+              opacity: imagesReady ? undefined : 0.3
+            }}
             onClick={item.url ? () => window.open(item.url, '_blank', 'noopener') : undefined}
             onMouseEnter={e => handleMouseEnter(e, item)}
             onMouseLeave={e => handleMouseLeave(e, item)}

@@ -272,7 +272,9 @@
   .blog-post-full {
     padding: 0 1rem;
   }
-}/* M
+}
+
+/* M
 ath Formula Styles */
 .blog-post-content .katex {
   font-size: 1.1em;
@@ -283,7 +285,7 @@ ath Formula Styles */
   text-align: center;
 }
 
-.blog-post-content .katex-display > .katex {
+.blog-post-content .katex-display>.katex {
   display: inline-block;
   white-space: nowrap;
 }
@@ -343,12 +345,21 @@ ath Formula Styles */
   display: block !important;
 }
 
+/* Video responsiveness */
+.blog-post-content video {
+  max-width: 100% !important;
+  height: auto !important;
+  width: 100% !important;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
 /* Mobile table responsiveness */
 @media (max-width: 768px) {
   .blog-post-content table {
     font-size: 0.85rem;
   }
-  
+
   .blog-post-content table th,
   .blog-post-content table td {
     padding: 0.8rem 1rem;
