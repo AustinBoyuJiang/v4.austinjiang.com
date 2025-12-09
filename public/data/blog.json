@@ -51,8 +51,9 @@
       "Mathematics",
       "IB Math AA HL"
     ],
-    "type": "markdown",
-    "markdownFile": "/blog/math-ia/math-ia.md"
+    "type": "external",
+    "markdownFile": "/blog/math-ia/math-ia.md",
+    "externalUrl": "https://drive.austinjiang.com/f/49Ib/math-ia.pdf"
   },
   {
     "title": "Cellular automata generation of 3D printer infill",
