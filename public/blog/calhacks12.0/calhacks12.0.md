@@ -7,7 +7,7 @@ From Waterloo to San Francisco, I embarked on one of the craziest journeys of my
     <br>
     <video src="https://drive.austinjiang.com/f/Gdig/story.mp4" controls width="600"></video>
     <br>
-    (this is my COMMST 223 homework)
+    (this was my COMMST 223 assignment)
 </div>
 
 ## Introduction
