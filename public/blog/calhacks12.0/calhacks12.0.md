@@ -1,7 +1,6 @@
 This is the first blog I've written to record my personal experiences. I plan to write more regularly from now on.
 
-From Waterloo to San Francisco, I embarked on one of the craziest journeys of my life during midterm season. This post captures my three days at Cal Hacks 12.0, filled with chaos, exhaustion, and a deep sense of fulfillment.
-
+From Waterloo to San Francisco, I experienced on one of the craziest journeys of my life during midterm season. This post captures my three days at Cal Hacks 12.0.
 
 <div align="center">
     <video src="https://drive.austinjiang.com/f/Gdig/story.mp4" controls width="600"></video>
