@@ -1,5 +1,15 @@
 /* Blog Post Component Styles */
 
+/* Restore system scrollbars for blog pages on medium screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+    -ms-overflow-style: auto !important;
+    scrollbar-width: auto !important;
+  }
+  
+  /* Reset webkit scrollbar to system default by not defining it */
+}
+
 /* Back to Home Button for Blog Posts */
 .back-button-container {
   position: fixed;

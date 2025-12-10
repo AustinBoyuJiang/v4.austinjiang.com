@@ -3,15 +3,27 @@ import { gsap } from 'gsap';
 import './Masonry.css';
 
 const useMedia = (queries, values, defaultValue) => {
-  const get = () => values[queries.findIndex(q => matchMedia(q).matches)] ?? defaultValue;
+  const get = () => {
+    const index = queries.findIndex(q => matchMedia(q).matches);
+    return index !== -1 ? values[index] : defaultValue;
+  };
+  
   const [value, setValue] = useState(get);
   
   useEffect(() => {
-    const handler = () => setValue(get);
-    queries.forEach(q => matchMedia(q).addEventListener('change', handler));
-    return () => queries.forEach(q => matchMedia(q).removeEventListener('change', handler));
+    const handler = () => {
+      const newValue = get();
+      setValue(newValue);
+    };
+    
+    const mediaQueries = queries.map(q => matchMedia(q));
+    mediaQueries.forEach(mq => mq.addEventListener('change', handler));
+    
+    return () => {
+      mediaQueries.forEach(mq => mq.removeEventListener('change', handler));
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [queries]);
+  }, []);
   
   return value;
 };
@@ -79,6 +91,7 @@ const Masonry = ({
   const [containerRef, { width }] = useMeasure();
   const [imagesReady, setImagesReady] = useState(false);
   const [imageDimensions, setImageDimensions] = useState({});
+  const [isInitialized, setIsInitialized] = useState(false);
   
   const getInitialPosition = item => {
     const containerRect = containerRef.current?.getBoundingClientRect();
@@ -112,24 +125,37 @@ const Masonry = ({
   useEffect(() => {
     if (!items || items.length === 0) {
       setImagesReady(true);
+      setIsInitialized(true);
       return;
     }
     
-    preloadImages(items.map(i => i.img)).then(dimensions => {
-      const dimensionsMap = {};
-      dimensions.forEach(dim => {
-        dimensionsMap[dim.src] = { width: dim.width, height: dim.height };
+    // 添加延迟确保DOM已经渲染
+    const timer = setTimeout(() => {
+      preloadImages(items.map(i => i.img)).then(dimensions => {
+        const dimensionsMap = {};
+        dimensions.forEach(dim => {
+          dimensionsMap[dim.src] = { width: dim.width, height: dim.height };
+        });
+        setImageDimensions(dimensionsMap);
+        setImagesReady(true);
+        setIsInitialized(true);
+      }).catch(error => {
+        console.error('Error preloading images:', error);
+        setImagesReady(true); // 即使出错也要设置为ready
+        setIsInitialized(true);
       });
-      setImageDimensions(dimensionsMap);
-      setImagesReady(true);
-    }).catch(error => {
-      console.error('Error preloading images:', error);
-      setImagesReady(true); // 即使出错也要设置为ready
-    });
+    }, 100);
+    
+    return () => clearTimeout(timer);
   }, [items]);
   
+  const prevGrid = useRef({ items: [], height: 0 });
+  
   const grid = useMemo(() => {
-    if (!width) return { items: [], height: 0 };
+    // 如果width为0或太小，返回上一次的grid，避免消失
+    if (!width || width < 100) {
+      return prevGrid.current;
+    }
     
     const colHeights = new Array(columns).fill(0);
     const columnWidth = width / columns;
@@ -139,11 +165,9 @@ const Masonry = ({
       const x = columnWidth * col;
       
       let height;
-      if (isMobile && imageDimensions[child.img]) {
-        // 手机端使用原始宽高比
-        const imgDim = imageDimensions[child.img];
-        const aspectRatio = imgDim.height / imgDim.width;
-        height = columnWidth * aspectRatio;
+      if (isMobile) {
+        // 手机端使用1:1正方形，加上很小的间距
+        height = columnWidth + 3; // 正方形 + 0.2rem间距
       } else {
         // 桌面端使用配置的高度
         height = child.height / 2;
@@ -156,73 +180,40 @@ const Masonry = ({
     });
     
     const maxHeight = Math.max(...colHeights);
+    const newGrid = { items: gridItems, height: maxHeight };
     
-    return { items: gridItems, height: maxHeight };
+    // 保存当前grid作为备份
+    prevGrid.current = newGrid;
+    
+    return newGrid;
   }, [columns, items, width, isMobile, imageDimensions]);
   
   const hasMounted = useRef(false);
   const prevColumns = useRef(columns);
+  const prevWidth = useRef(width);
   
   useLayoutEffect(() => {
-    if (!imagesReady || !width) return;
-    
-    // 检测是否是列数变化（布局变化）
-    const isLayoutChange = prevColumns.current !== columns;
-    prevColumns.current = columns;
+    if (!width || grid.items.length === 0 || isMobile) return; // 移动端跳过GSAP布局
     
     grid.items.forEach((item, index) => {
       const selector = `[data-key="${item.id}"]`;
-      const element = document.querySelector(selector);
       
-      if (!element) return;
-      
-      const animationProps = {
+      // 直接设置位置，确保元素始终可见
+      gsap.set(selector, {
         x: item.x,
         y: item.y,
         width: item.w,
         height: item.h,
-        opacity: 1
-      };
-      
-      if (!hasMounted.current || isLayoutChange) {
-        // 首次加载或布局变化时的动画
-        const initialPos = !hasMounted.current ? getInitialPosition(item, index) : { x: item.x, y: item.y };
-        const initialState = {
-          opacity: !hasMounted.current ? 0 : 1,
-          x: initialPos.x,
-          y: initialPos.y,
-          width: item.w,
-          height: item.h,
-          ...(blurToFocus && !hasMounted.current && { filter: 'blur(10px)' })
-        };
-        
-        // 先设置初始状态
-        gsap.set(selector, initialState);
-        
-        // 然后动画到目标状态
-        gsap.to(selector, {
-          ...animationProps,
-          ...(blurToFocus && !hasMounted.current && { filter: 'blur(0px)' }),
-          duration: isLayoutChange ? 0.4 : 0.8,
-          ease: isLayoutChange ? 'power2.out' : 'power3.out',
-          delay: isLayoutChange ? index * 0.02 : index * stagger
-        });
-      } else {
-        // 正常的位置更新动画
-        gsap.to(selector, {
-          ...animationProps,
-          duration: duration,
-          ease: ease,
-          overwrite: 'auto'
-        });
-      }
+        opacity: 1,
+        visibility: 'visible'
+      });
     });
-    
-    hasMounted.current = true;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease, columns, width]);
+  }, [grid, width, isMobile]);
   
   const handleMouseEnter = (e, item) => {
+    // 在移动端禁用hover效果，使其更像普通markdown图片
+    if (isMobile) return;
+    
     const element = e.currentTarget;
     const selector = `[data-key="${item.id}"]`;
     
@@ -246,6 +237,9 @@ const Masonry = ({
   };
   
   const handleMouseLeave = (e, item) => {
+    // 在移动端禁用hover效果，使其更像普通markdown图片
+    if (isMobile) return;
+    
     const element = e.currentTarget;
     const selector = `[data-key="${item.id}"]`;
     
@@ -268,8 +262,12 @@ const Masonry = ({
     }
   };
   
-  // 确保在图片未准备好时也显示占位符
-  const displayItems = imagesReady ? grid.items : (items || []).map((item, index) => ({
+  if (!items || items.length === 0) {
+    return <div ref={containerRef} className="masonry-list" style={{ height: '0px' }}></div>;
+  }
+
+  // 始终显示所有项目，确保布局变化时不会消失
+  const displayItems = (grid.items && grid.items.length > 0) ? grid.items : (items || []).map((item, index) => ({
     ...item,
     x: 0,
     y: index * 200,
@@ -277,48 +275,65 @@ const Masonry = ({
     h: 200
   }));
 
-  if (!items || items.length === 0) {
-    return <div ref={containerRef} className="masonry-list" style={{ height: '0px' }}></div>;
-  }
+  // 确保容器高度稳定，避免布局变化时高度突然变为0
+  const containerHeight = Math.max(grid.height || 200, 200);
 
   return (
-    <div ref={containerRef} className="masonry-list" style={{ height: grid.height + 'px' }}>
+    <div ref={containerRef} className="masonry-list" style={isMobile ? {} : { height: containerHeight + 'px', minHeight: '200px' }}>
       {displayItems.map(item => {
         return (
           <div
             key={item.id}
             data-key={item.id}
             className={`masonry-item-wrapper ${item.url ? 'clickable' : ''}`}
-            style={{
+            style={isMobile ? {
+              // 移动端不需要定位样式，让CSS处理
+            } : {
               position: 'absolute',
               left: 0,
               top: 0,
               width: item.w || 300,
               height: item.h || 200,
-              opacity: imagesReady ? undefined : 0.3
+              opacity: 1,
+              visibility: 'visible',
+              transform: 'translate3d(0,0,0)' // 启用硬件加速
             }}
             onClick={item.url ? () => window.open(item.url, '_blank', 'noopener') : undefined}
             onMouseEnter={e => handleMouseEnter(e, item)}
             onMouseLeave={e => handleMouseLeave(e, item)}
           >
-            <div className="masonry-item-img" style={{ backgroundImage: `url(${item.img})` }}>
-              {colorShiftOnHover && (
-                <div
-                  className="color-overlay"
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    background: 'linear-gradient(45deg, rgba(255,0,150,0.5), rgba(0,150,255,0.5))',
-                    opacity: 0,
-                    pointerEvents: 'none',
-                    borderRadius: '8px'
-                  }}
-                />
-              )}
-            </div>
+            {isMobile ? (
+              <img 
+                src={item.img} 
+                alt="" 
+                className="masonry-item-img"
+                style={{ 
+                  width: '100%', 
+                  height: 'auto', 
+                  borderRadius: '10px',
+                  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.15)'
+                }}
+              />
+            ) : (
+              <div className="masonry-item-img" style={{ backgroundImage: `url(${item.img})` }}>
+                {colorShiftOnHover && (
+                  <div
+                    className="color-overlay"
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      background: 'linear-gradient(45deg, rgba(255,0,150,0.5), rgba(0,150,255,0.5))',
+                      opacity: 0,
+                      pointerEvents: 'none',
+                      borderRadius: '8px'
+                    }}
+                  />
+                )}
+              </div>
+            )}
           </div>
         );
       })}

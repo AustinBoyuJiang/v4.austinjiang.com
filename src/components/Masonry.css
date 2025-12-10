@@ -11,6 +11,8 @@
   padding: 6px;
   top: 0;
   left: 0;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .masonry-item-wrapper.clickable {
@@ -38,17 +40,39 @@
 @media (max-width: 768px) {
   .masonry-list {
     min-height: auto;
+    display: block;
+    margin: 2rem 0;
   }
   
   .masonry-item-wrapper {
-    padding: 8px 0;
+    position: static !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    height: auto !important;
+    padding: 0;
+    margin: 0 auto 0.75rem auto !important;
+    display: block;
+  }
+  
+  .masonry-item-wrapper.clickable {
+    cursor: pointer;
   }
   
   .masonry-item-wrapper > .masonry-item-img {
-    border-radius: 8px;
-    box-shadow: 0px 8px 30px -8px rgba(0, 0, 0, 0.3);
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
+    position: static;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    margin: 0;
+    display: block;
+    object-fit: cover;
+  }
+  
+  .masonry-item-wrapper > .masonry-item-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
   }
 }
