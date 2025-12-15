@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, memo } from 'react'
 import { createRoot } from 'react-dom/client'
 import './BlogPost.css'
 import { useData } from '../hooks/useData'
@@ -6,11 +6,88 @@ import { applyTheme, getCurrentTheme } from '../utils/theme'
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
 import Masonry from './Masonry'
+import PixelBlast from './PixelBlast'
+
+// 独立的返回按钮组件，避免影响主内容重新渲染
+const BackButton = memo(({ onBack }) => {
+    const [isButtonVisible, setIsButtonVisible] = useState(true)
+
+    useEffect(() => {
+        let lastScrollY = window.scrollY
+
+
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+            
+            if (currentScrollY <= 50) {
+                setIsButtonVisible(true)
+            } else if (currentScrollY < lastScrollY) {
+                setIsButtonVisible(true)
+            } else if (currentScrollY > lastScrollY) {
+                setIsButtonVisible(false)
+            }
+            
+            lastScrollY = currentScrollY
+        }
+
+        // 移动端触摸滚动处理
+        let touchStartY = 0
+        const handleTouchStart = (e) => {
+            touchStartY = e.touches[0].clientY
+        }
+
+        const handleTouchMove = (e) => {
+            const touchY = e.touches[0].clientY
+            const touchDiff = touchStartY - touchY
+            
+            if (Math.abs(touchDiff) > 10) { // 最小滑动距离
+                if (touchDiff > 0) {
+                    // 向上滑动（页面向下滚动）- 隐藏按钮
+                    setIsButtonVisible(false)
+                } else {
+                    // 向下滑动（页面向上滚动）- 显示按钮
+                    setIsButtonVisible(true)
+                }
+                touchStartY = touchY
+            }
+        }
+
+        // 监听所有可能的滚动事件
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        document.addEventListener('scroll', handleScroll, { passive: true })
+        document.body.addEventListener('scroll', handleScroll, { passive: true })
+        
+        // 移动端触摸事件
+        document.addEventListener('touchstart', handleTouchStart, { passive: true })
+        document.addEventListener('touchmove', handleTouchMove, { passive: true })
+        
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+            document.removeEventListener('scroll', handleScroll)
+            document.body.removeEventListener('scroll', handleScroll)
+            document.removeEventListener('touchstart', handleTouchStart)
+            document.removeEventListener('touchmove', handleTouchMove)
+        }
+    }, [])
+
+    return (
+        <div className={`back-button-container ${isButtonVisible ? 'visible' : 'hidden'}`}>
+            <button 
+                onClick={onBack} 
+                className="back-to-home-button"
+            >
+                <span className="button-icon">←</span>
+                Back to Home
+            </button>
+        </div>
+    )
+})
 
 const BlogPost = ({ post, onBack }) => {
     const { settings } = useData()
     const [content, setContent] = useState('')
     const [loading, setLoading] = useState(true)
+
 
     // Apply theme when settings are loaded
     useEffect(() => {
@@ -25,6 +102,10 @@ const BlogPost = ({ post, onBack }) => {
             }
         }
     }, [settings])
+
+
+
+
 
     useEffect(() => {
         const loadContent = async () => {
@@ -48,35 +129,39 @@ const BlogPost = ({ post, onBack }) => {
     useEffect(() => {
         if (!content) return
 
-        const masonryElements = document.querySelectorAll('.masonry-component')
-        const roots = []
+        let roots = []
 
-        masonryElements.forEach(element => {
-            try {
-                const config = JSON.parse(element.dataset.config)
-                const root = createRoot(element)
-                roots.push(root)
-                
-                root.render(
-                    <Masonry
-                        items={config.items || []}
-                        ease={config.ease || 'power3.out'}
-                        duration={config.duration || 0.6}
-                        stagger={config.stagger || 0.05}
-                        animateFrom={config.animateFrom || 'bottom'}
-                        scaleOnHover={config.scaleOnHover !== false}
-                        hoverScale={config.hoverScale || 0.95}
-                        blurToFocus={config.blurToFocus !== false}
-                        colorShiftOnHover={config.colorShiftOnHover || false}
-                        columns={config.columns}
-                    />
-                )
-            } catch (error) {
-                console.error('Failed to render Masonry component:', error)
-            }
-        })
+        const timeoutId = setTimeout(() => {
+            const masonryElements = document.querySelectorAll('.masonry-component')
+
+            masonryElements.forEach((element) => {
+                try {
+                    const config = JSON.parse(element.dataset.config)
+                    const root = createRoot(element)
+                    roots.push(root)
+                    
+                    root.render(
+                        <Masonry
+                            items={config.items || []}
+                            ease={config.ease || 'power3.out'}
+                            duration={config.duration || 0.6}
+                            stagger={config.stagger || 0.05}
+                            animateFrom={config.animateFrom || 'bottom'}
+                            scaleOnHover={config.scaleOnHover !== false}
+                            hoverScale={config.hoverScale || 0.95}
+                            blurToFocus={config.blurToFocus !== false}
+                            colorShiftOnHover={config.colorShiftOnHover || false}
+                            columns={config.columns}
+                        />
+                    )
+                } catch (error) {
+                    console.error('Failed to render Masonry component:', error)
+                }
+            })
+        }, 100)
 
         return () => {
+            clearTimeout(timeoutId)
             roots.forEach(root => {
                 try {
                     root.unmount()
@@ -185,10 +270,10 @@ const BlogPost = ({ post, onBack }) => {
                         })
                     }
                     
-                    const componentId = `masonry-${Math.random().toString(36).substr(2, 9)}`
+                    const componentId = `masonry-${Math.random().toString(36).substring(2, 11)}`
                     return `<div id="${componentId}" class="masonry-component" data-config='${JSON.stringify(config)}'></div>`
                 } catch (error) {
-                    console.error('Masonry config parse error:', error, 'Config string:', configStr)
+                    console.error('Masonry config parse error:', error)
                     return `<div class="error">Invalid Masonry configuration: ${error.message}</div>`
                 }
             })
@@ -254,17 +339,38 @@ const BlogPost = ({ post, onBack }) => {
 
     return (
         <>
+
+
             {/* Back to Home Button */}
-            <div className="back-button-container">
-                <button onClick={onBack} className="back-to-home-button">
-                    ← Back to Home
-                </button>
-            </div>
+            <BackButton onBack={onBack} />
 
             <div className="blog-post-page">
                 <div className="container">
                     <article className="blog-post-full">
                         <header className="blog-post-header">
+                            {/* PixelBlast Background for Header */}
+                            <div className="blog-header-background">
+                                <PixelBlast
+                                    variant="circle"
+                                    pixelSize={6}
+                                    color="#87ceeb"
+                                    patternScale={3}
+                                    patternDensity={1.2}
+                                    pixelSizeJitter={0.5}
+                                    enableRipples={true}
+                                    rippleSpeed={0.4}
+                                    rippleThickness={0.12}
+                                    rippleIntensityScale={1.5}
+                                    liquid={false}
+                                    liquidStrength={0.12}
+                                    liquidRadius={1.2}
+                                    liquidWobbleSpeed={5}
+                                    speed={0.6}
+                                    edgeFade={0.25}
+                                    transparent={true}
+                                    className="blog-pixel-blast"
+                                />
+                            </div>
                             <h1 className="blog-post-full-title">{post.title}</h1>
                             {post.subtitle && (
                                 <h2 className="blog-post-subtitle">{post.subtitle}</h2>

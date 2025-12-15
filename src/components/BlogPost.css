@@ -1,12 +1,33 @@
 /* Blog Post Component Styles */
 
+/* PixelBlast Background for Blog Header */
+.blog-header-background {
+  position: absolute;
+  top: -80px;
+  left: -2rem;
+  right: -2rem;
+  bottom: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.blog-pixel-blast {
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+
+
+
+
+
 /* Restore system scrollbars for blog pages on medium screens */
 @media (min-width: 769px) and (max-width: 1024px) {
-  body {
+  .blog-post-page body {
     -ms-overflow-style: auto !important;
     scrollbar-width: auto !important;
   }
-  
+
   /* Reset webkit scrollbar to system default by not defining it */
 }
 
@@ -15,27 +36,93 @@
   position: fixed;
   top: 1.5rem;
   left: 1.5rem;
-  z-index: 1000;
+  z-index: 10001;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.back-button-container.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.back-button-container.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .back-to-home-button {
-  background-color: var(--surface-color);
-  border: 1px solid var(--border-color);
-  color: var(--primary-blue);
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-primary);
+  padding: 0.75rem 1.2rem;
+  border-radius: 12px;
   cursor: pointer;
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.back-to-home-button {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.back-to-home-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+      rgba(135, 206, 235, 0.1) 0%,
+      rgba(135, 206, 235, 0.05) 50%,
+      transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.back-to-home-button:hover::before {
+  opacity: 1;
 }
 
 .back-to-home-button:hover {
-  background-color: var(--primary-blue);
-  color: var(--background-color);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(135, 206, 235, 0.3);
+  transform: translateY(-1px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(135, 206, 235, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.back-to-home-button:active {
+  transform: translateY(0);
+  transition: all 0.1s ease;
+}
+
+.back-to-home-button .button-icon {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+  opacity: 0.8;
+}
+
+.back-to-home-button:hover .button-icon {
   transform: translateX(-2px);
+  opacity: 1;
+  color: var(--primary-blue);
 }
 
 /* Blog Post Full View */
@@ -43,7 +130,7 @@
   min-height: 100vh;
   padding-top: 80px;
   padding-bottom: 4rem;
-  background-color: var(--background-color);
+  background-color: transparent;
   color: var(--text-primary);
 }
 
@@ -58,6 +145,8 @@
   margin-bottom: 3rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid var(--border-color);
+  position: relative;
+  z-index: 1;
 }
 
 .blog-post-full-title {
@@ -140,6 +229,8 @@
   line-height: 1.8;
   color: var(--text-secondary);
   margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 
@@ -279,9 +370,32 @@
     left: 0.8rem;
   }
 
-  .back-to-home-button {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.85rem;
+  .back-button-container.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .back-button-container.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* 移动端按钮样式 - 使用更高优先级确保雾玻璃效果 */
+  .back-button-container .back-to-home-button {
+    padding: 0.7rem 1.2rem !important;
+    font-size: 0.85rem !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .back-to-home-button .button-icon {
+    font-size: 1rem;
   }
 
   .blog-post-full-title {
@@ -382,6 +496,12 @@ ath Formula Styles */
   width: 100% !important;
   border-radius: 8px;
   margin: 1.5rem 0;
+  /* 防止视频重新加载的优化 */
+  will-change: auto;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  /* 确保视频在滚动时不会重新加载 */
+  pointer-events: auto;
 }
 
 /* Mobile table responsiveness */
