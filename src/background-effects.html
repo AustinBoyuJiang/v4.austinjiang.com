@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Effects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        /* Canvas animation styles */
+        .particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+            background: transparent;
+        }
+        
+        /* Blur effects */
+        .blur-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .blur-orb-1 {
+            top: 10%;
+            left: 25%;
+            width: 240px;
+            height: 240px;
+            background: rgba(255, 255, 255, 0.2);
+            animation-delay: 0s;
+        }
+        
+        .blur-orb-2 {
+            bottom: 10%;
+            right: 25%;
+            width: 288px;
+            height: 288px;
+            background: rgba(255, 255, 255, 0.1);
+            animation-delay: 2s;
+        }
+        
+        .blur-orb-3 {
+            top: 50%;
+            left: 50%;
+            width: 160px;
+            height: 160px;
+            background: rgba(255, 255, 255, 0.15);
+            transform: translate(-50%, -50%);
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) scale(1.05);
+            }
+        }
+        
+        /* Particle system styles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleFloat linear infinite;
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) scale(0);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-black min-h-screen overflow-hidden">
+    <!-- Main container -->
+    <div class="relative w-full h-screen">
+        
+        <!-- Canvas for particle effects (desktop only) -->
+        <div class="hidden md:block absolute inset-0 top-16">
+            <div class="absolute inset-0 overflow-hidden">
+                <canvas id="particleCanvas" class="particle-canvas"></canvas>
+            </div>
+        </div>
+        
+        <!-- Floating blur orbs -->
+        <div class="pointer-events-none absolute inset-0 z-0">
+            <div class="blur-orb blur-orb-1"></div>
+            <div class="blur-orb blur-orb-2"></div>
+            <div class="blur-orb blur-orb-3"></div>
+        </div>
+        
+        <!-- Particle system container -->
+        <div id="particleContainer" class="absolute inset-0 pointer-events-none"></div>
+        
+        <!-- Content overlay (optional - for testing) -->
+        <div class="relative z-10 flex items-center justify-center h-full">
+            <div class="text-center text-white">
+                <h1 class="text-4xl font-bold mb-4">Background Effects Demo</h1>
+                <p class="text-lg opacity-80">Beautiful animated background effects</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Canvas particle animation
+        class ParticleSystem {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.particles = [];
+                this.maxParticles = 50;
+                
+                this.resize();
+                this.init();
+                this.animate();
+                
+                window.addEventListener('resize', () => this.resize());
+            }
+            
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
+            
+            init() {
+                for (let i = 0; i < this.maxParticles; i++) {
+                    this.particles.push(this.createParticle());
+                }
+            }
+            
+            createParticle() {
+                return {
+                    x: Math.random() * this.canvas.width,
+                    y: Math.random() * this.canvas.height,
+                    size: Math.random() * 3 + 1,
+                    speedX: (Math.random() - 0.5) * 0.5,
+                    speedY: (Math.random() - 0.5) * 0.5,
+                    opacity: Math.random() * 0.5 + 0.2,
+                    life: Math.random() * 200 + 100
+                };
+            }
+            
+            updateParticle(particle) {
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+                particle.life--;
+                
+                // Wrap around screen
+                if (particle.x < 0) particle.x = this.canvas.width;
+                if (particle.x > this.canvas.width) particle.x = 0;
+                if (particle.y < 0) particle.y = this.canvas.height;
+                if (particle.y > this.canvas.height) particle.y = 0;
+                
+                // Reset particle if life is over
+                if (particle.life <= 0) {
+                    Object.assign(particle, this.createParticle());
+                }
+            }
+            
+            drawParticle(particle) {
+                this.ctx.save();
+                this.ctx.globalAlpha = particle.opacity;
+                this.ctx.fillStyle = 'white';
+                this.ctx.beginPath();
+                this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                this.ctx.fill();
+                this.ctx.restore();
+            }
+            
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                this.particles.forEach(particle => {
+                    this.updateParticle(particle);
+                    this.drawParticle(particle);
+                });
+                
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+        
+        // Floating particles (DOM-based)
+        class DOMParticleSystem {
+            constructor(container) {
+                this.container = container;
+                this.particles = [];
+                this.maxParticles = 20;
+                
+                this.init();
+                setInterval(() => this.createParticle(), 2000);
+            }
+            
+            init() {
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => this.createParticle(), i * 400);
+                }
+            }
+            
+            createParticle() {
+                if (this.particles.length >= this.maxParticles) return;
+                
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 4 + 2;
+                const startX = Math.random() * window.innerWidth;
+                const duration = Math.random() * 10 + 15;
+                const delay = Math.random() * 2;
+                
+                particle.style.cssText = `
+                    left: ${startX}px;
+                    width: ${size}px;
+                    height: ${size}px;
+                    animation-duration: ${duration}s;
+                    animation-delay: ${delay}s;
+                `;
+                
+                this.container.appendChild(particle);
+                this.particles.push(particle);
+                
+                // Remove particle after animation
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                        this.particles = this.particles.filter(p => p !== particle);
+                    }
+                }, (duration + delay) * 1000);
+            }
+        }
+        
+        // Initialize systems
+        document.addEventListener('DOMContentLoaded', () => {
+            // Canvas particle system (desktop only)
+            const canvas = document.getElementById('particleCanvas');
+            if (canvas && window.innerWidth >= 768) {
+                new ParticleSystem(canvas);
+            }
+            
+            // DOM particle system
+            const particleContainer = document.getElementById('particleContainer');
+            if (particleContainer) {
+                new DOMParticleSystem(particleContainer);
+            }
+        });
+        
+        // Add mouse interaction
+        document.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.blur-orb');
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 0.02;
+                const x = (e.clientX - window.innerWidth / 2) * speed;
+                const y = (e.clientY - window.innerHeight / 2) * speed;
+                
+                orb.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -2,8 +2,8 @@
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   font-weight: 400;
-  color: #e5e5e5;
-  background-color: #1a1a1a;
+  color: var(--text-secondary);
+  background-color: var(--background-color);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -19,8 +19,8 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #1a1a1a;
-  color: #e5e5e5;
+  background-color: var(--background-color);
+  color: var(--text-secondary);
   min-height: 100vh;
   overflow-x: hidden;
   width: 100%;
