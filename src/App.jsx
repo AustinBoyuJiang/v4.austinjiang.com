@@ -417,7 +417,7 @@ function App() {
                         key={link.name}
                         href={link.url}
                         className="social-link"
-                        target={link.name.toLowerCase() === 'cv' ? '_self' : '_blank'}
+                        target={'_blank'}
                         rel={link.name.toLowerCase() === 'cv' ? undefined : 'noopener noreferrer'}
                         //download={link.name.toLowerCase() === 'cv' ? 'Austin_Jiang_Resume.pdf' : undefined}
                       >
