@@ -251,7 +251,7 @@ function App() {
             <path d="M6.002 1.61L0 12.004L6.002 22.39h11.996L24 12.004L17.998 1.61H6.002zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31 0 4.436-3.21 6.302-6.456 6.302H7.595V5.694zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861.009-2.569-1.096-3.853-3.767-3.853H10.112z" />
           </svg>
         )
-      case 'cv':
+      case 'resume':
         return (
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
             <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
@@ -419,7 +419,7 @@ function App() {
                         className="social-link"
                         target={link.name.toLowerCase() === 'cv' ? '_self' : '_blank'}
                         rel={link.name.toLowerCase() === 'cv' ? undefined : 'noopener noreferrer'}
-                        download={link.name.toLowerCase() === 'cv' ? 'Austin_Jiang_CV.pdf' : undefined}
+                        //download={link.name.toLowerCase() === 'cv' ? 'Austin_Jiang_Resume.pdf' : undefined}
                       >
                         <span className="social-icon">{getSocialIcon(link.name)}</span>
                         {link.name}
