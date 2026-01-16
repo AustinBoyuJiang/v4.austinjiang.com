@@ -83,11 +83,20 @@ function App() {
 
   // 移除手机版滑动消失功能
 
-  // Disable initial load on mobile
-  // 手机版保持提示显示，桌面版可以点击关闭
+  // Auto-collapse sidebar after 0.25 seconds on desktop
   useEffect(() => {
-    // 不自动关闭，让手机版也显示提示
-  }, [])
+    if (!isMobile) {
+      const timer = setTimeout(() => {
+        setIsHintFadingOut(true)
+        setTimeout(() => {
+          setIsInitialLoad(false)
+          setIsHintFadingOut(false)
+        }, 300)
+      }, 250) // 0.25秒后自动收缩
+
+      return () => clearTimeout(timer)
+    }
+  }, [isMobile])
 
   // Track active section on scroll
   useEffect(() => {
