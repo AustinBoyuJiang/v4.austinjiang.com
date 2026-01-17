@@ -84,6 +84,11 @@
   .footer-text {
     font-size: 0.85rem;
   }
+  
+  /* 隐藏社交链接前的分隔符，让它们可以换行 */
+  .social-separator {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
@@ -100,4 +105,72 @@
 /* 确保footer在sidebar collapsed时也正确显示 */
 .sidebar-collapsed ~ .main-content .footer {
   margin-left: 0;
+}
+
+/* CS Webring 内联样式 */
+.cs-webring-inline {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.webring-content {
+  position: relative;
+  display: inline-block;
+}
+
+.webring-text {
+  transition: opacity 0.3s ease;
+}
+
+.webring-arrows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.webring-nav-arrow {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  padding: 0 0.25rem;
+}
+
+.webring-nav-arrow:hover {
+  color: var(--primary-color);
+}
+
+.cs-webring-inline:hover .webring-arrows {
+  opacity: 0.8;
+  visibility: visible;
+}
+
+.cs-webring-inline:hover .webring-text {
+  opacity: 0;
+}
+
+.webring-icon {
+  width: 18px !important;
+  height: 18px !important;
+  transform: translateY(2px);
+  margin-top: -4px;
+}
+
+.webring-main.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: baseline;
+}
+
+.footer-social-section {
+  display: inline-block;
+  transform: translateY(2px);
 }

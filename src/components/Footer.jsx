@@ -14,11 +14,10 @@ const Footer = () => {
         <p className="footer-text">
           © 2025 Austin Jiang{' '}
           <span className="footer-separator">·</span>{' '}
-          University of Waterloo
+          University of Waterloo{' '}
           {(githubLink || linkedinLink) && (
-            <>
-              {' '}
-              <span className="footer-separator">·</span>
+            <span className="footer-social-section">
+              <span className="footer-separator social-separator">·</span>
               {' '}
               {githubLink && (
                 <a 
@@ -55,7 +54,32 @@ const Footer = () => {
                   LinkedIn
                 </a>
               )}
-            </>
+              {' '}
+              <span className="footer-link-separator">|</span>
+              {' '}
+              <div className="cs-webring-inline">
+                <a 
+                  href="https://cs.uwatering.com/#austinjiang.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="footer-social-link webring-main"
+                  aria-label="CS Webring"
+                >
+                  <img 
+                    src="https://cs.uwatering.com/icon.white.svg" 
+                    alt="CS Webring" 
+                    className="footer-icon webring-icon"
+                  />
+                  <span className="webring-content">
+                    <span className="webring-text">UW CS</span>
+                    <span className="webring-arrows">
+                      <a href="https://cs.uwatering.com/#austinjiang.com?nav=prev" className="webring-nav-arrow">←</a>
+                      <a href="https://cs.uwatering.com/#austinjiang.com?nav=next" className="webring-nav-arrow">→</a>
+                    </span>
+                  </span>
+                </a>
+              </div>
+            </span>
           )}
         </p>
       </div>
