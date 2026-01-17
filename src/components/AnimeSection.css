@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Satisfy&family=Great+Vibes&family=Kalam:wght@400;700&display=swap');
+
 /* Anime Scrapbook Section - Canvas Layout */
 .anime-scrapbook-container {
   padding: 2rem 1rem;
-  background: transparent; /* 纯透明背景 */
+  background: transparent;
 }
 
-/* macOS深色窗口容器 */
 .window-container {
   background: #2c2c2c;
   border-radius: 10px;
@@ -15,7 +16,6 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* macOS深色标题栏 */
 .macos-titlebar {
   height: 52px;
   background: linear-gradient(180deg, #3c3c3c 0%, #2c2c2c 100%);
@@ -27,7 +27,6 @@
   position: relative;
 }
 
-/* macOS红绿灯按钮 */
 .macos-traffic-lights {
   display: flex;
   gap: 8px;
@@ -59,7 +58,6 @@
   border: 0.5px solid #1aad29;
 }
 
-/* hover时显示符号 */
 .traffic-light:hover::after {
   content: '';
   position: absolute;
@@ -100,7 +98,6 @@
   transform: scale(1.05);
 }
 
-/* macOS深色窗口标题 */
 .macos-title {
   font-size: 13px;
   font-weight: 600;
@@ -110,25 +107,20 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* 画布视口 - 1:1 正方形 */
 .anime-canvas-viewport {
   width: 100%;
   height: 0;
-  padding-bottom: 100%; /* 创建1:1比例 */
+  padding-bottom: 100%;
   overflow: hidden;
   position: relative;
-  /* 使用board.png背景图片 + 增强颗粒感纹理 */
   background: 
-    /* 更明显的颗粒感纹理层 */
     radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.08) 0.5px, transparent 0.5px),
     radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.04) 0.8px, transparent 0.8px),
     radial-gradient(circle at 40% 70%, rgba(0, 0, 0, 0.06) 0.3px, transparent 0.3px),
     radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     radial-gradient(circle at 10% 80%, rgba(0, 0, 0, 0.05) 0.6px, transparent 0.6px),
     radial-gradient(circle at 90% 60%, rgba(255, 255, 255, 0.02) 0.4px, transparent 0.4px),
-    /* 主背景图片 */
     url('/images/anime/board.png'),
-    /* 备用背景（绿色手工垫风格） */
     linear-gradient(45deg, #2d5a3d 25%, transparent 25%),
     linear-gradient(-45deg, #2d5a3d 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, #2d5a3d 75%),
@@ -179,13 +171,11 @@
   position: absolute;
   top: 0;
   left: 0;
-  /* 默认尺寸，会被内联样式覆盖 */
   width: 2000px;
   height: 1500px;
   user-select: none;
   transform-origin: 0 0;
-  transition: none; /* 移除transition以避免缩放时的延迟 */
-  /* 格子纸背景 */
+  transition: none;
   background-color: #FEFEFE;
   background-image: 
     linear-gradient(rgba(0, 150, 255, 0.1) 1px, transparent 1px),
@@ -208,7 +198,6 @@
   transition: none;
 }
 
-/* 美丽手写标题样式 */
 .handwritten-title {
   position: absolute;
   font-family: 'Dancing Script', 'Satisfy', 'Brush Script MT', 'Lucida Handwriting', 'Apple Chancery', 'Segoe Script', cursive, fantasy, serif;
@@ -217,23 +206,16 @@
   pointer-events: none;
   user-select: none;
   
-  /* 优雅手写效果 */
   letter-spacing: 1px;
   line-height: 1.1;
   
-  /* 美丽的笔迹效果 */
   text-shadow: 
-    /* 主笔迹深度 */
     2px 2px 0px rgba(0, 0, 0, 0.1),
     3px 3px 0px rgba(0, 0, 0, 0.08),
-    /* 柔和阴影 */
     4px 4px 12px rgba(0, 0, 0, 0.15),
-    /* 光晕效果 */
     0 0 20px rgba(139, 69, 19, 0.3),
-    /* 纸张质感 */
     1px 1px 0px rgba(255, 255, 255, 0.8);
   
-  /* 渐变色彩效果 */
   background: linear-gradient(
     135deg,
     #8B4513 0%,
@@ -246,17 +228,14 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   
-  /* 轻微的倾斜和变形 */
   transform-style: preserve-3d;
   
-  /* 添加纸张纹理感 */
   filter: 
     drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2))
     contrast(1.1)
     brightness(1.05);
 }
 
-/* 添加手写的不规则感 */
 .handwritten-title::after {
   content: '';
   position: absolute;
@@ -272,10 +251,6 @@
   filter: blur(1px);
 }
 
-/* 导入优美的手写字体 */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Satisfy&family=Great+Vibes&family=Kalam:wght@400;700&display=swap');
-
-/* 字体加载失败时的备用样式 */
 @font-face {
   font-family: 'fallback-handwriting';
   src: local('Brush Script MT'), local('Lucida Handwriting'), local('Apple Chancery');
@@ -291,12 +266,11 @@
 .anime-card-absolute {
   position: absolute;
   user-select: none;
-  pointer-events: auto; /* 允许鼠标事件 */
-  /* 卡纸效果 */
+  pointer-events: auto;
   filter: drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.2));
   transition: transform 0.3s ease, filter 0.3s ease;
   transform-origin: center center;
-  z-index: 5; /* 确保图片在标题上方 */
+  z-index: 5;
 }
 
 .anime-card-absolute:hover {
@@ -308,18 +282,15 @@
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: visible; /* 允许胶带超出边界 */
+  overflow: visible;
   background: white;
   border-radius: 8px;
-  /* 卡纸边缘效果 */
   box-shadow: 
     0 2px 8px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  /* 确保可以接收鼠标事件 */
   cursor: pointer;
 }
 
-/* 胶带装饰 */
 .tape-decoration {
   position: absolute;
   z-index: 10;
@@ -327,9 +298,9 @@
 }
 
 .tape-top-left {
-  top: -15px; /* 更多超出部分 */
+  top: -15px;
   left: 10px;
-  width: 50px; /* 更长的胶带 */
+  width: 50px;
   height: 25px;
   background: rgba(255, 223, 128, 0.9);
   transform: rotate(-15deg);
@@ -341,9 +312,9 @@
 }
 
 .tape-top-right {
-  top: -12px; /* 更多超出部分 */
+  top: -12px;
   right: 15px;
-  width: 45px; /* 更长的胶带 */
+  width: 45px;
   height: 22px;
   background: rgba(255, 182, 193, 0.9);
   transform: rotate(25deg);
@@ -356,8 +327,8 @@
 
 .tape-bottom-left {
   bottom: 20px;
-  left: -15px; /* 更多超出部分 */
-  width: 40px; /* 更长的胶带 */
+  left: -15px;
+  width: 40px;
   height: 20px;
   background: rgba(144, 238, 144, 0.9);
   transform: rotate(-45deg);
@@ -374,10 +345,8 @@
   object-fit: cover;
   transition: transform 0.3s ease;
   border-radius: 6px;
-  /* 照片效果 */
   border: 3px solid white;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-  /* 防止图片拖动 */
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -390,14 +359,13 @@
   transform: scale(1.02);
 }
 
-/* Hover overlay with black transparent mask */
 .anime-hover-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.6); /* 黑色半透明蒙版 */
+  background: rgba(0, 0, 0, 0.6);
   opacity: 0;
   transition: opacity 0.3s ease;
   border-radius: 6px;
@@ -412,8 +380,8 @@
   position: absolute;
   bottom: 15px;
   left: 15px;
-  right: 15px; /* 限制宽度在图片范围内 */
-  text-align: right; /* 右对齐 */
+  right: 15px;
+  text-align: right;
 }
 
 .anime-title {
@@ -425,18 +393,14 @@
     2px 2px 4px rgba(0, 0, 0, 0.9),
     0 0 8px rgba(0, 0, 0, 0.8);
   line-height: 1.2;
-  white-space: normal; /* 允许换行 */
-  word-wrap: break-word; /* 长单词自动换行 */
-  overflow-wrap: break-word; /* 现代浏览器的换行属性 */
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   font-family: 'Kalam', 'Comic Sans MS', 'Marker Felt', 'Bradley Hand', 'Trebuchet MS', 'Arial Rounded MT Bold', cursive, sans-serif;
 }
 
-
-
-/* 响应式设计 - 保持1:1比例 */
 @media (max-width: 1024px) {
   .anime-canvas-viewport {
-    /* 保持1:1比例，无需设置height */
   }
   
   .window-container {
@@ -458,7 +422,6 @@
   }
   
   .anime-canvas-viewport {
-    /* 保持1:1比例，无需设置height */
   }
   
   .window-container {
@@ -487,7 +450,6 @@
 
 @media (max-width: 480px) {
   .anime-canvas-viewport {
-    /* 保持1:1比例，无需设置height */
   }
   
   .macos-titlebar {
@@ -518,14 +480,10 @@
   }
 }
 
-/* 当侧边栏收起时的布局调整 */
 .sidebar-collapsed .anime-scrapbook-container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .sidebar-collapsed .anime-canvas-viewport {
-  /* 保持1:1比例，无需设置height */
 }
-
-/* 深色模式已默认应用，移除覆盖 */

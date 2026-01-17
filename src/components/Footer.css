@@ -99,6 +99,11 @@
     width: 16px !important;
     height: 16px !important;
   }
+  
+  /* 手机版箭头额外上移1px（总共上移3px） */
+  .webring-arrows {
+    transform: translateY(-3px);
+  }
 }
 
 @media (max-width: 480px) {
@@ -143,6 +148,7 @@
   visibility: hidden;
   transition: all 0.3s ease;
   white-space: nowrap;
+  transform: translateY(-1px);
 }
 
 .webring-nav-arrow {
