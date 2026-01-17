@@ -89,6 +89,16 @@
   .social-separator {
     display: none;
   }
+  
+  /* 手机版UW webring向下移动2px */
+  .cs-webring-inline {
+    transform: translateY(2px);
+  }
+  
+  .webring-icon {
+    width: 16px !important;
+    height: 16px !important;
+  }
 }
 
 @media (max-width: 480px) {
