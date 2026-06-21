@@ -96,7 +96,7 @@
         {
             "id": "contact",
             "name": "Contact",
-            "enabled": true,
+            "enabled": false,
             "order": 5,
             "component": "ContactSection"
         },
