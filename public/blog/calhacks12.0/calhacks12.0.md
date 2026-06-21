@@ -13,7 +13,7 @@ CalHacks 12.0 (October 24–26) was the second hackathon I've ever joined. The f
 
 When I applied for CalHacks, most of my essay responses were copied from my Tree Hacks application. I submitted it quite early, but I initially got deferred to the regular round. A few days later, I received the acceptance email.
 
-I was excited when I got in, but then I realized a serious problem: CalHacks took place right after our Reading Week, meaning I would have to fly from Waterloo to San Francisco and back within a single weekend, missing Friday classes. Even worse, it was right in the middle of midterm season. I had my Math 147 exam two days before CalHacks and my CS 145 exam the day after returning.
+I was excited when I got in, but then I realized a serious problem: Cal Hacks took place right after our Reading Week, meaning I would have to fly from Waterloo to San Francisco and back within a single weekend, missing Friday classes. Even worse, it was right in the middle of midterm season. I had my Math 147 exam two days before CalHacks and my CS 145 exam the day after returning.
 
 I had to choose between staying home to prepare for CS midterm or flying across the continent for the hackathon. At that moment, I remembered something I deeply believe in: life is a journey. There will be countless exams, but not many chances to cross a continent for a weekend. And so, without much hesitation, I booked that flight across the continent.
 
