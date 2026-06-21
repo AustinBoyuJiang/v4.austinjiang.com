@@ -1,15 +1,41 @@
 [
   {
+    "title": "Rewrite",
+    "description": "A real-time VR game that generates fully interactive 3D historical worlds in Unity, deploying Hunyuan WorldPlay 1.5 on Modal across 4x H200 GPUs with tensor parallelism.",
+    "youtube": "https://www.youtube.com/watch?v=dJSc6apgca8",
+    "date": "Feb 2026",
+    "tags": [
+      "TreeHacks '26"
+    ],
+    "links": {
+      "github": "https://github.com/NoahCodes23/TreeHacks2026",
+      "devpost": "https://devpost.com/software/rewrite-2snpat"
+    }
+  },
+  {
+    "title": "ADaptiv",
+    "description": "A full video object replacement pipeline in ComfyUI, using Gemini for video understanding, Meta SAM3 for pixel-level masking, and Alibaba Wan, accelerated on RTX 4090.",
+    "youtube": "https://www.youtube.com/watch?v=QBTbATedb68",
+    "date": "Jan 2026",
+    "tags": [
+      "NexHacks '26"
+    ],
+    "links": {
+      "github": "https://github.com/Liamzhangg/ADaptiv",
+      "devpost": "https://devpost.com/software/nexhacks-k016op",
+      "live": "https://tryadaptiv.vercel.app/home"
+    }
+  },
+  {
     "title": "Stock Explain",
     "description": "An adaptive AI agent that explains real time stock movements by dynamically switching between multiple web search and browsing strategies.",
     "youtube": "https://www.youtube.com/watch?v=vDLeJ9lWL64&t",
     "date": "Oct 2025",
     "tags": [
-      "Cal Hacks 12.0"
+      "CalHacks 12.0"
     ],
     "links": {
       "github": "https://github.com/AustinBoyuJiang/Stock-Explain",
-      "youtube": "https://www.youtube.com/watch?v=vDLeJ9lWL64&t",
       "devpost": "https://devpost.com/software/stockexplain"
     }
   },
@@ -23,7 +49,6 @@
     ],
     "links": {
       "github": "https://github.com/AustinBoyuJiang/TAi-Piazza-extension",
-      "youtube": "https://www.youtube.com/watch?v=7XnhXm5Uvec",
       "devpost": "https://devpost.com/software/tai-h2z7c6"
     }
   },
@@ -51,7 +76,6 @@
     ],
     "links": {
       "github": "https://github.com/AustinBoyuJiang/LookAround-AI",
-      "youtube": "https://www.youtube.com/watch?v=SyTblvamfjY",
       "devpost": "https://devpost.com/software/lookaround-ai"
     }
   },
@@ -117,8 +141,7 @@
       "Game"
     ],
     "links": {
-      "github": "https://github.com/Game-Development-Club-WVSS/Forgotten-Realms",
-      "youtube": "https://www.youtube.com/watch?v=dYGyprna18o"
+      "github": "https://github.com/Game-Development-Club-WVSS/Forgotten-Realms"
     }
   },
   {
@@ -130,8 +153,7 @@
       "Game"
     ],
     "links": {
-      "github": "https://github.com/Game-Development-Club-WVSS/Land-of-Gladius",
-      "youtube": "https://www.youtube.com/watch?v=FV8X0mRA3MM"
+      "github": "https://github.com/Game-Development-Club-WVSS/Land-of-Gladius"
     }
   },
   {

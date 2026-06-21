@@ -1,5 +1,19 @@
 [
   {
+    "title": "ReloadCA: adaptive sparse and parallel cellular automata in Wolfram language",
+    "date": "2026-05-31",
+    "author": "Austin Jiang",
+    "excerpt": "Presents a hybrid sparse and parallel framework for 1D cellular automata in Wolfram Language. Dynamically switches between dense and sparse updates based on runtime prediction models, and utilizes multi-kernel parallel computation with halo exchange to reduce recomputation in localized activity.",
+    "tags": [
+      "Research",
+      "HPC",
+      "WELP '26",
+      "Wolfram Community"
+    ],
+    "type": "external",
+    "externalUrl": "https://community.wolfram.com/groups/-/m/t/3724930"
+  },
+  {
     "id": "calhacks12.0",
     "title": "A Journey of Code and Courage: My Cal Hacks Experience",
     "date": "2025-11-02",
