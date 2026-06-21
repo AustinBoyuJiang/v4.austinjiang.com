@@ -80,11 +80,12 @@ export const useData = () => {
               }
             },
             sections: [
-              { id: "projects", name: "Projects", enabled: true, order: 1, component: "ProjectsSection" },
-              { id: "publications", name: "Publications", enabled: true, order: 2, component: "PublicationsSection" },
-              { id: "anime", name: "动漫", enabled: true, order: 3, component: "AnimeSection" },
-              { id: "blog", name: "Blog", enabled: true, order: 4, component: "BlogSection" },
-              { id: "contact", name: "Contact", enabled: true, order: 5, component: "ContactSection" }
+              { id: "about", name: "About", enabled: true, order: 1, component: "AboutSection" },
+              { id: "blog", name: "Blog", enabled: true, order: 2, component: "BlogSection" },
+              { id: "projects", name: "Projects", enabled: true, order: 3, component: "ProjectsSection" },
+              { id: "publications", name: "Publications", enabled: false, order: 4, component: "PublicationsSection" },
+              { id: "contact", name: "Contact", enabled: true, order: 5, component: "ContactSection" },
+              { id: "anime", name: "Image Gallery", enabled: false, order: 6, component: "AnimeSection" }
             ],
             layout: {
               sidebar: {

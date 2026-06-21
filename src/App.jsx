@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 import BlogSection from './components/BlogSection'
 import BlogPost from './components/BlogPost'
+import AboutSection from './components/AboutSection'
 import ProjectsSection from './components/ProjectsSection'
 import PublicationsSection from './components/PublicationsSection'
 import AnimeSection from './components/AnimeSection'
@@ -341,6 +342,8 @@ function App() {
     const commonProps = { key: section.id }
     
     switch (section.component) {
+      case 'AboutSection':
+        return <AboutSection {...commonProps} />
       case 'ProjectsSection':
         return <ProjectsSection {...commonProps} projects={projects || []} isSidebarCollapsed={isSidebarCollapsed} />
       case 'PublicationsSection':

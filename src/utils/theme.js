@@ -72,6 +72,7 @@ export const getSortedSections = (sections) => {
 
 export const getSectionComponent = (sectionId) => {
   const componentMap = {
+    'about': 'AboutSection',
     'projects': 'ProjectsSection',
     'publications': 'PublicationsSection',
     'anime': 'AnimeSection',
