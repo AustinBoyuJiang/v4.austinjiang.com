@@ -1,6 +1,6 @@
 This is the first blog I've written to record my personal experiences. I plan to write more regularly from now on.
 
-From Waterloo to San Francisco, I experienced on one of the craziest journeys of my life during midterm season. This post captures my three days at Cal Hacks 12.0.
+From Waterloo to San Francisco, I experienced on one of the craziest journeys of my life during midterm season. This post captures my three days at CalHacks 12.0.
 
 <div align="center">
     <video src="https://drive.austinjiang.com/f/Gdig/story.mp4" controls width="600"></video>
@@ -9,15 +9,15 @@ From Waterloo to San Francisco, I experienced on one of the craziest journeys of
 
 ## Introduction
 
-Cal Hacks 12.0 (October 24–26) was the second hackathon I've ever joined. The first one was AdventureX in China during the previous summer, known as the largest hackathon in the country. It was a 72-hour event, and to my surprise, my team won the Ten Framework First Place award. The experience left me both thrilled and hungry for more. So when the semester began at Waterloo, I signed up for more hackathons.
+CalHacks 12.0 (October 24–26) was the second hackathon I've ever joined. The first one was AdventureX in China during the previous summer, known as the largest hackathon in the country. It was a 72-hour event, and to my surprise, my team won the Ten Framework First Place award. The experience left me both thrilled and hungry for more. So when the semester began at Waterloo, I signed up for more hackathons.
 
-When I applied for Cal Hacks, most of my essay responses were copied from my Tree Hacks application. I submitted it quite early, but I initially got deferred to the regular round. A few days later, I received the acceptance email.
+When I applied for CalHacks, most of my essay responses were copied from my Tree Hacks application. I submitted it quite early, but I initially got deferred to the regular round. A few days later, I received the acceptance email.
 
-I was excited when I got in, but then I realized a serious problem: Cal Hacks took place right after our Reading Week, meaning I would have to fly from Waterloo to San Francisco and back within a single weekend, missing Friday classes. Even worse, it was right in the middle of midterm season. I had my Math 147 exam two days before Cal Hacks and my CS 145 exam the day after returning.
+I was excited when I got in, but then I realized a serious problem: CalHacks took place right after our Reading Week, meaning I would have to fly from Waterloo to San Francisco and back within a single weekend, missing Friday classes. Even worse, it was right in the middle of midterm season. I had my Math 147 exam two days before CalHacks and my CS 145 exam the day after returning.
 
 I had to choose between staying home to prepare for CS midterm or flying across the continent for the hackathon. At that moment, I remembered something I deeply believe in: life is a journey. There will be countless exams, but not many chances to cross a continent for a weekend. And so, without much hesitation, I booked that flight across the continent.
 
-There were still two weeks left before Cal Hacks, but I didn't think about any project ideas and hadn't found teammates yet. Partly because I was busy preparing for Math 147 (which I ended up getting full marks on 😆), and partly because I wanted to see what it would be like to come up with an idea entirely on the spot.
+There were still two weeks left before CalHacks, but I didn't think about any project ideas and hadn't found teammates yet. Partly because I was busy preparing for Math 147 (which I ended up getting full marks on 😆), and partly because I wanted to see what it would be like to come up with an idea entirely on the spot.
 
 On the night before the hackathon, October 23, I finally finished everything else on my to-do list around 3 a.m. I spent the next thirty minutes buying my ticket from Waterloo to YYZ, went to bed at 4, and woke up again at 5...
 
@@ -26,7 +26,7 @@ On the night before the hackathon, October 23, I finally finished everything els
 
 After sleeping for just an hour, I got up, ate the leftover dinner from the night before as breakfast, took a quick shower, and headed out. Honestly, I've had this kind of schedule plenty of times before, so it didn't really bother me. I reached Kitchener at 6:30, took a FlixBus, and arrived at YYZ airport by 7:30 sharp. I waited there until 8, did my Nexus interview, and then went through security to the boarding area.
 
-For this trip to SFO, I wore my UWaterloo hoodie that I had bought on campus. At the border, an older officer noticed it and started chatting with me about my school. During Cal Hacks, several people also noticed the hoodie and spoke highly of Waterloo. Finally, at 10 a.m., I boarded the flight.
+For this trip to SFO, I wore my UWaterloo hoodie that I had bought on campus. At the border, an older officer noticed it and started chatting with me about my school. During CalHacks, several people also noticed the hoodie and spoke highly of Waterloo. Finally, at 10 a.m., I boarded the flight.
 
 As soon as I sat down, I fell into a deep sleep. When I opened my eyes again, the plane was already descending toward SFO. It was 12:30 p.m. local time, after a five-hour flight and a three-hour time difference between Toronto and San Francisco.
 
@@ -34,7 +34,7 @@ As soon as I sat down, I fell into a deep sleep. When I opened my eyes again, th
 
 By the way, this was my second time visiting San Francisco. The first time was during the summer of Grade 11, right after I finished the Wolfram Summer Research Program in the U.S. After that, my mom and I toured a few universities known for computer science. We visited UC Berkeley and Stanford — both of which ultimately rejected me :(
 
-Anyway, that's not the point. After arriving at SFO, I quickly got on the BART, the city's main train system. But my first destination wasn't the Palace of Fine Arts (this year's Cal Hacks venue). It was my friend's startup.
+Anyway, that's not the point. After arriving at SFO, I quickly got on the BART, the city's main train system. But my first destination wasn't the Palace of Fine Arts (this year's CalHacks venue). It was my friend's startup.
 
 
 ## Visiting Something Great
@@ -43,10 +43,10 @@ Yes, you read that right, the company is literally called *Something Great*. The
 
 A while ago, Ryan and his cofounder Daniel from UPenn's M&T program reached out to me, asking if I was interested in joining their team. I completed the coding challenge for their GMT Engineer position and even received an offer. But honestly, I had not yet decided whether to join them, mainly because I have been too busy with school and my URA research work. So when I came to San Francisco, I thought it would be a good chance to visit and see what their startup was like in person.
 
-Anyway, that is enough of a detour. Let us get back to Cal Hacks.
+Anyway, that is enough of a detour. Let us get back to CalHacks.
 
 
-## Heading to Cal Hacks
+## Heading to CalHacks
 
 After visiting Something Great, I took a bus to the Palace of Fine Arts.
 
@@ -62,9 +62,9 @@ At that moment, a friend of mine from Berkeley saw my Instagram story and realiz
 My friend from Berkeley, Celine, was actually my old neighbor. Her mom and my mom are friends, and we even went to the same high school, though she is four years older than me. And just like that, our team was formed: me, Anish, Celine, and Kim, another Berkeley student.
 
 
-## Cal Hacks Begins
+## CalHacks Began
 
-3... 2... 1... As the countdown on the big screen reached zero, Cal Hacks officially began at 6 p.m.
+3... 2... 1... As the countdown on the big screen reached zero, CalHacks officially began at 6 p.m.
 
 <img src="./files/3.jpg" alt="drawing" width="500"/>
 
@@ -141,7 +141,7 @@ Overall, it was far from a perfect experience, but it was definitely one of the 
 
 More important than the outcome was the journey itself. Over that weekend, I challenged myself by traveling across a continent alone. Even though midterms were all around me, I still chose to go, and that decision alone was worth remembering. I believe that having this kind of courage will give me strength in whatever I do in the future.
 
-During these three days at Cal Hacks, I not only saw countless opportunities from startups but also met many people who truly love building things. Some of them might become future collaborators or even partners in entrepreneurship. I also reconnected with friends in person and had inspiring conversations about technology, ambition, and life.
+During these three days at CalHacks, I not only saw countless opportunities from startups but also met many people who truly love building things. Some of them might become future collaborators or even partners in entrepreneurship. I also reconnected with friends in person and had inspiring conversations about technology, ambition, and life.
 
 In the end, experiences like this are incredibly rare. They remind me how much joy there is in creating something out of chaos and exhaustion. If I ever get the chance again, I would choose this journey without hesitation.
 
