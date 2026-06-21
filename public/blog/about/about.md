@@ -1,6 +1,6 @@
 ### Hi!
 
-I am a 2nd-year CS student at the University of Waterloo.
+Welcome to my little corner of the internet! I am a 2nd-year CS student at the University of Waterloo.
 
 Currently, I am a research intern at Huawei Noah's Ark Lab working on efficient spatial foundation models, as well as a research assistant at the [UW Multicore Lab](https://mc.uwaterloo.ca/) working on concurrent data structures on GPUs.
 
