@@ -8,4 +8,4 @@ Before this, I spent two years working at Wolfram Research as a [student researc
 
 Since January 2026, I have been a committee member of the Canadian Computing Competition, Canada's largest programming contest for IOI selection. I authored [CCO 2026 Day 1 Problem 3](https://dmoj.ca/problem/cco26p3), which was the hardest problem that year.
 
-I go to a lot of hackathons, including TreeHacks, CalHacks, and NexHacks. Reach out to me at [me@austinjiang.com](mailto:me@austinjiang.com) if you want to team up!
+I go to a lot of hackathons, including TreeHacks, CalHacks, and NexHacks. Reach out to [me@austinjiang.com](mailto:me@austinjiang.com) if you want to team up!
