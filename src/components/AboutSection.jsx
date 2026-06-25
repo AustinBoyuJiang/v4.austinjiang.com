@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import 'katex/dist/katex.min.css'
-import './BlogPost.css'
+import './PostPage.css'
 import './AboutSection.css'
 import { parseMarkdown } from '../utils/markdown'
 
-const MARKDOWN_FILE = '/blog/about/about.md'
+const MARKDOWN_FILE = '/posts/about/about.md'
 
 const AboutSection = () => {
   const [content, setContent] = useState('')
@@ -45,7 +45,7 @@ const AboutSection = () => {
       {error && <div className="error">{error}</div>}
       {!loading && !error && (
         <div
-          className="blog-post-content about-content"
+          className="posts-post-content about-content"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       )}

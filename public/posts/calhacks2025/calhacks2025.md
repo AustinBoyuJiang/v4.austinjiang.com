@@ -1,6 +1,6 @@
 This is the first blog I've written to record my personal experiences. I plan to write more regularly from now on.
 
-From Waterloo to San Francisco, I experienced on one of the craziest journeys of my life during midterm season. This post captures my three days at CalHacks 12.0.
+From Waterloo to San Francisco, I experienced on one of the craziest journeys of my life during midterm season. This post captures my three days at CalHacks 2025.
 
 <div align="center">
     <video src="https://drive.austinjiang.com/f/Gdig/story.mp4" controls width="600"></video>
@@ -9,7 +9,7 @@ From Waterloo to San Francisco, I experienced on one of the craziest journeys of
 
 ## Introduction
 
-CalHacks 12.0 (October 24–26) was the second hackathon I've ever joined. The first one was AdventureX in China during the previous summer, known as the largest hackathon in the country. It was a 72-hour event, and to my surprise, my team won the Ten Framework First Place award. The experience left me both thrilled and hungry for more. So when the semester began at Waterloo, I signed up for more hackathons.
+CalHacks 2025 (October 24–26) was the second hackathon I've ever joined. The first one was AdventureX in China during the previous summer, known as the largest hackathon in the country. It was a 72-hour event, and to my surprise, my team won the Ten Framework First Place award. The experience left me both thrilled and hungry for more. So when the semester began at Waterloo, I signed up for more hackathons.
 
 When I applied for CalHacks, most of my essay responses were copied from my Tree Hacks application. I submitted it quite early, but I initially got deferred to the regular round. A few days later, I received the acceptance email.
 

@@ -73,11 +73,11 @@
             "component": "AboutSection"
         },
         {
-            "id": "blog",
-            "name": "Blog",
+            "id": "posts",
+            "name": "Posts",
             "enabled": true,
             "order": 2,
-            "component": "BlogSection"
+            "component": "PostsSection"
         },
         {
             "id": "projects",

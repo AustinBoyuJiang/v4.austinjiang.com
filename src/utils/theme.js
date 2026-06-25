@@ -76,7 +76,7 @@ export const getSectionComponent = (sectionId) => {
     'projects': 'ProjectsSection',
     'publications': 'PublicationsSection',
     'anime': 'AnimeSection',
-    'blog': 'BlogSection',
+    'posts': 'PostsSection',
     'contact': 'ContactSection'
   }
   

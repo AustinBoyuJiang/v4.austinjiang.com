@@ -5,7 +5,7 @@ export const useData = () => {
     profile: null,
     projects: [],
     publications: [],
-    blog: [],
+    posts: [],
     anime: [],
     settings: null,
     loading: true,
@@ -15,20 +15,20 @@ export const useData = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [profileRes, projectsRes, publicationsRes, blogRes, animeRes, settingsRes] = await Promise.all([
+        const [profileRes, projectsRes, publicationsRes, postsRes, animeRes, settingsRes] = await Promise.all([
           fetch('/data/profile.json'),
           fetch('/data/projects.json'),
           fetch('/data/publications.json'),
-          fetch('/data/blog.json'),
+          fetch('/data/posts.json'),
           fetch('/data/anime.json'),
           fetch('/data/settings.json')
         ])
 
-        const [profile, projects, publications, blog, anime, settings] = await Promise.all([
+        const [profile, projects, publications, posts, anime, settings] = await Promise.all([
           profileRes.json(),
           projectsRes.json(),
           publicationsRes.json(),
-          blogRes.json(),
+          postsRes.json(),
           animeRes.json(),
           settingsRes.json()
         ])
@@ -37,7 +37,7 @@ export const useData = () => {
           profile,
           projects,
           publications,
-          blog,
+          posts,
           anime,
           settings,
           loading: false,
@@ -59,7 +59,7 @@ export const useData = () => {
               socialLinks: [
                 { name: "GitHub", url: "https://github.com/yourusername" },
                 { name: "LinkedIn", url: "https://linkedin.com/in/yourusername" },
-                { name: "Devpost", url: "https://devpost.com/yourusername" },
+                { name: "X", url: "https://x.com/yourusername" },
                 { name: "Codeforces", url: "https://codeforces.com/profile/yourusername" }
               ]
             }
@@ -81,7 +81,7 @@ export const useData = () => {
             },
             sections: [
               { id: "about", name: "About", enabled: true, order: 1, component: "AboutSection" },
-              { id: "blog", name: "Blog", enabled: true, order: 2, component: "BlogSection" },
+              { id: "posts", name: "Posts", enabled: true, order: 2, component: "PostsSection" },
               { id: "projects", name: "Projects", enabled: true, order: 3, component: "ProjectsSection" },
               { id: "publications", name: "Publications", enabled: false, order: 4, component: "PublicationsSection" },
               { id: "contact", name: "Contact", enabled: true, order: 5, component: "ContactSection" },
@@ -105,7 +105,7 @@ export const useData = () => {
             {
               id: "project-one",
               title: "Personal Portfolio Website",
-              description: "Modern React-based portfolio with smooth navigation, blog functionality, and responsive dark theme design.",
+              description: "Modern React-based portfolio with smooth navigation, posts functionality, and responsive dark theme design.",
               image: "/images/project1.svg",
               links: {
                 github: "https://github.com/yourusername/portfolio",
@@ -148,14 +148,14 @@ export const useData = () => {
               details: "ACM Database Systems Journal, 2024 - Analysis of indexing strategies and their impact on query execution time."
             }
           ],
-          blog: [
+          posts: [
             {
               id: "first-post-2024",
-              title: "My First Blog Post",
+              title: "My First Post",
               date: "2024-01-15",
-              excerpt: "This is my first blog post where I share my thoughts on starting my journey in computer science.",
+              excerpt: "This is my first post where I share my thoughts on starting my journey in computer science.",
               tags: ["personal", "cs", "waterloo"],
-              content: "# My First Blog Post\n\nWelcome to my blog!"
+              content: "# My First Post\n\nWelcome to my posts!"
             },
             {
               id: "learning-react-2024",

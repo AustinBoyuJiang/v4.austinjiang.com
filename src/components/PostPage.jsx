@@ -1,6 +1,6 @@
 import { useEffect, useState, memo } from 'react'
 import { createRoot } from 'react-dom/client'
-import './BlogPost.css'
+import './PostPage.css'
 import { useData } from '../hooks/useData'
 import { applyTheme, getCurrentTheme } from '../utils/theme'
 import 'katex/dist/katex.min.css'
@@ -83,7 +83,7 @@ const BackButton = memo(({ onBack }) => {
     )
 })
 
-const BlogPost = ({ post, onBack }) => {
+const PostPage = ({ post, onBack }) => {
     const { settings } = useData()
     const [content, setContent] = useState('')
     const [loading, setLoading] = useState(true)
@@ -115,7 +115,7 @@ const BlogPost = ({ post, onBack }) => {
                 setContent(parseMarkdown(markdownContent, post.markdownFile))
                 setLoading(false)
             } catch (error) {
-                console.error('Failed to load blog post:', error)
+                console.error('Failed to load post:', error)
                 setLoading(false)
             }
         }
@@ -174,9 +174,9 @@ const BlogPost = ({ post, onBack }) => {
 
     if (loading) {
         return (
-            <div className="blog-post-page">
+            <div className="posts-post-page">
                 <div className="container">
-                    <div className="loading">Loading blog post...</div>
+                    <div className="loading">Loading post...</div>
                 </div>
             </div>
         )
@@ -189,12 +189,12 @@ const BlogPost = ({ post, onBack }) => {
             {/* Back to Home Button */}
             <BackButton onBack={onBack} />
 
-            <div className="blog-post-page">
+            <div className="posts-post-page">
                 <div className="container">
-                    <article className="blog-post-full">
-                        <header className="blog-post-header">
+                    <article className="posts-post-full">
+                        <header className="posts-post-header">
                             {/* PixelBlast Background for Header */}
-                            <div className="blog-header-background">
+                            <div className="posts-header-background">
                                 <PixelBlast
                                     variant="circle"
                                     pixelSize={6}
@@ -213,24 +213,24 @@ const BlogPost = ({ post, onBack }) => {
                                     speed={0.6}
                                     edgeFade={0.25}
                                     transparent={true}
-                                    className="blog-pixel-blast"
+                                    className="posts-pixel-blast"
                                 />
                             </div>
-                            <h1 className="blog-post-full-title">{post.title}</h1>
+                            <h1 className="posts-post-full-title">{post.title}</h1>
                             {post.subtitle && (
-                                <h2 className="blog-post-subtitle">{post.subtitle}</h2>
+                                <h2 className="posts-post-subtitle">{post.subtitle}</h2>
                             )}
-                            <div className="blog-post-meta">
-                                <div className="blog-post-meta-row">
+                            <div className="posts-post-meta">
+                                <div className="posts-post-meta-row">
                                     {post.author && (
-                                        <span className="blog-post-author">
+                                        <span className="posts-post-author">
                                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                                             </svg>
                                             {post.author}
                                         </span>
                                     )}
-                                    <span className="blog-post-date">
+                                    <span className="posts-post-date">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                             <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
                                         </svg>
@@ -241,23 +241,23 @@ const BlogPost = ({ post, onBack }) => {
                                         })()}
                                     </span>
                                     {post.readTime && (
-                                        <span className="blog-post-read-time">
+                                        <span className="posts-post-read-time">
                                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                                 <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/>
                                             </svg>
                                             {post.readTime}
                                         </span>
                                     )}
-                                    <div className="blog-post-tags">
+                                    <div className="posts-post-tags">
                                         {post.tags.map(tag => (
-                                            <span key={tag} className="blog-tag">{tag}</span>
+                                            <span key={tag} className="posts-tag">{tag}</span>
                                         ))}
                                     </div>
                                 </div>
                             </div>
                         </header>
                         <div
-                            className="blog-post-content"
+                            className="posts-post-content"
                             dangerouslySetInnerHTML={{ __html: content }}
                         />
                     </article>
@@ -267,4 +267,4 @@ const BlogPost = ({ post, onBack }) => {
     )
 }
 
-export default BlogPost
+export default PostPage

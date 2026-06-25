@@ -3,7 +3,7 @@
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.2rem;
+  gap: 1rem;
   max-width: 1200px;
 }
 
@@ -16,24 +16,24 @@
 }
 
 .project-card {
-  background-color: var(--surface-color);
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  background: rgba(255, 255, 255, 0.025);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--primary-blue);
-  box-shadow: 0 8px 25px var(--shadow-color);
+  transform: translateY(-3px);
+  border-color: rgba(135, 206, 235, 0.35);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .project-image {
   width: 100%;
-  height: 140px;
+  height: 150px;
   overflow: hidden;
   background-color: var(--background-color);
 }
@@ -69,7 +69,7 @@
 }
 
 .project-content {
-  padding: 1.2rem;
+  padding: 1rem 1rem 1.05rem;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -77,8 +77,8 @@
 
 .project-title {
   font-size: 1.1rem;
-  margin-bottom: 0.6rem;
-  color: var(--primary-blue);
+  margin-bottom: 0.45rem;
+  color: var(--text-primary);
   line-height: 1.3;
 }
 
@@ -87,9 +87,9 @@
   align-items: center;
   gap: 0.4rem;
   color: var(--text-secondary);
-  font-size: 0.8rem;
-  margin-bottom: 0.8rem;
-  opacity: 0.8;
+  font-size: 0.75rem;
+  margin-bottom: 0.75rem;
+  opacity: 0.68;
 }
 
 .project-date svg {
@@ -98,9 +98,9 @@
 
 .project-description {
   color: var(--text-secondary);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.75rem;
   font-size: 0.9rem;
-  line-height: 1.4;
+  line-height: 1.5;
   flex-grow: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -138,36 +138,39 @@
   align-items: center;
   justify-content: space-between;
   margin-top: auto;
-  padding-top: 0.8rem;
-  gap: 1rem;
+  padding-top: 0.75rem;
+  gap: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.55rem;
   flex: 1;
 }
 
 .project-tag {
-  background-color: var(--accent-bg-color);
-  color: var(--primary-color);
-  padding: 0.2rem 0.5rem;
-  border-radius: 6px;
-  font-size: 0.7rem;
-  font-weight: 500;
-  border: 1px solid var(--border-color);
-  transition: all 0.2s ease;
+  color: color-mix(in srgb, var(--text-secondary) 72%, transparent);
+  padding: 0.12rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.58rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .project-tag:hover {
-  background-color: rgba(135, 206, 235, 0.2);
-  transform: translateY(-1px);
+  color: color-mix(in srgb, var(--primary-blue) 75%, var(--text-secondary));
+  border-color: rgba(135, 206, 235, 0.22);
 }
 
 .project-links {
   display: flex;
-  gap: 0.8rem;
+  gap: 0.5rem;
   flex-shrink: 0;
 }
 
@@ -175,22 +178,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-color: transparent;
-  color: var(--primary-blue);
+  color: var(--text-secondary);
   text-decoration: none;
   border-radius: 50%;
-  transition: all 0.3s ease;
-  border: 1px solid var(--primary-blue);
+  transition: all 0.2s ease;
+  opacity: 0.75;
 }
 
 .project-link:hover {
-  background-color: var(--primary-blue);
-  color: var(--background-color);
-  border-color: var(--primary-blue);
-  transform: translateY(-2px) scale(1.1);
-  box-shadow: 0 4px 12px var(--shadow-color);
+  color: var(--primary-blue);
+  opacity: 1;
+  transform: translateY(-1px);
 }
 
 /* Mobile Responsive */
@@ -200,7 +201,7 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 1.2rem !important;
+    gap: 1rem !important;
     max-width: 100% !important;
     margin: 0 !important;
   }
@@ -237,7 +238,7 @@
   }
 
   .project-link {
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
   }
 }

@@ -215,7 +215,7 @@ const ProjectsSection = ({ projects, isSidebarCollapsed }) => {
             onClick={() => setIsExpanded(true)}
             className="view-more-button"
           >
-            View More Projects
+            View More
           </button>
         </div>
       )}

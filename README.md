@@ -7,7 +7,7 @@ A modern, responsive personal portfolio website built with React and Vite.
 - **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
 - **Dynamic Content**: All content is loaded from JSON configuration files
 - **Modern UI**: Clean, professional design with smooth animations
-- **Blog Support**: Built-in blog system with external link support
+- **Posts Support**: Built-in posts system with external link support
 - **Project Showcase**: Display your projects with images, descriptions, and links
 - **Image Gallery**: Customizable polaroid-style image gallery
 - **Contact Integration**: Easy contact form and social media links
@@ -104,11 +104,11 @@ Edit `public/data/settings.json` to customize themes, sections, and layout:
   },
   "sections": [
     {
-      "id": "blog",
-      "name": "Blog",
+      "id": "posts",
+      "name": "Posts",
       "enabled": true,
       "order": 1,
-      "component": "BlogSection"
+      "component": "PostsSection"
     }
   ],
   "layout": {
@@ -127,36 +127,36 @@ Edit `public/data/settings.json` to customize themes, sections, and layout:
 }
 ```
 
-### Blog Configuration
+### Posts Configuration
 
-Edit `public/data/blog.json` to add your blog posts:
+Edit `public/data/posts.json` to add your posts:
 
 ```json
 [
   {
-    "title": "Blog Post Title",
+    "title": "Post Title",
     "subtitle": "IB Mathematics Analysis & Approaches HL Internal Assessment",
     "date": "2024-01-15",
     "author": "Austin Jiang",
     "readTime": "10 min",
-    "excerpt": "Brief description of the blog post content",
+    "excerpt": "Brief description of the post content",
     "tags": ["tag1", "tag2", "tag3"],
     "type": "external",
-    "externalUrl": "https://example.com/blog-post",
-    "markdownFile": "/blog/math-ia.md",
-    "coverImage": "/images/blog/cover.png"
+    "externalUrl": "https://example.com/posts-post",
+    "markdownFile": "/posts/math-ia.md",
+    "coverImage": "/images/posts/cover.png"
   }
 ]
 ```
 
-**Blog Post Fields:**
+**Post Fields:**
 - `title`: Post title
 - `subtitle`: Post subtitle for markdown type
 - `date`: Publication date (YYYY-MM-DD format)
 - `excerpt`: Brief description
 - `tags`: Array of tags
 - `type`: Currently supports "external" / "markdown"
-- `externalUrl`: URL to external blog post
+- `externalUrl`: URL to external post
 - `coverImage`: Optional cover image path
 - `markdownFile`: File path to markdown file
 
@@ -283,7 +283,7 @@ Add your custom theme to the `themes` object in `settings.json`:
 ## Section Management
 
 ### Available Components
-- **`BlogSection`** - Blog posts in timeline format
+- **`PostsSection`** - Posts in timeline format
 - **`ProjectsSection`** - Project showcase with cards and links
 - **`PublicationsSection`** - Academic publications (can be enabled/disabled)
 - **`ContactSection`** - Contact information and links
@@ -304,11 +304,11 @@ Change the `order` property in `settings.json`:
       "component": "ProjectsSection"
     },
     {
-      "id": "blog",
-      "name": "Blog", 
+      "id": "posts",
+      "name": "Posts", 
       "enabled": true,
       "order": 2,
-      "component": "BlogSection"
+      "component": "PostsSection"
     }
   ]
 }
@@ -335,12 +335,12 @@ public/
 ├── data/
 │   ├── settings.json          # Main site configuration
 │   ├── profile.json          # Personal information
-│   ├── blog.json             # Blog posts data
+│   ├── posts.json             # Posts data
 │   ├── projects.json         # Projects data
 │   └── anime.json            # Image gallery data
 ├── images/
 │   ├── pfp.jpg               # Profile avatar
-│   ├── blog/                 # Blog post cover images
+│   ├── posts/                 # Post cover images
 │   ├── projects/             # Project screenshots
 │   └── anime/                # Gallery images
 └── files/                    # CV and other files
@@ -353,10 +353,10 @@ src/
 
 ## Adding Content
 
-### Adding a Blog Post
+### Adding a Post
 
-1. Add an entry to `public/data/blog.json`
-2. Optionally add a cover image to `public/images/blog/`
+1. Add an entry to `public/data/posts.json`
+2. Optionally add a cover image to `public/images/posts/`
 
 ### Adding a Project
 

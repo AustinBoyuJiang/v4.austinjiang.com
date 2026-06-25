@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import './App.css'
-import BlogSection from './components/BlogSection'
-import BlogPost from './components/BlogPost'
+import PostsSection from './components/PostsSection'
+import PostPage from './components/PostPage'
 import AboutSection from './components/AboutSection'
 import ProjectsSection from './components/ProjectsSection'
 import PublicationsSection from './components/PublicationsSection'
@@ -16,7 +16,7 @@ import { applyTheme, getSortedSections, getCurrentTheme } from './utils/theme'
 function App() {
 
   const [currentPage, setCurrentPage] = useState('home')
-  const [selectedBlogPost, setSelectedBlogPost] = useState(null)
+  const [selectedPostPage, setSelectedPostPage] = useState(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
   const [isInitialLoad, setIsInitialLoad] = useState(true)
@@ -25,7 +25,7 @@ function App() {
   const [sidebarWidth, setSidebarWidth] = useState(580)
   const [isResizing, setIsResizing] = useState(false)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024)
-  const { profile, projects, publications, blog, anime, settings, loading, error } = useData()
+  const { profile, projects, publications, posts, anime, settings, loading, error } = useData()
 
   // Apply theme when settings are loaded
   useEffect(() => {
@@ -51,25 +51,25 @@ function App() {
     }
   }, [settings, activeSection])
 
-  // Handle URL routing for blog posts
+  // Handle URL routing for posts
   useEffect(() => {
     const path = window.location.pathname
-    if (path.startsWith('/blog/') && blog && blog.length > 0) {
-      const postId = path.replace('/blog/', '')
-      const post = blog.find(p => p.id === postId)
+    if (path.startsWith('/posts/') && posts && posts.length > 0) {
+      const postId = path.replace('/posts/', '')
+      const post = posts.find(p => p.id === postId)
       if (post && (post.type === 'markdown' || !post.type)) {
         // 只有markdown类型的文章才进行内部路由
-        navigateToBlogPost(post)
+        navigateToPostPage(post)
       } else if (post && post.type === 'external') {
         // 外部链接重定向到外部URL
         window.location.href = post.externalUrl
       } else {
-        // 如果找不到对应的blog post，重定向到首页
-        console.warn(`Blog post with id "${postId}" not found`)
+        // 如果找不到对应的post，重定向到首页
+        console.warn(`Post with id "${postId}" not found`)
         navigateToHome(true)
       }
     }
-  }, [blog])
+  }, [posts])
 
   // Initial load animation - show full screen profile until clicked (desktop only)
   const handleInitialClick = () => {
@@ -211,15 +211,15 @@ function App() {
       const path = window.location.pathname
       if (path === '/') {
         navigateToHome(false)
-      } else if (path.startsWith('/blog/') && blog && blog.length > 0) {
-        const postId = path.replace('/blog/', '')
-        const post = blog.find(p => p.id === postId)
+      } else if (path.startsWith('/posts/') && posts && posts.length > 0) {
+        const postId = path.replace('/posts/', '')
+        const post = posts.find(p => p.id === postId)
         if (post) {
-          setSelectedBlogPost(post)
-          setCurrentPage('blog-post')
+          setSelectedPostPage(post)
+          setCurrentPage('post')
         } else {
-          // 如果找不到对应的blog post，重定向到首页
-          console.warn(`Blog post with id "${postId}" not found`)
+          // 如果找不到对应的post，重定向到首页
+          console.warn(`Post with id "${postId}" not found`)
           navigateToHome(true)
         }
       }
@@ -227,7 +227,7 @@ function App() {
 
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
-  }, [blog])
+  }, [posts])
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -253,6 +253,12 @@ function App() {
         return (
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg>
+        )
+      case 'x':
+        return (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.292 19.491h2.039L6.486 3.24H4.298l13.311 17.404z" />
           </svg>
         )
       case 'devpost':
@@ -288,12 +294,10 @@ function App() {
     }
   }
 
-
-
   const scrollToSection = (sectionId) => {
     if (currentPage !== 'home') {
       setCurrentPage('home')
-      setSelectedBlogPost(null)
+      setSelectedPostPage(null)
       setTimeout(() => {
         const element = document.getElementById(sectionId)
         if (element) {
@@ -308,20 +312,20 @@ function App() {
     }
   }
 
-  const navigateToBlogPost = (post) => {
+  const navigateToPostPage = (post) => {
     // 只有markdown类型的文章才进行内部路由
     if (post.type === 'markdown' || !post.type) { // 兼容旧格式
-      setSelectedBlogPost(post)
-      setCurrentPage('blog-post')
-      window.history.pushState(null, '', `/blog/${post.id}`)
+      setSelectedPostPage(post)
+      setCurrentPage('post')
+      window.history.pushState(null, '', `/posts/${post.id}`)
       window.scrollTo(0, 0)
     }
-    // 外部链接在BlogSection组件中直接处理
+    // 外部链接在PostsSection组件中直接处理
   }
 
   const navigateToHome = (pushState = true) => {
     setCurrentPage('home')
-    setSelectedBlogPost(null)
+    setSelectedPostPage(null)
     if (pushState) {
       window.history.pushState(null, '', '/')
     }
@@ -330,12 +334,12 @@ function App() {
 
   // Update document title based on current page
   useEffect(() => {
-    if (currentPage === 'blog-post' && selectedBlogPost) {
-      document.title = `${selectedBlogPost.title} | Austin Jiang`
+    if (currentPage === 'post' && selectedPostPage) {
+      document.title = `${selectedPostPage.title} | Austin Jiang`
     } else {
       document.title = 'Austin Jiang'
     }
-  }, [currentPage, selectedBlogPost])
+  }, [currentPage, selectedPostPage])
 
   // Render section component based on settings
   const renderSection = (section) => {
@@ -350,8 +354,8 @@ function App() {
         return <PublicationsSection {...commonProps} publications={publications || []} />
       case 'AnimeSection':
         return <AnimeSection {...commonProps} anime={anime || []} isSidebarCollapsed={isSidebarCollapsed} />
-      case 'BlogSection':
-        return <BlogSection {...commonProps} blogPosts={blog || []} onPostClick={navigateToBlogPost} />
+      case 'PostsSection':
+        return <PostsSection {...commonProps} posts={posts || []} onPostClick={navigateToPostPage} />
       case 'ContactSection':
         return <ContactSection {...commonProps} email={profile?.personal?.email} />
       default:
@@ -359,11 +363,11 @@ function App() {
     }
   }
 
-  // Render blog post page
-  if (currentPage === 'blog-post' && selectedBlogPost) {
+  // Render post page
+  if (currentPage === 'post' && selectedPostPage) {
     return (
       <>
-        <BlogPost post={selectedBlogPost} onBack={navigateToHome} />
+        <PostPage post={selectedPostPage} onBack={navigateToHome} />
         <Footer />
         <Analytics />
       </>
