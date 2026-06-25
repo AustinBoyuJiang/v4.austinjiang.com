@@ -1,6 +1,6 @@
 ### Hi!
 
-Welcome to my little corner of the internet! I just finished my first-year as a CS student at the University of Waterloo.
+Welcome to my little corner of the internet! I just finished my first-year as a CS student at the University of Waterloo 𓅭.
 
 Currently, I am a research intern at Huawei Noah's Ark Lab working on efficient spatial foundation models, as well as a research assistant at the [UW Multicore Lab](https://mc.uwaterloo.ca/) working on concurrent data structures on GPUs.
 
