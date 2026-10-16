@@ -1,5 +1,18 @@
 [
   {
+    "title": "HonkPack",
+    "description": "An end-to-end per-object 3D reconstruction pipeline using SAM3, Depth Anything 3, and ShapeR from phone video, coupled with a custom 3D bin-packing algorithm.",
+    "youtube": "https://www.youtube.com/watch?v=5NE9PkmwqIg",
+    "date": "Sep 2026",
+    "tags": [
+      "HackMIT 2026"
+    ],
+    "links": {
+      "plume": "https://plume.hackmit.org/project/mwccd-ccvio-rnwtv-ovjkt",
+      "github": "https://github.com/c4bae/hackmit2026"
+    }
+  },
+  {
     "title": "Rewrite",
     "description": "A real-time VR game that generates fully interactive 3D historical worlds in Unity, deploying Hunyuan WorldPlay 1.5 on Modal across 4x H200 GPUs with tensor parallelism.",
     "youtube": "https://www.youtube.com/watch?v=dJSc6apgca8",
@@ -8,8 +21,8 @@
       "TreeHacks 2026"
     ],
     "links": {
-      "github": "https://github.com/NoahCodes23/TreeHacks2026",
-      "devpost": "https://devpost.com/software/rewrite-2snpat"
+      "devpost": "https://devpost.com/software/rewrite-2snpat",
+      "github": "https://github.com/NoahCodes23/TreeHacks2026"
     }
   },
   {
@@ -21,9 +34,8 @@
       "NexHacks 2026"
     ],
     "links": {
-      "github": "https://github.com/Liamzhangg/ADaptiv",
       "devpost": "https://devpost.com/software/nexhacks-k016op",
-      "live": "https://tryadaptiv.vercel.app/home"
+      "github": "https://github.com/Liamzhangg/ADaptiv"
     }
   },
   {
@@ -35,8 +47,8 @@
       "CalHacks 2025"
     ],
     "links": {
-      "github": "https://github.com/AustinBoyuJiang/Stock-Explain",
-      "devpost": "https://devpost.com/software/stockexplain"
+      "devpost": "https://devpost.com/software/stockexplain",
+      "github": "https://github.com/AustinBoyuJiang/Stock-Explain"
     }
   },
   {
@@ -48,8 +60,8 @@
       "Future Legends"
     ],
     "links": {
-      "github": "https://github.com/AustinBoyuJiang/TAi-Piazza-extension",
-      "devpost": "https://devpost.com/software/tai-h2z7c6"
+      "devpost": "https://devpost.com/software/tai-h2z7c6",
+      "github": "https://github.com/AustinBoyuJiang/TAi-Piazza-extension"
     }
   },
   {
@@ -61,8 +73,8 @@
       "ADVX '25"
     ],
     "links": {
-      "github": "https://github.com/AustinBoyuJiang/Recap",
       "devpost": "https://devpost.com/software/recap-qa48xw",
+      "github": "https://github.com/AustinBoyuJiang/Recap",
       "live": "https://recap.austinjiang.com"
     }
   },
@@ -75,8 +87,8 @@
       "ADVX '25"
     ],
     "links": {
-      "github": "https://github.com/AustinBoyuJiang/LookAround-AI",
-      "devpost": "https://devpost.com/software/lookaround-ai"
+      "devpost": "https://devpost.com/software/lookaround-ai",
+      "github": "https://github.com/AustinBoyuJiang/LookAround-AI"
     }
   },
   {
