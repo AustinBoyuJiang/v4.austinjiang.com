@@ -92,6 +92,16 @@ const ProjectsSection = ({ projects, isSidebarCollapsed }) => {
             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
           </svg>
         )
+      case 'plume':
+        return (
+          // HackMIT's official geometric mark: https://github.com/techx/hackmit-code/blob/gh-pages/hack-logo-bg.svg
+          <svg width="18" height="18" viewBox="50 45 620 630" fill="currentColor" aria-hidden="true">
+            <polygon points="216.739,50.901 216.739,146.489 192.843,146.489 192.843,50.901 61.406,50.901 61.406,337.668 192.843,337.668 192.843,242.08 216.739,242.08 216.739,337.668 348.175,337.668 348.175,50.901" />
+            <polygon points="372.073,337.668 515.455,50.901 658.84,337.668" />
+            <polygon points="371.826,657.148 371.826,370.379 658.595,370.379 574.954,513.766 658.595,657.148" />
+            <path d="M288.186,513.766l56.102-88.307c-28.035-40.496-74.813-67.027-127.794-67.027c-85.788,0-155.333,69.544-155.333,155.333c0,85.787,69.544,155.334,155.333,155.334c52.981,0,99.759-26.533,127.794-67.029L288.186,513.766z" />
+          </svg>
+        )
       case 'devpost':
         return (
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -115,6 +125,8 @@ const ProjectsSection = ({ projects, isSidebarCollapsed }) => {
         return 'Live Demo'
       case 'youtube':
         return 'YouTube'
+      case 'plume':
+        return 'Plume (HackMIT)'
       case 'devpost':
         return 'Devpost'
       default:
@@ -195,6 +207,7 @@ const ProjectsSection = ({ projects, isSidebarCollapsed }) => {
                           rel="noopener noreferrer"
                           className="project-link"
                           title={getLinkText(type)}
+                          aria-label={getLinkText(type)}
                         >
                           {getLinkIcon(type)}
                         </a>
