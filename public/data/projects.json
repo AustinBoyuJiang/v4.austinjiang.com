@@ -10,7 +10,8 @@
     "links": {
       "plume": "https://plume.hackmit.org/project/mwccd-ccvio-rnwtv-ovjkt",
       "github": "https://github.com/c4bae/hackmit2026"
-    }
+    },
+    "image": "/images/projects/honkpack.webp"
   },
   {
     "title": "Rewrite",
@@ -23,7 +24,8 @@
     "links": {
       "devpost": "https://devpost.com/software/rewrite-2snpat",
       "github": "https://github.com/NoahCodes23/TreeHacks2026"
-    }
+    },
+    "image": "/images/projects/rewrite-cover-v2.webp"
   },
   {
     "title": "ADaptiv",
@@ -36,7 +38,8 @@
     "links": {
       "devpost": "https://devpost.com/software/nexhacks-k016op",
       "github": "https://github.com/Liamzhangg/ADaptiv"
-    }
+    },
+    "image": "/images/projects/adaptiv-cover-v2.webp"
   },
   {
     "title": "Stock Explain",
@@ -49,7 +52,8 @@
     "links": {
       "devpost": "https://devpost.com/software/stockexplain",
       "github": "https://github.com/AustinBoyuJiang/Stock-Explain"
-    }
+    },
+    "image": "/images/projects/stock-explain-cover-v2.webp"
   },
   {
     "title": "TAi",
@@ -62,7 +66,8 @@
     "links": {
       "devpost": "https://devpost.com/software/tai-h2z7c6",
       "github": "https://github.com/AustinBoyuJiang/TAi-Piazza-extension"
-    }
+    },
+    "image": "/images/projects/tai-cover-v2.webp"
   },
   {
     "title": "Recap: Memory Planning System",
@@ -70,13 +75,14 @@
     "youtube": "https://youtu.be/v2RkTKPnE08",
     "date": "Jul 2025",
     "tags": [
-      "ADVX '25"
+      "AdventureX '25"
     ],
     "links": {
       "devpost": "https://devpost.com/software/recap-qa48xw",
       "github": "https://github.com/AustinBoyuJiang/Recap",
       "live": "https://recap.austinjiang.com"
-    }
+    },
+    "image": "/images/projects/recap-cover-v2.webp"
   },
   {
     "title": "LookAround AI",
@@ -84,25 +90,13 @@
     "youtube": "https://www.youtube.com/watch?v=SyTblvamfjY",
     "date": "Jul 2025",
     "tags": [
-      "ADVX '25"
+      "AdventureX '25"
     ],
     "links": {
       "devpost": "https://devpost.com/software/lookaround-ai",
       "github": "https://github.com/AustinBoyuJiang/LookAround-AI"
-    }
-  },
-  {
-    "title": "Zebra Giraffe Swap",
-    "description": "A Stable Diffusion fine-tuning solution that swaps giraffe and zebra concepts while preserving all other learned representations through selective UNet training.",
-    "image": "/images/projects/zg-swap.png",
-    "date": "Jul 2025",
-    "tags": [
-      "AI Research",
-      "IOAI '25"
-    ],
-    "links": {
-      "github": "https://github.com/AustinBoyuJiang/Zebra-Giraffe-Swap"
-    }
+    },
+    "image": "/images/projects/lookaround-ai-cover-v2.webp"
   },
   {
     "title": "Binary Combinator",
@@ -120,7 +114,7 @@
   {
     "title": "ArtifAI",
     "description": "ArtifAI helps you trace the origin of any artwork—AI-generated or human-made—while offering expert GPT-powered guidance on copyright and authorship in the age of generative AI.",
-    "image": "/images/projects/artifai.png",
+    "image": "/images/projects/artifai-cover-v2.webp",
     "date": "Apr 2024",
     "tags": [
       "Independent Project"
@@ -154,7 +148,8 @@
     ],
     "links": {
       "github": "https://github.com/Game-Development-Club-WVSS/Forgotten-Realms"
-    }
+    },
+    "image": "/images/projects/forgotten-realms-cover.webp"
   },
   {
     "title": "Land of Gladius",

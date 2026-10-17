@@ -179,7 +179,8 @@ Edit `public/data/projects.json` to showcase your projects:
   },
   {
     "title": "Video Project",
-    "description": "Project with YouTube video instead of image",
+    "description": "Project with an on-demand YouTube demo",
+    "image": "/images/projects/game.webp",
     "youtube": "https://youtube.com/watch?v=VIDEO_ID",
     "tags": ["Unity", "C#", "Game Development"],
     "links": {
@@ -193,8 +194,8 @@ Edit `public/data/projects.json` to showcase your projects:
 **Project Fields:**
 - `title`: Project name
 - `description`: Project description
-- `image`: Project screenshot/image path
-- `youtube`: YouTube video URL (alternative to image)
+- `image`: Project screenshot or video cover image path; local WebP covers are recommended
+- `youtube`: Optional YouTube demo URL. Shows the cover image (or a YouTube thumbnail) with a consistent bottom-left play control until clicked, then loads the player. Only one project video plays at a time.
 - `tags`: Array of technology/category tags
 - `links`: Object with various link types
 

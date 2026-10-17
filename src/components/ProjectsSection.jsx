@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
+import ProjectMedia from './ProjectMedia'
 import './ProjectsSection.css'
 
 const ProjectsSection = ({ projects, isSidebarCollapsed }) => {
   const [isExpanded, setIsExpanded] = useState(false)
+  const [activeVideo, setActiveVideo] = useState(null)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
 
   // Listen for window resize events with debouncing
@@ -21,6 +23,7 @@ const ProjectsSection = ({ projects, isSidebarCollapsed }) => {
         // Reset expanded state when switching between mobile and desktop
         if (newIsMobile !== isMobile) {
           setIsExpanded(false)
+          setActiveVideo(null)
         }
       }, 150) // 150ms debounce
     }
@@ -33,12 +36,6 @@ const ProjectsSection = ({ projects, isSidebarCollapsed }) => {
       }
     }
   }, [isMobile])
-
-  const getYouTubeEmbedUrl = (youtubeUrl) => {
-    if (!youtubeUrl) return null
-    const videoId = youtubeUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/)?.[1]
-    return videoId ? `https://www.youtube.com/embed/${videoId}` : null
-  }
 
   if (!projects || projects.length === 0) {
     return (
@@ -139,13 +136,17 @@ const ProjectsSection = ({ projects, isSidebarCollapsed }) => {
       <div className="section-header">
         <h2 
           className={`section-title ${hasMoreItems ? 'clickable' : ''}`}
-          onClick={hasMoreItems ? () => setIsExpanded(!isExpanded) : undefined}
+          onClick={hasMoreItems ? () => {
+            setIsExpanded(!isExpanded)
+            setActiveVideo(null)
+          } : undefined}
           role={hasMoreItems ? "button" : undefined}
           tabIndex={hasMoreItems ? 0 : undefined}
           onKeyDown={hasMoreItems ? (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault()
               setIsExpanded(!isExpanded)
+              setActiveVideo(null)
             }
           } : undefined}
           aria-label={hasMoreItems ? `Projects section - ${isExpanded ? 'Click to show less' : 'Click to show more'}` : 'Projects section'}
@@ -157,68 +158,55 @@ const ProjectsSection = ({ projects, isSidebarCollapsed }) => {
         </h2>
       </div>
       <div className="projects-grid">
-        {displayedProjects.map(project => {
-          const youtubeEmbedUrl = getYouTubeEmbedUrl(project.youtube)
-          
-          return (
-            <div key={project.id} className="project-card">
-              <div className="project-image">
-                {youtubeEmbedUrl ? (
-                  <div className="youtube-embed-container">
-                    <iframe
-                      src={youtubeEmbedUrl}
-                      title={project.title}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
-                  </div>
-                ) : (
-                  <img src={project.image} alt={project.title} />
-                )}
-              </div>
-              <div className="project-content">
-                <h3 className="project-title">{project.title}</h3>
-                {project.date && (
-                  <div className="project-date">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                    </svg>
-                    {project.date}
-                  </div>
-                )}
-                <p className="project-description">{project.description}</p>
-                <div className="project-footer">
-                  <div className="project-tags">
-                    {project.tags && project.tags.length > 0 && 
-                      project.tags.map(tag => (
-                        <span key={tag} className="project-tag">{tag}</span>
-                      ))
-                    }
-                  </div>
-                  <div className="project-links">
-                    {Object.entries(project.links).map(([type, url]) => {
-                      if (!url) return null
-                      return (
-                        <a
-                          key={type}
-                          href={url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="project-link"
-                          title={getLinkText(type)}
-                          aria-label={getLinkText(type)}
-                        >
-                          {getLinkIcon(type)}
-                        </a>
-                      )
-                    })}
-                  </div>
+        {displayedProjects.map(project => (
+          <div key={project.id || project.title} className="project-card">
+            <ProjectMedia
+              project={project}
+              isPlaying={activeVideo === project.youtube}
+              onPlay={() => setActiveVideo(project.youtube)}
+              onStop={() => setActiveVideo(null)}
+            />
+            <div className="project-content">
+              <h3 className="project-title">{project.title}</h3>
+              {project.date && (
+                <div className="project-date">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                  </svg>
+                  {project.date}
+                </div>
+              )}
+              <p className="project-description">{project.description}</p>
+              <div className="project-footer">
+                <div className="project-tags">
+                  {project.tags && project.tags.length > 0 &&
+                    project.tags.map(tag => (
+                      <span key={tag} className="project-tag">{tag}</span>
+                    ))
+                  }
+                </div>
+                <div className="project-links">
+                  {Object.entries(project.links).map(([type, url]) => {
+                    if (!url) return null
+                    return (
+                      <a
+                        key={type}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-link"
+                        title={getLinkText(type)}
+                        aria-label={getLinkText(type)}
+                      >
+                        {getLinkIcon(type)}
+                      </a>
+                    )
+                  })}
                 </div>
               </div>
             </div>
-          )
-        })}
+          </div>
+        ))}
       </div>
       
       {/* View More Button */}

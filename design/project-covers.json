@@ -1,0 +1,129 @@
+{
+  "generator": "Built-in image_gen.imagegen",
+  "intent": "Original project covers inspired by the HonkPack composition; project-specific visual direction.",
+  "format": "16:9 WebP, full bleed with crop-safe title and subject",
+  "covers": [
+    {
+      "title": "Rewrite",
+      "slug": "rewrite",
+      "sources": [
+        "https://devpost.com/software/rewrite-2snpat"
+      ],
+      "notes": "Generates real-time explorable historical environments in VR; existing identity uses warm parchment and an ornate serif wordmark.",
+      "file": "/images/projects/rewrite-cover.webp",
+      "prompt": "Use case: ads-marketing / stylized-concept.\nCreate ONE finished original website project cover, landscape 16:9, ideally 1536×864 or 1792×1024 if required by the generator. Full-bleed artwork, no frame, no letterboxing.\nInput image 1 is ONLY a reference for the visual polish and composition of the HonkPack cover: a large project wordmark on the left, a single beautifully rendered relevant hero scene on the right, soft dimensional materials, art-directed lighting, a restrained background and generous breathing room. Create a new project identity; do not copy the goose, moving boxes, HonkPack text or branding.\nThis is a real software portfolio cover shown as small as 327×200 pixels. Make the project name the dominant readable graphic, and the main scene immediately understandable at thumbnail scale. Keep the wordmark and important parts of the scene within the central 80% of the image, with 10% safe margins on the outer left and right and 15% safe margins above and below. The bottom-left 20% should be quiet background for a website playback control. No small paragraphs, no fake UI, no tool logos, no credits, no watermarks, no hackathon badges, no extra words. Render the specified project name exactly once, with correct capitalization. Professional bespoke art direction, coherent light and shadows, clean silhouette, visually compelling rather than generic AI gradients.\n\nProject: Rewrite is a VR experience that turns historical images and imagined alternate histories into explorable 3D worlds.\nScene: an open antique history book on the right becomes a miniature architectural portal into a sunlit historic stone courtyard. An elegant small VR headset rests just in front of the book, connecting history with immersion. The portal, pages and architecture form ONE coherent sculptural vignette, not a collage or a diagram.\nStyle: premium soft 3D illustration with tactile parchment, weathered sandstone, polished bronze and subtle warm volumetric light. Background is warm ivory with a faint parchment wash; restrained sepia, antique gold and dusty teal accents. It should feel wondrous, scholarly and cinematic, never a generic neon metaverse.\nText (verbatim): \"Rewrite\" in a very large dark warm-brown elegant editorial serif on the left, inspired by antique book typography but extremely legible. No subtitle.",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 221182
+    },
+    {
+      "title": "ADaptiv",
+      "slug": "adaptiv",
+      "sources": [
+        "https://devpost.com/software/nexhacks-k016op"
+      ],
+      "notes": "Adapts product placement within existing videos by detecting, masking and replacing objects for viewer context; original identity uses violet and blue.",
+      "file": "/images/projects/adaptiv-cover.webp",
+      "prompt": "Use case: ads-marketing / stylized-concept.\nCreate ONE finished original website project cover, landscape 16:9, ideally 1536×864 or 1792×1024 if required by the generator. Full-bleed artwork, no frame, no letterboxing.\nInput image 1 is ONLY a reference for the visual polish and composition of the HonkPack cover: a large project wordmark on the left, a single beautifully rendered relevant hero scene on the right, soft dimensional materials, art-directed lighting, a restrained background and generous breathing room. Create a new project identity; do not copy the goose, moving boxes, HonkPack text or branding.\nThis is a real software portfolio cover shown as small as 327×200 pixels. Make the project name the dominant readable graphic, and the main scene immediately understandable at thumbnail scale. Keep the wordmark and important parts of the scene within the central 80% of the image, with 10% safe margins on the outer left and right and 15% safe margins above and below. The bottom-left 20% should be quiet background for a website playback control. No small paragraphs, no fake UI, no tool logos, no credits, no watermarks, no hackathon badges, no extra words. Render the specified project name exactly once, with correct capitalization. Professional bespoke art direction, coherent light and shadows, clean silhouette, visually compelling rather than generic AI gradients.\n\nProject: ADaptiv replaces product placements inside existing movie scenes, adapting an advertised object to local audiences.\nScene: on the right, a sculptural rounded movie frame contains a cinematic tabletop shot with a simple unbranded lavender beverage can. A thin luminous violet selection outline wraps the can, and a second coral-colored version of the same can is being fitted into its place by an elegant curved film-strip transition. Use one large clapperboard tucked behind the movie frame as the filmmaking cue. The visual clearly suggests controlled object replacement in a video, not a video-call app.\nStyle: premium playful 3D product illustration, matte lilac and lavender, deep ink purple, a little soft blue, realistic softbox reflections on the can. A light lilac-white studio backdrop keeps the scene airy like the reference while respecting this project's purple visual identity.\nText (verbatim): \"ADaptiv\" in a large bold deep-purple contemporary sans-serif on the left. The uppercase letters are A and D, followed by lowercase aptiv. No subtitle.",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 96930
+    },
+    {
+      "title": "Stock Explain",
+      "slug": "stock-explain",
+      "sources": [
+        "https://devpost.com/software/stockexplain"
+      ],
+      "notes": "Explains stock movements by connecting real-time price charts with news and sentiment, using adaptive web research.",
+      "file": "/images/projects/stock-explain-cover.webp",
+      "prompt": "Use case: ads-marketing / stylized-concept.\nCreate ONE finished original website project cover, landscape 16:9, ideally 1536×864 or 1792×1024 if required by the generator. Full-bleed artwork, no frame, no letterboxing.\nInput image 1 is ONLY a reference for the visual polish and composition of the HonkPack cover: a large project wordmark on the left, a single beautifully rendered relevant hero scene on the right, soft dimensional materials, art-directed lighting, a restrained background and generous breathing room. Create a new project identity; do not copy the goose, moving boxes, HonkPack text or branding.\nThis is a real software portfolio cover shown as small as 327×200 pixels. Make the project name the dominant readable graphic, and the main scene immediately understandable at thumbnail scale. Keep the wordmark and important parts of the scene within the central 80% of the image, with 10% safe margins on the outer left and right and 15% safe margins above and below. The bottom-left 20% should be quiet background for a website playback control. No small paragraphs, no fake UI, no tool logos, no credits, no watermarks, no hackathon badges, no extra words. Render the specified project name exactly once, with correct capitalization. Professional bespoke art direction, coherent light and shadows, clean silhouette, visually compelling rather than generic AI gradients.\n\nProject: Stock Explain connects stock price movements to the news and events behind them, explaining market behavior in plain language.\nScene: on the right, a large clear glass magnifying lens studies a compact sculptural stock chart. A few modest translucent green and slate candlesticks plus a gently rising and falling line form the chart, while two clean news cards (only broad abstract lines, no readable news text) connect to particular movements with thin threads. The result feels like investigating a story behind a chart, not a promise of wealth.\nStyle: premium friendly soft 3D editorial illustration; off-white and pale mint backdrop, restrained emerald, dark charcoal, frosted glass and soft warm paper. No money piles, no rockets, no currency symbols, no bull mascot, no guaranteed upward-only graph.\nText (verbatim): \"Stock Explain\" on the left in a large confident dark charcoal sans-serif. Use two balanced lines, Stock above Explain, to stay readable at small sizes. No subtitle.",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 68170
+    },
+    {
+      "title": "TAi",
+      "slug": "tai",
+      "sources": [
+        "https://devpost.com/software/tai-h2z7c6"
+      ],
+      "notes": "Course Q&A assistant connected to syllabi and assignments; uncertain answers are reviewed or escalated to human teaching assistants.",
+      "file": "/images/projects/tai-cover.webp",
+      "prompt": "Use case: ads-marketing / stylized-concept.\nCreate ONE finished original website project cover, landscape 16:9, ideally 1536×864 or 1792×1024 if required by the generator. Full-bleed artwork, no frame, no letterboxing.\nInput image 1 is ONLY a reference for the visual polish and composition of the HonkPack cover: a large project wordmark on the left, a single beautifully rendered relevant hero scene on the right, soft dimensional materials, art-directed lighting, a restrained background and generous breathing room. Create a new project identity; do not copy the goose, moving boxes, HonkPack text or branding.\nThis is a real software portfolio cover shown as small as 327×200 pixels. Make the project name the dominant readable graphic, and the main scene immediately understandable at thumbnail scale. Keep the wordmark and important parts of the scene within the central 80% of the image, with 10% safe margins on the outer left and right and 15% safe margins above and below. The bottom-left 20% should be quiet background for a website playback control. No small paragraphs, no fake UI, no tool logos, no credits, no watermarks, no hackathon badges, no extra words. Render the specified project name exactly once, with correct capitalization. Professional bespoke art direction, coherent light and shadows, clean silhouette, visually compelling rather than generic AI gradients.\n\nProject: TAi is a university teaching-assistant companion that answers course questions using course materials, with human TA review.\nScene: on the right, a small friendly sophisticated blue-and-white robot teaching assistant with a minimal face is reading an open coursebook and holding one raised rounded question-and-answer bubble. A second small checkmark card beside the book suggests reviewed, reliable answers. The robot is a tasteful three-dimensional mascot analogous in polish to the HonkPack goose, not a generic humanoid metal android. Keep props limited to the book and two conversational cues.\nStyle: bright friendly academic 3D illustration, matte porcelain white, university-notebook blue, ink navy and a tiny mint checkmark accent. Pale cool blue-white background with subtle paper contours and soft shadows, approachable and trustworthy.\nText (verbatim): \"TAi\" in large deep-navy friendly bold sans-serif on the left. Capital T, capital A, lowercase i. No subtitle and no university logos.",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 58832
+    },
+    {
+      "title": "Recap",
+      "slug": "recap",
+      "sources": [
+        "https://devpost.com/software/recap-qa48xw"
+      ],
+      "notes": "Builds layered knowledge graphs and schedules review using memory decay and spaced repetition.",
+      "file": "/images/projects/recap-cover.webp",
+      "prompt": "Use case: ads-marketing / stylized-concept.\nCreate ONE finished original website project cover, landscape 16:9, ideally 1536×864 or 1792×1024 if required by the generator. Full-bleed artwork, no frame, no letterboxing.\nInput image 1 is ONLY a reference for the visual polish and composition of the HonkPack cover: a large project wordmark on the left, a single beautifully rendered relevant hero scene on the right, soft dimensional materials, art-directed lighting, a restrained background and generous breathing room. Create a new project identity; do not copy the goose, moving boxes, HonkPack text or branding.\nThis is a real software portfolio cover shown as small as 327×200 pixels. Make the project name the dominant readable graphic, and the main scene immediately understandable at thumbnail scale. Keep the wordmark and important parts of the scene within the central 80% of the image, with 10% safe margins on the outer left and right and 15% safe margins above and below. The bottom-left 20% should be quiet background for a website playback control. No small paragraphs, no fake UI, no tool logos, no credits, no watermarks, no hackathon badges, no extra words. Render the specified project name exactly once, with correct capitalization. Professional bespoke art direction, coherent light and shadows, clean silhouette, visually compelling rather than generic AI gradients.\n\nProject: Recap is a memory planning and spaced-repetition system organized around a layered knowledge graph.\nScene: on the right, an open book supports an elegant branching knowledge structure made of rounded coral and amber nodes connected by thin sculptural stems. One softly glowing node is being revisited by a gentle circular path and a single small clock cue, conveying remembering and reviewing related ideas. Use a clear readable hierarchy, not a dense spaghetti network. It should feel like knowledge being tended and remembered.\nStyle: sophisticated soft 3D illustration with matte clay and translucent details, inspired by the project's red/orange knowledge graph interface. Warm ivory background, coral red and burnt orange nodes, charcoal details and soft peach shadows. No anatomical brain, no medical imagery, no random equations.\nText (verbatim): \"Recap\" in a large dark warm-charcoal rounded editorial sans-serif on the left. No subtitle.",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 64898
+    },
+    {
+      "title": "LookAround AI",
+      "slug": "lookaround-ai",
+      "sources": [
+        "https://devpost.com/software/lookaround-ai"
+      ],
+      "notes": "Conversational AI tour guide grounded in real street views, tying exploration to contextual learning and memory.",
+      "file": "/images/projects/lookaround-ai-cover.webp",
+      "prompt": "Use case: ads-marketing / stylized-concept.\nCreate ONE finished original website project cover, landscape 16:9, ideally 1536×864 or 1792×1024 if required by the generator. Full-bleed artwork, no frame, no letterboxing.\nInput image 1 is ONLY a reference for the visual polish and composition of the HonkPack cover: a large project wordmark on the left, a single beautifully rendered relevant hero scene on the right, soft dimensional materials, art-directed lighting, a restrained background and generous breathing room. Create a new project identity; do not copy the goose, moving boxes, HonkPack text or branding.\nThis is a real software portfolio cover shown as small as 327×200 pixels. Make the project name the dominant readable graphic, and the main scene immediately understandable at thumbnail scale. Keep the wordmark and important parts of the scene within the central 80% of the image, with 10% safe margins on the outer left and right and 15% safe margins above and below. The bottom-left 20% should be quiet background for a website playback control. No small paragraphs, no fake UI, no tool logos, no credits, no watermarks, no hackathon badges, no extra words. Render the specified project name exactly once, with correct capitalization. Professional bespoke art direction, coherent light and shadows, clean silhouette, visually compelling rather than generic AI gradients.\n\nProject: LookAround AI is a conversational tour guide that explores real-world streets and helps people learn through what they see.\nScene: on the right, a miniature charming isometric city street corner rises from a gently folded map: recognizable building facades, a little street tree, one cafe awning and a clean red-orange location pin. A single rounded voice-conversation bubble floats near the pin and a delicate route line winds through the street. It should instantly read as exploring a real place with a conversational guide, not GPS navigation alone.\nStyle: premium playful 3D architectural illustration, soft realistic materials, sunlit warm cream, muted sky blue, terracotta accents and sage trees. Airy pale blue-white backdrop, inviting, curious and worldly. No corporate map logos and no tiny street labels.\nText (verbatim): \"LookAround AI\" on the left in a large deep-slate friendly sans-serif. Set LookAround on one line and AI below if necessary, without breaking the word LookAround. No subtitle.",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 149334
+    },
+    {
+      "title": "ArtifAI",
+      "slug": "artifai",
+      "sources": [
+        "https://devpost.com/software/artifai"
+      ],
+      "notes": "Traces the origins of AI or human artwork and offers copyright/authorship guidance. Existing site is graphite/monochrome with network lines.",
+      "file": "/images/projects/artifai-cover.webp",
+      "prompt": "Use case: ads-marketing / stylized-concept.\nCreate ONE finished original website project cover, landscape 16:9, ideally 1536×864 or 1792×1024 if required by the generator. Full-bleed artwork, no frame, no letterboxing.\nInput image 1 is ONLY a reference for the visual polish and composition of the HonkPack cover: a large project wordmark on the left, a single beautifully rendered relevant hero scene on the right, soft dimensional materials, art-directed lighting, a restrained background and generous breathing room. Create a new project identity; do not copy the goose, moving boxes, HonkPack text or branding.\nThis is a real software portfolio cover shown as small as 327×200 pixels. Make the project name the dominant readable graphic, and the main scene immediately understandable at thumbnail scale. Keep the wordmark and important parts of the scene within the central 80% of the image, with 10% safe margins on the outer left and right and 15% safe margins above and below. The bottom-left 20% should be quiet background for a website playback control. No small paragraphs, no fake UI, no tool logos, no credits, no watermarks, no hackathon badges, no extra words. Render the specified project name exactly once, with correct capitalization. Professional bespoke art direction, coherent light and shadows, clean silhouette, visually compelling rather than generic AI gradients.\n\nProject: ArtifAI traces the origin and authorship of artworks and helps artists understand their rights.\nScene: on the right, a sculptural magnifying glass examines one beautifully framed ORIGINAL abstract painting on a small easel. Under the lens, a few fine connected silver provenance nodes reveal the artwork's origin trail. The painting combines tactile human brush strokes with a small orderly digital mosaic, expressing the intersection of human art and AI without copying any existing artwork. A quiet small protective seal shape at the frame's foot suggests care for creators, not a legal guarantee.\nStyle: premium art-gallery 3D illustration, tactile canvas, brushed silver and soft dark-charcoal studio background with subtle gray network lines, reflecting the existing ArtifAI site's monochrome aesthetic. The painting supplies restrained teal, coral and warm ochre color. Use tasteful warm gallery lighting and sufficient contrast for the objects.\nText (verbatim): \"ArtifAI\" in a very large crisp warm-white sophisticated geometric sans-serif on the left. Capital A, lowercase rtif, capital A and I. No subtitle, no gavel, no copyrighted artwork, no legal certification claims.",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 176302
+    },
+    {
+      "title": "Forgotten Realms",
+      "slug": "forgotten-realms",
+      "sources": [
+        "https://github.com/Game-Development-Club-WVSS/Forgotten-Realms",
+        "https://www.youtube.com/watch?v=dYGyprna18o"
+      ],
+      "notes": "2D fantasy platformer. Video shows an orange-purple autumn forest, a swordsman, mossy platforms, a blue fountain and a gold key.",
+      "file": "/images/projects/forgotten-realms-cover.webp",
+      "prompt": "Use case: ads-marketing / stylized-concept.\nCreate ONE finished original website project cover, landscape 16:9, ideally 1536×864 or 1792×1024 if required by the generator. Full-bleed artwork, no frame, no letterboxing.\nInput image 1 is ONLY a reference for the visual polish and composition of the HonkPack cover: a large project wordmark on the left, a single beautifully rendered relevant hero scene on the right, soft dimensional materials, art-directed lighting, a restrained background and generous breathing room. Create a new project identity; do not copy the goose, moving boxes, HonkPack text or branding.\nThis is a real software portfolio cover shown as small as 327×200 pixels. Make the project name the dominant readable graphic, and the main scene immediately understandable at thumbnail scale. Keep the wordmark and important parts of the scene within the central 80% of the image, with 10% safe margins on the outer left and right and 15% safe margins above and below. The bottom-left 20% should be quiet background for a website playback control. No small paragraphs, no fake UI, no tool logos, no credits, no watermarks, no hackathon badges, no extra words. Render the specified project name exactly once, with correct capitalization. Professional bespoke art direction, coherent light and shadows, clean silhouette, visually compelling rather than generic AI gradients.\n\nProject: Forgotten Realms is THIS specific small 2D fantasy platformer, not the tabletop fantasy franchise of the same name.\nInput image 2 is ONLY a content and pixel-art atmosphere reference from the real gameplay video: a swordsman, orange autumn forest, lavender mist, grass-topped stone platforms, a cyan fountain and a gold key. Ignore editor chrome, HUD, health bars and all screenshot text.\nCreate original high-quality hand-authored PIXEL ART key art, with crisp deliberately placed pixel clusters, coherent pixel scale and rich atmospheric depth. Preserve the 2D platformer identity instead of turning it into a realistic 3D RPG. On the right, the small original brown-clad swordsman stands at the edge of a mossy floating stone platform; a bright cyan magical fountain and a floating tiny gold key mark the next platform. Majestic orange-brown forest trees and lavender mist create depth behind them. Make this one lovingly composed fantasy scene with quiet space on the left for the title. Borrow the HonkPack reference's clear brand-and-hero composition and polish, but NOT its clay medium or pale background.\nText (verbatim): \"Forgotten Realms\" on the left in large legible ivory-gold pixel-art fantasy lettering, two balanced lines. Do not use the official Dungeons & Dragons / Forgotten Realms franchise logo, no dragons or dice or characters from that franchise, no other text, no UI overlay, no borders. Keep all crucial lettering and the fountain inside the central 80% safe zone.",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 305926
+    }
+  ],
+  "reference": "public/images/projects/honkpack.webp"
+}

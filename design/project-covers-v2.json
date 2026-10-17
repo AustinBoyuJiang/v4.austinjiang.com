@@ -1,0 +1,117 @@
+{
+  "generator": "Built-in image_gen.imagegen",
+  "revision": 2,
+  "direction": "Seven independent project identities with deliberately different media, palettes, compositions and typography.",
+  "preserved": {
+    "title": "Forgotten Realms",
+    "file": "/images/projects/forgotten-realms-cover.webp",
+    "sha256": "d5217191673f14a68e90a65faed21a779f603a989b7ab211083a2b9dd527180e"
+  },
+  "covers": [
+    {
+      "title": "Rewrite",
+      "slug": "rewrite",
+      "direction": "Cinematic historical-world poster",
+      "sources": [
+        "https://devpost.com/software/rewrite-2snpat"
+      ],
+      "file": "/images/projects/rewrite-cover-v2.webp",
+      "prompt": "Generate one original finished portfolio cover, landscape 16:9, full bleed. This is an independent project identity, art directed specifically for this one project. It must remain compelling and readable at a thumbnail width of 327px.\nUse the medium, composition and typography defined below. Strong visual hierarchy and a memorable focal point. Keep the exact project title readable inside an 8% outer safe margin; render it exactly once. Leave the bottom-left corner relatively quiet for the website's small playback button. All visual interest and color should extend to the image edges.\nNo extra readable words, no fake awards or logos, no watermarks, no rounded app window mockup, no stock 3D icon, no toy mascot, no pastel blob backdrop, no title-on-left/object-on-right hero-banner template. Do not depict a floating product on a clean studio plinth. Create a designed cover with its own visual personality.\n\nThe project generates immersive historical worlds that people can explore in VR.\nCreate a full-bleed widescreen CINEMATIC PAINTED FILM POSTER. The entire image is an expansive imagined historical city at blue hour: monumental old stone buildings, a long boulevard and warm windows receding into hazy golden light. A small modern observer wearing an unobtrusive VR headset is seen from behind near the lower center, stepping into the historical scene. On one far edge only, a few architectural drawing lines dissolve into the physical buildings, subtly suggesting a generated world. This is an immersive environment, not a headset advertisement.\nComposition is deep, central, atmospheric and narrative, with a horizon through the upper middle and dramatic scale. Rich ink-blue shadows, smoky teal, ember-orange street lights and warm cream typography. Painterly matte-painting texture and subtle film grain, not glossy 3D objects or sepia parchment props. No portal arch, no open book, no device on a desk.\nText exactly: \"Rewrite\". Large refined ivory cinematic serif lettering centered across the lower middle, readable against a deliberately dark foreground. Title does not sit on the left beside an object. No subtitle.",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 381408
+    },
+    {
+      "title": "ADaptiv",
+      "slug": "adaptiv",
+      "direction": "Graphic advertising and film-editing collage",
+      "sources": [
+        "https://devpost.com/software/nexhacks-k016op"
+      ],
+      "file": "/images/projects/adaptiv-cover-v2.webp",
+      "prompt": "Generate one original finished portfolio cover, landscape 16:9, full bleed. This is an independent project identity, art directed specifically for this one project. It must remain compelling and readable at a thumbnail width of 327px.\nUse the medium, composition and typography defined below. Strong visual hierarchy and a memorable focal point. Keep the exact project title readable inside an 8% outer safe margin; render it exactly once. Leave the bottom-left corner relatively quiet for the website's small playback button. All visual interest and color should extend to the image edges.\nNo extra readable words, no fake awards or logos, no watermarks, no rounded app window mockup, no stock 3D icon, no toy mascot, no pastel blob backdrop, no title-on-left/object-on-right hero-banner template. Do not depict a floating product on a clean studio plinth. Create a designed cover with its own visual personality.\n\nThe project changes the product placement inside a video through object segmentation and contextual replacement.\nCreate a bold experimental ADVERTISING / MOTION-DESIGN POSTER using sharp photographic cutouts, screenprint halftone and torn-paper collage. Black and electric-violet ground with acid-lime accents. Across the upper half, three hard-edged film stills form a slightly diagonal strip: the SAME close-up of a human hand holding a coffee cup in an urban cafe scene. In the first frame the cup is monochrome, in the second it is marked by a flat purple segmentation mask, in the third it becomes a lime-colored unbranded replacement cup. The hand and composition remain consistent across the frames. The cafe is photographic, with gritty natural light; the mask is a crisp flat graphic.\nIn the lower middle, very large heavy italic grotesk lettering \"ADaptiv\" stretches across the image with deliberate editorial tension, acid-lime against black. Purple overprinted registration marks and one clean selection contour are enough secondary graphics. Irregular paper edges, high contrast and tactile ink. It should resemble a confident creative-studio poster, not a SaaS landing-page illustration. No clapperboard render, no beverage-can 3D stage, no rounded frame, no gradients pretending to be glass. Exact title once: \"ADaptiv\".",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 462560
+    },
+    {
+      "title": "Stock Explain",
+      "slug": "stock-explain",
+      "direction": "Financial-news editorial design",
+      "sources": [
+        "https://devpost.com/software/stockexplain"
+      ],
+      "file": "/images/projects/stock-explain-cover-v2.webp",
+      "prompt": "Generate one original finished portfolio cover, landscape 16:9, full bleed. This is an independent project identity, art directed specifically for this one project. It must remain compelling and readable at a thumbnail width of 327px.\nUse the medium, composition and typography defined below. Strong visual hierarchy and a memorable focal point. Keep the exact project title readable inside an 8% outer safe margin; render it exactly once. Leave the bottom-left corner relatively quiet for the website's small playback button. All visual interest and color should extend to the image edges.\nNo extra readable words, no fake awards or logos, no watermarks, no rounded app window mockup, no stock 3D icon, no toy mascot, no pastel blob backdrop, no title-on-left/object-on-right hero-banner template. Do not depict a floating product on a clean studio plinth. Create a designed cover with its own visual personality.\n\nThe project investigates the news and events behind stock movements and explains them in plain language.\nCreate a sophisticated FINANCIAL EDITORIAL COVER on warm salmon newsprint, using black ink, one vermilion-red line and restrained paper collage. Big confident newspaper-style serif headline \"Stock Explain\" in a carefully typeset two-line masthead across the upper portion. Beneath and partly around the headline, torn broadsheet fragments and fine engraved city silhouettes form an asymmetric editorial composition. The newsprint columns should contain only convincing abstract strokes and gray column texture, not readable fake stories.\nOne vivid red price line travels through the lower two-thirds: it rises, dips and recovers modestly. Fine hand-annotated arrows connect two bends to small newspaper fragments, giving a clear sense of cause and explanation. No money stacks, currency symbols, bull mascot, magnifying glass or shiny trading interface.\nFlat tactile print, subtle paper fibers, subtle misregistered red ink and beautiful typographic spacing. The feeling is a sharp economics magazine cover, human and analytical. Exact headline only: \"Stock Explain\".",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 617174
+    },
+    {
+      "title": "TAi",
+      "slug": "tai",
+      "direction": "Tactile academic chalkboard",
+      "sources": [
+        "https://devpost.com/software/tai-h2z7c6"
+      ],
+      "file": "/images/projects/tai-cover-v2.webp",
+      "prompt": "Generate one original finished portfolio cover, landscape 16:9, full bleed. This is an independent project identity, art directed specifically for this one project. It must remain compelling and readable at a thumbnail width of 327px.\nUse the medium, composition and typography defined below. Strong visual hierarchy and a memorable focal point. Keep the exact project title readable inside an 8% outer safe margin; render it exactly once. Leave the bottom-left corner relatively quiet for the website's small playback button. All visual interest and color should extend to the image edges.\nNo extra readable words, no fake awards or logos, no watermarks, no rounded app window mockup, no stock 3D icon, no toy mascot, no pastel blob backdrop, no title-on-left/object-on-right hero-banner template. Do not depict a floating product on a clean studio plinth. Create a designed cover with its own visual personality.\n\nThe project is a course Q&A teaching assistant that references class materials and routes uncertain questions to human TAs.\nCreate a beautifully photographed REAL CLASSROOM CHALKBOARD COVER, full bleed, with a deep worn forest-green board and rich tactile chalk dust. In the CENTER, very large handmade white chalk lettering spells \"TAi\" with an elegant, confident, slightly imperfect hand-drawn character. The capital T, capital A and lowercase i must be unambiguous. One restrained golden-yellow chalk underline anchors it.\nA few carefully composed white and yellow chalk drawings surround the lettering: an open coursebook outline, one question speech bubble, an answer bubble containing only short abstract horizontal chalk strokes, and a small reviewed-answer checkmark. Make these feel like a thoughtful teacher's live explanation, not a ring of clip-art icons. A realistic hand holding a short piece of white chalk enters subtly from the bottom edge; no face, no robot, no graduate mascot.\nRaking classroom light, eraser smudges, traces of old chalk and authentic powdery strokes. Minimal and intimate, with an unusually strong centered typographic focal point. Exact readable text once: \"TAi\". No other words or equations.",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 406816
+    },
+    {
+      "title": "Recap",
+      "slug": "recap",
+      "direction": "Technical generative-graphics poster",
+      "sources": [
+        "https://devpost.com/software/recap-qa48xw"
+      ],
+      "file": "/images/projects/recap-cover-v2.webp",
+      "prompt": "Generate one original finished portfolio cover, landscape 16:9, full bleed. This is an independent project identity, art directed specifically for this one project. It must remain compelling and readable at a thumbnail width of 327px.\nUse the medium, composition and typography defined below. Strong visual hierarchy and a memorable focal point. Keep the exact project title readable inside an 8% outer safe margin; render it exactly once. Leave the bottom-left corner relatively quiet for the website's small playback button. All visual interest and color should extend to the image edges.\nNo extra readable words, no fake awards or logos, no watermarks, no rounded app window mockup, no stock 3D icon, no toy mascot, no pastel blob backdrop, no title-on-left/object-on-right hero-banner template. Do not depict a floating product on a clean studio plinth. Create a designed cover with its own visual personality.\n\nThe project uses layered knowledge graphs, memory decay and spaced repetition to choose what to review.\nCreate an arresting TECHNICAL GENERATIVE-GRAPHICS POSTER: flat precision vector linework and dithered ink on near-black carbon paper, entirely two-dimensional. A large nested orbital knowledge network sweeps diagonally across the canvas: small amber nodes connected by extremely fine warm-gray lines, with several nested layers. Most connections gradually fade; one cyan loop revisits a small cluster and lights those nodes bright amber again. The visual should communicate selective reactivation of related knowledge. The network is structured and graceful, not random spaghetti, and there is ample black negative space.\nUse a restrained burnt-orange, warm-gray and a single cyan accent. This feels like a well-designed scientific-computing album cover or an elegant plotter drawing, not a glowing neural brain. No book, tree, clock prop, 3D spheres, neon smoke or dashboard.\nText exactly: \"Recap\". Place a large crisp warm-white contemporary MONOSPACED wordmark toward the lower-right middle, fully inside safe margins, integrated into the grid and away from the bottom-left playback area. The orbital structure crosses the upper and left portions, making an asymmetric graphic composition.",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 297328
+    },
+    {
+      "title": "LookAround AI",
+      "slug": "lookaround-ai",
+      "direction": "Travel photography and illustrated field notes",
+      "sources": [
+        "https://devpost.com/software/lookaround-ai"
+      ],
+      "file": "/images/projects/lookaround-ai-cover-v2.webp",
+      "prompt": "Generate one original finished portfolio cover, landscape 16:9, full bleed. This is an independent project identity, art directed specifically for this one project. It must remain compelling and readable at a thumbnail width of 327px.\nUse the medium, composition and typography defined below. Strong visual hierarchy and a memorable focal point. Keep the exact project title readable inside an 8% outer safe margin; render it exactly once. Leave the bottom-left corner relatively quiet for the website's small playback button. All visual interest and color should extend to the image edges.\nNo extra readable words, no fake awards or logos, no watermarks, no rounded app window mockup, no stock 3D icon, no toy mascot, no pastel blob backdrop, no title-on-left/object-on-right hero-banner template. Do not depict a floating product on a clean studio plinth. Create a designed cover with its own visual personality.\n\nThe project is a conversational AI tour guide grounded in real street views, helping people learn through the places they explore.\nCreate a distinctive TRAVEL-ZINE COVER built around an original editorial 35mm-style STREET PHOTOGRAPH filling the entire image. A sunlit lived-in neighborhood street in Lisbon: warm tiled facades, a tram in the middle distance, a few small walking figures and blue sky, viewed from pedestrian eye level. Warm natural light, subtle film grain, authentic urban detail and an inviting sense of discovery. Avoid readable shop branding and tourist-sign text.\nOver the photograph, restrained hand-painted cobalt and tangerine FIELD-NOTE MARKS trace a wandering route and encircle one architectural detail. A tiny conversational waveform drawn by hand near the route implies the spoken AI guide; it is not an app interface. Keep the photographic scene dominant.\nText exactly: \"LookAround AI\". Large expressive cream hand-lettering across the UPPER portion, LookAround as one word, with a small but clearly readable AI tucked beneath the last letters. The typography feels like a beautifully lettered travel journal, not a geometric tech wordmark. No folded-map 3D diorama, no floating location-pin render, no miniature toy city, no white studio backdrop.",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 520758
+    },
+    {
+      "title": "ArtifAI",
+      "slug": "artifai",
+      "direction": "Contemporary art-exhibition poster",
+      "sources": [
+        "https://devpost.com/software/artifai"
+      ],
+      "file": "/images/projects/artifai-cover-v2.webp",
+      "prompt": "Generate one original finished portfolio cover, landscape 16:9, full bleed. This is an independent project identity, art directed specifically for this one project. It must remain compelling and readable at a thumbnail width of 327px.\nUse the medium, composition and typography defined below. Strong visual hierarchy and a memorable focal point. Keep the exact project title readable inside an 8% outer safe margin; render it exactly once. Leave the bottom-left corner relatively quiet for the website's small playback button. All visual interest and color should extend to the image edges.\nNo extra readable words, no fake awards or logos, no watermarks, no rounded app window mockup, no stock 3D icon, no toy mascot, no pastel blob backdrop, no title-on-left/object-on-right hero-banner template. Do not depict a floating product on a clean studio plinth. Create a designed cover with its own visual personality.\n\nThe project traces artwork origins and authorship at the intersection of human creativity and AI.\nCreate a bold CONTEMPORARY ART-EXHIBITION POSTER whose entire surface is an original abstract mixed-media artwork. Warm ivory cotton paper, one broad gestural ULTRAMARINE paint stroke showing real bristle marks, one vivid VERMILION-red painted area, and controlled black ink. On one edge the tactile paint breaks into a precise halftone / digital mosaic. A few fine archival lines connect tiny origin nodes through the painting, subtly alluding to provenance. These analytical marks are sparse, elegant and secondary to the expressive art.\nUse sophisticated asymmetry, strong cropping of the paint and generous considered negative space. This is a flat physical printed artwork, not a picture of a painting or an art gallery. No frame, no easel, no magnifying glass, no protective shield, no gavel, no 3D render.\nText exactly: \"ArtifAI\". Large black condensed editorial grotesk typography across the central upper third, deliberately overlapping the edge of the cobalt stroke while remaining highly legible. Capital A, lowercase rtif, capitals A and I. The result should feel like a collectible museum exhibition cover with an original artistic identity, not an AI-tool illustration.",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 527128
+    }
+  ]
+}
