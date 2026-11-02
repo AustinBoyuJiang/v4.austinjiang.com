@@ -25,7 +25,7 @@
       "devpost": "https://devpost.com/software/rewrite-2snpat",
       "github": "https://github.com/NoahCodes23/TreeHacks2026"
     },
-    "image": "/images/projects/rewrite-cover-v2.webp"
+    "image": "/images/projects/rewrite-cover-v2.jpg"
   },
   {
     "title": "ADaptiv",
@@ -39,7 +39,7 @@
       "devpost": "https://devpost.com/software/nexhacks-k016op",
       "github": "https://github.com/Liamzhangg/ADaptiv"
     },
-    "image": "/images/projects/adaptiv-cover-v2.webp"
+    "image": "/images/projects/adaptiv-cover-v2.jpg"
   },
   {
     "title": "Stock Explain",
@@ -53,7 +53,7 @@
       "devpost": "https://devpost.com/software/stockexplain",
       "github": "https://github.com/AustinBoyuJiang/Stock-Explain"
     },
-    "image": "/images/projects/stock-explain-cover-v2.webp"
+    "image": "/images/projects/stock-explain-cover-v2.jpg"
   },
   {
     "title": "TAi",
@@ -67,7 +67,7 @@
       "devpost": "https://devpost.com/software/tai-h2z7c6",
       "github": "https://github.com/AustinBoyuJiang/TAi-Piazza-extension"
     },
-    "image": "/images/projects/tai-cover-v2.webp"
+    "image": "/images/projects/tai-cover-v2.jpg"
   },
   {
     "title": "Recap: Memory Planning System",
@@ -82,7 +82,7 @@
       "github": "https://github.com/AustinBoyuJiang/Recap",
       "live": "https://recap.austinjiang.com"
     },
-    "image": "/images/projects/recap-cover-v2.webp"
+    "image": "/images/projects/recap-cover-v2.jpg"
   },
   {
     "title": "LookAround AI",
@@ -96,7 +96,7 @@
       "devpost": "https://devpost.com/software/lookaround-ai",
       "github": "https://github.com/AustinBoyuJiang/LookAround-AI"
     },
-    "image": "/images/projects/lookaround-ai-cover-v2.webp"
+    "image": "/images/projects/lookaround-ai-cover-v2.jpg"
   },
   {
     "title": "Binary Combinator",
@@ -114,7 +114,7 @@
   {
     "title": "ArtifAI",
     "description": "ArtifAI helps you trace the origin of any artwork—AI-generated or human-made—while offering expert GPT-powered guidance on copyright and authorship in the age of generative AI.",
-    "image": "/images/projects/artifai-cover-v2.webp",
+    "image": "/images/projects/artifai-cover-v2.jpg",
     "date": "Apr 2024",
     "tags": [
       "Independent Project"
@@ -149,7 +149,7 @@
     "links": {
       "github": "https://github.com/Game-Development-Club-WVSS/Forgotten-Realms"
     },
-    "image": "/images/projects/forgotten-realms-cover.webp"
+    "image": "/images/projects/forgotten-realms-cover.jpg"
   },
   {
     "title": "Land of Gladius",
