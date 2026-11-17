@@ -40,7 +40,7 @@ const ProjectsSection = ({ projects: allProjects, moreUrl }) => {
   if (!projects || projects.length === 0) {
     return (
       <section id="projects" className="section">
-        <h2 className="section-title">Selected Projects</h2>
+        <h2 className="section-title">Projects</h2>
         <div className="loading">Loading projects...</div>
       </section>
     )
@@ -113,7 +113,7 @@ const ProjectsSection = ({ projects: allProjects, moreUrl }) => {
   return (
     <section id="projects" className="section">
       <div className="section-header">
-        <h2 className="section-title">Selected Projects</h2>
+        <h2 className="section-title">Projects</h2>
         {canScroll && (
           <div className="rail-controls">
             <button
