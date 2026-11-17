@@ -363,7 +363,13 @@ function App() {
       case 'AboutSection':
         return <AboutSection key={key} />
       case 'ProjectsSection':
-        return <ProjectsSection key={key} projects={projects || []} />
+        return (
+          <ProjectsSection
+            key={key}
+            projects={projects || []}
+            moreUrl={profile?.personal?.socialLinks?.find(link => link.name === 'GitHub')?.url}
+          />
+        )
       case 'ResearchSection':
         return <ResearchSection key={key} research={research} selfName={profile?.personal?.name} />
       case 'AnimeSection':

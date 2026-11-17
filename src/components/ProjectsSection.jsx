@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import ProjectMedia from './ProjectMedia'
 import './ProjectsSection.css'
 
-const ProjectsSection = ({ projects: allProjects }) => {
+const ProjectsSection = ({ projects: allProjects, moreUrl }) => {
   // Entries marked "hidden": true in projects.json stay in the data but aren't shown
   const projects = allProjects?.filter(project => !project.hidden)
   const [activeVideo, setActiveVideo] = useState(null)
@@ -40,7 +40,7 @@ const ProjectsSection = ({ projects: allProjects }) => {
   if (!projects || projects.length === 0) {
     return (
       <section id="projects" className="section">
-        <h2 className="section-title">Projects</h2>
+        <h2 className="section-title">Selected Projects</h2>
         <div className="loading">Loading projects...</div>
       </section>
     )
@@ -113,7 +113,7 @@ const ProjectsSection = ({ projects: allProjects }) => {
   return (
     <section id="projects" className="section">
       <div className="section-header">
-        <h2 className="section-title">Projects</h2>
+        <h2 className="section-title">Selected Projects</h2>
         {canScroll && (
           <div className="rail-controls">
             <button
@@ -199,6 +199,13 @@ const ProjectsSection = ({ projects: allProjects }) => {
           </div>
         ))}
       </div>
+      {moreUrl && (
+        <div className="view-more-container">
+          <a href={moreUrl} target="_blank" rel="noopener noreferrer" className="view-more-button">
+            More projects on GitHub{' '}↗
+          </a>
+        </div>
+      )}
     </section>
   )
 }
