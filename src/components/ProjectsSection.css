@@ -179,6 +179,58 @@
   color: #111;
 }
 
+/* Posters carry their own titles, so keep them clear at rest.
+   With a mouse, the shade and "Watch demo" fade in while the card is hovered. */
+@media (hover: hover) and (pointer: fine) {
+  .project-video-scrim,
+  .project-video-caption {
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .project-video-caption {
+    transform: translateY(4px);
+  }
+
+  .project-card:hover .project-video-scrim,
+  .project-card:hover .project-video-caption,
+  .project-video-preview:focus-visible .project-video-scrim,
+  .project-video-preview:focus-visible .project-video-caption {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Touch has no hover, so show only a small play icon in the top-right corner,
+   away from the titles at the top-left and bottom of the posters */
+@media (hover: none), (pointer: coarse) {
+  .project-video-scrim,
+  .project-video-label {
+    display: none;
+  }
+
+  .project-video-caption {
+    top: 0.6rem;
+    right: 0.6rem;
+    bottom: auto;
+    left: auto;
+  }
+
+  .project-video-play {
+    width: 30px;
+    height: 30px;
+    background: rgba(17, 17, 17, 0.62);
+    border-color: rgba(255, 255, 255, 0.45);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  .project-video-play svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
 .project-video-playing .project-image {
   min-height: 200px;
 }
@@ -248,7 +300,9 @@
 @media (prefers-reduced-motion: reduce) {
   .project-card,
   .project-image img,
-  .project-video-play {
+  .project-video-play,
+  .project-video-scrim,
+  .project-video-caption {
     transition: none;
   }
 

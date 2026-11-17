@@ -83,7 +83,7 @@ const ProjectMedia = ({ project, isPlaying, onPlay, onStop }) => {
             <path d="M8 5.5v13l10-6.5L8 5.5Z" />
           </svg>
         </span>
-        <span>Watch demo</span>
+        <span className="project-video-label">Watch demo</span>
       </span>
     </button>
   )
