@@ -1,6 +1,6 @@
 [
   {
-    "title": "ReloadCA: adaptive sparse and parallel cellular automata in Wolfram language",
+    "title": "ReloadCA: Adaptive Sparse and Parallel Cellular Automata in Wolfram Language",
     "date": "2026-05-31",
     "author": "Austin Jiang",
     "excerpt": "Presents a hybrid sparse and parallel framework for 1D cellular automata in Wolfram Language. Dynamically switches between dense and sparse updates based on runtime prediction models, and utilizes multi-kernel parallel computation with halo exchange to reduce recomputation in localized activity.",
@@ -38,7 +38,7 @@
     "coverImage": "/images/posts/1.jpg"
   },
   {
-    "title": "Universal bitwise function composition from Church numerals in lambda calculus",
+    "title": "Universal Bitwise Function Composition from Church Numerals in Lambda Calculus",
     "date": "2025-07-28",
     "author": "Austin Jiang",
     "excerpt": "Explores mapping Church numerals to arbitrary bitwise function compositions using SK combinators. Introduces binary numerals to generically construct unary and binary bitwise operations, leveraging fixed-point combinators for recursion and a new successor-based conversion method.",
@@ -63,7 +63,7 @@
     "externalUrl": "https://drive.austinjiang.com/f/49Ib/math-ia.pdf"
   },
   {
-    "title": "Cellular automata generation of 3D printer infill",
+    "title": "Cellular Automata Generation of 3D Printer Infill",
     "date": "2025-02-24",
     "author": "Austin Jiang",
     "excerpt": "Introduces a CA-based method for generating optimized 3D printer infill structures. Implements voxel-based modeling with Marching Cubes to produce STL files, achieving lightness, flexibility, and strength compared to traditional geometric patterns.",
@@ -77,7 +77,7 @@
     "coverImage": "/images/posts/2.png"
   },
   {
-    "title": "Constructing combinators for arithmetic and arbitrary-length bitwise operations",
+    "title": "Constructing Combinators for Arithmetic and Arbitrary-Length Bitwise Operations",
     "date": "2024-07-11",
     "author": "Austin Jiang",
     "excerpt": "Investigates SK combinators for arithmetic on Church numerals, introducing efficient combinators and a novel construction method for arbitrary-length binary representations supporting bitwise operations. Includes complexity analysis and performance comparisons for arithmetic operations.",

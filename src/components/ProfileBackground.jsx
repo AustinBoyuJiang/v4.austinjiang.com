@@ -1,6 +1,9 @@
-import Particles from './Particles'
-import PixelBlast from './PixelBlast'
+import { lazy, Suspense } from 'react'
 import './StarryBackground.css'
+
+// WebGL effects load after first paint so they never block the page
+const Particles = lazy(() => import('./Particles'))
+const PixelBlast = lazy(() => import('./PixelBlast'))
 
 const ProfileBackground = ({ children, className = '', style = {} }) => {
     // 可以通过这个变量切换背景类型
@@ -20,6 +23,7 @@ const ProfileBackground = ({ children, className = '', style = {} }) => {
                 zIndex: 1,
                 ...style
             }}>
+                <Suspense fallback={null}>
                 <Particles
                     particleColors={['#87ceeb', '#5fb3d4', '#ffffff']}
                     particleCount={300}
@@ -33,6 +37,7 @@ const ProfileBackground = ({ children, className = '', style = {} }) => {
                     sizeRandomness={1.5}
                     className={className}
                 />
+                </Suspense>
                 {children && (
                     <div style={{
                         position: 'absolute',
@@ -61,6 +66,7 @@ const ProfileBackground = ({ children, className = '', style = {} }) => {
                 zIndex: 1,
                 ...style
             }}>
+                <Suspense fallback={null}>
                 <PixelBlast
                     variant="circle"
                     pixelSize={6}
@@ -81,6 +87,7 @@ const ProfileBackground = ({ children, className = '', style = {} }) => {
                     transparent={true}
                     className={className}
                 />
+                </Suspense>
                 {children && (
                     <div style={{
                         position: 'absolute',

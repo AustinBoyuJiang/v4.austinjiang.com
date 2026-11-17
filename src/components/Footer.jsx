@@ -84,28 +84,38 @@ const Footer = () => {
               {' '}
               <span className="footer-link-separator">|</span>
               {' '}
-              <div className="cs-webring-inline">
-                <a 
-                  href="https://cs.uwatering.com/#austinjiang.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+              {/* Icon, label and arrows are sibling links: links can't nest, and a <p> can't hold a <div> */}
+              <span className="cs-webring-inline">
+                <a
+                  href="https://cs.uwatering.com/#austinjiang.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="footer-social-link webring-main"
-                  aria-label="CS Webring"
+                  tabIndex={-1}
+                  aria-hidden="true"
                 >
-                  <img 
-                    src="https://cs.uwatering.com/icon.white.svg" 
-                    alt="CS Webring" 
+                  <img
+                    src="https://cs.uwatering.com/icon.white.svg"
+                    alt=""
                     className="footer-icon webring-icon"
                   />
-                  <span className="webring-content">
-                    <span className="webring-text">UW CS</span>
-                    <span className="webring-arrows">
-                      <a href="https://cs.uwatering.com/#austinjiang.com?nav=prev" className="webring-nav-arrow">←</a>
-                      <a href="https://cs.uwatering.com/#austinjiang.com?nav=next" className="webring-nav-arrow">→</a>
-                    </span>
-                  </span>
                 </a>
-              </div>
+                <span className="webring-content">
+                  <a
+                    href="https://cs.uwatering.com/#austinjiang.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="footer-social-link webring-text"
+                    aria-label="CS Webring"
+                  >
+                    UW CS
+                  </a>
+                  <span className="webring-arrows">
+                    <a href="https://cs.uwatering.com/#austinjiang.com?nav=prev" className="webring-nav-arrow" aria-label="Previous site in the CS Webring">←</a>
+                    <a href="https://cs.uwatering.com/#austinjiang.com?nav=next" className="webring-nav-arrow" aria-label="Next site in the CS Webring">→</a>
+                  </span>
+                </span>
+              </span>
             </span>
           )}
         </p>

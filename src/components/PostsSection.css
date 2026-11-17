@@ -61,7 +61,8 @@
     '.    tags';
   column-gap: 0.75rem;
   align-items: start;
-  padding-left: 1rem;
+  /* No extra indent: dates line up under the year labels, close to their dots */
+  padding-left: 0;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -77,7 +78,7 @@
   content: '';
   position: absolute;
   left: -1.25rem;
-  top: 0.4rem;
+  top: 0.3rem;
   width: 8px;
   height: 8px;
   background-color: var(--border-color);
@@ -248,7 +249,7 @@
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: 'date' 'body' 'tags';
     row-gap: 0.15rem;
-    padding-left: 0.8rem;
+    padding-left: 0;
   }
 
   .posts-post-item.has-cover {

@@ -206,6 +206,10 @@
   transition: max-width 0.8s ease;
 }
 
+.description-part {
+  white-space: nowrap;
+}
+
 .social-links {
   display: flex;
   justify-content: center;
@@ -900,5 +904,105 @@
   50% {
     height: 80px;
     opacity: 0.8;
+  }
+}
+
+/* ---------- Mobile profile header ----------
+   Phones and tablets: a compact header instead of the full-screen profile.
+   Avatar beside name and school, then bio and links, then the content.
+   Selectors are deliberately specific to beat the older !important rules above. */
+@media (max-width: 1024px) {
+  .layout .sidebar,
+  .layout.initial-load .sidebar {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    border-bottom: 1px solid color-mix(in srgb, var(--text-primary) 9%, transparent);
+  }
+
+  .layout .sidebar .sidebar-content {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 1.75rem 1.5rem 1.5rem !important;
+  }
+
+  .layout .sidebar .profile-section {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      'avatar name'
+      'avatar title'
+      'bio    bio'
+      'links  links';
+    column-gap: 1rem;
+    align-items: center !important;
+    justify-items: start;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    text-align: left !important;
+  }
+
+  .layout .profile-section .avatar {
+    grid-area: avatar;
+    width: 64px;
+    height: 64px;
+    margin: 0 !important;
+    font-size: 1.4rem;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--text-primary) 12%, transparent);
+  }
+
+  .layout .profile-section .name {
+    grid-area: name;
+    align-self: end;
+    margin: 0 !important;
+    font-size: 1.35rem !important;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    text-align: left !important;
+  }
+
+  .layout .profile-section .title {
+    grid-area: title;
+    align-self: start;
+    margin: 0.2rem 0 0 !important;
+    font-size: 0.92rem;
+    text-align: left !important;
+  }
+
+  .layout .profile-section .description {
+    grid-area: bio;
+    max-width: none !important;
+    margin: 1rem 0 0 !important;
+    padding: 0 !important;
+    font-size: 0.84rem;
+    line-height: 1.6;
+    text-align: left !important;
+  }
+
+  .layout .profile-section .social-links {
+    grid-area: links;
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+    gap: 0.4rem 1.1rem !important;
+    width: auto !important;
+    margin: 0.85rem 0 0 !important;
+  }
+
+  .layout .profile-section .social-link {
+    padding: 0 !important;
+    font-size: 0.8rem;
+  }
+
+  .layout .profile-hint-mobile,
+  .layout .profile-hint-desktop {
+    display: none !important;
   }
 }

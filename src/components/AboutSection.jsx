@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import 'katex/dist/katex.min.css'
 import './PostPage.css'
 import './AboutSection.css'
-import { parseMarkdown } from '../utils/markdown'
 
 const MARKDOWN_FILE = '/posts/about/about.md'
 
@@ -22,6 +21,8 @@ const AboutSection = () => {
         }
 
         const markdown = await response.text()
+        // Markdown/KaTeX load on demand so they stay out of the first bundle
+        const { parseMarkdown } = await import('../utils/markdown')
         setContent(parseMarkdown(markdown, MARKDOWN_FILE))
       } catch (loadError) {
         if (loadError.name !== 'AbortError') {

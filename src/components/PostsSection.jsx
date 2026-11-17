@@ -40,7 +40,7 @@ const PostsSection = ({ posts, onPostClick }) => {
   const formatDate = (dateString) => {
     const [, month, day] = dateString.split('-')
     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    return `${day} ${monthNames[parseInt(month) - 1]}`
+    return `${parseInt(day, 10)} ${monthNames[parseInt(month, 10) - 1]}`
   }
 
   // Get all posts in chronological order for limiting

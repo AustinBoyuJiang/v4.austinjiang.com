@@ -1,43 +1,74 @@
+/* About intro: a greeting, a lead line, then body copy, flush with the column */
 .about-content {
   position: relative;
-  max-width: 720px;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 0;
-  border-left: 2px solid color-mix(in srgb, var(--primary-blue) 55%, transparent);
-  border-radius: 0 10px 10px 0;
+  max-width: 640px;
+  margin: 0;
+  padding: 0;
 }
 
 .about-content > :first-child {
   margin-top: 0;
 }
 
-.about-content p,
-.about-content p:not([style*="margin-top"]) {
-  margin-bottom: 0.9rem !important;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.75 !important;
+/* "Hi!" greeting */
+.about-content h3 {
+  margin: 0 0 0.7rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
 }
 
-.about-content p:first-child {
-  margin-bottom: 1.1rem !important;
+/* Body paragraphs (the post styles force spacing with !important) */
+.about-content p,
+.about-content p:not([style*="margin-top"]) {
+  margin-bottom: 0.85rem !important;
+  font-size: 0.95rem;
+  line-height: 1.75 !important;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
+/* First sentence after the greeting reads as a lead */
+.about-content h3 + p,
+.about-content h3 + p:not([style*="margin-top"]) {
+  margin-bottom: 1.15rem !important;
+  font-size: 1.12rem;
+  line-height: 1.6 !important;
+  letter-spacing: -0.012em;
   color: var(--text-primary);
-  font-size: 1.08rem;
-  font-weight: 600;
 }
 
 .about-content p:last-child {
   margin-bottom: 0 !important;
 }
 
+/* Links: white text with a thin accent underline, blue on hover.
+   !important beats the inline color/decoration the Markdown renderer adds. */
 .about-content a {
-  color: var(--primary-blue);
-  border-bottom-color: color-mix(in srgb, var(--primary-blue) 35%, transparent);
+  color: var(--text-primary) !important;
+  border-bottom: 0;
+  text-decoration: underline !important;
+  text-decoration-color: color-mix(in srgb, var(--primary-blue) 55%, transparent) !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.about-content a:hover {
+  color: var(--primary-blue) !important;
+  text-decoration-color: var(--primary-blue) !important;
 }
 
 @media (max-width: 768px) {
-  .about-content {
-    padding: 1rem 1.1rem;
+  .about-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .about-content h3 + p,
+  .about-content h3 + p:not([style*="margin-top"]) {
+    font-size: 1.02rem;
   }
 
   .about-content p,

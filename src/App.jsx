@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense, Fragment } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 import PostsSection from './components/PostsSection'
-import PostPage from './components/PostPage'
 import AboutSection from './components/AboutSection'
 import ProjectsSection from './components/ProjectsSection'
 import ResearchSection from './components/ResearchSection'
@@ -12,6 +11,9 @@ import ProfileBackground from './components/ProfileBackground'
 import Footer from './components/Footer'
 import { useData } from './hooks/useData'
 import { applyTheme, getSortedSections, getCurrentTheme } from './utils/theme'
+
+// Post pages pull in gsap, three.js and KaTeX; load them only when a post is opened
+const PostPage = lazy(() => import('./components/PostPage'))
 
 function App() {
 
@@ -368,7 +370,9 @@ function App() {
   if (currentPage === 'post' && selectedPostPage) {
     return (
       <>
-        <PostPage post={selectedPostPage} onBack={navigateToHome} />
+        <Suspense fallback={<div className="loading">Loading…</div>}>
+          <PostPage post={selectedPostPage} onBack={navigateToHome} />
+        </Suspense>
         <Footer />
         <Analytics />
       </>
@@ -393,7 +397,8 @@ function App() {
           }
         >
           {/* Profile Background Layer */}
-          <ProfileBackground />
+          {/* The WebGL starfield is desktop-only; phones get a plain compact header */}
+          {!isMobile && <ProfileBackground />}
           
           {/* Sidebar Toggle Button */}
           {!isInitialLoad && (
@@ -427,7 +432,15 @@ function App() {
                   </div>
                   <h1 className="name">{profile.personal.name}</h1>
                   <p className="title">{profile.personal.title}</p>
-                  <p className="description">{profile.personal.description}</p>
+                  <p className="description">
+                    {/* Keep each " | "-separated credential on one line; wrap only between them */}
+                    {profile.personal.description.split(' | ').map((part, i, parts) => (
+                      <Fragment key={part}>
+                        <span className="description-part">{part}{i < parts.length - 1 && ' |'}</span>
+                        {i < parts.length - 1 && ' '}
+                      </Fragment>
+                    ))}
+                  </p>
                   <div className="social-links">
                     {profile.personal.socialLinks?.map(link => (
                       <a

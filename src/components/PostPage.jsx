@@ -1,12 +1,14 @@
-import { useEffect, useState, memo } from 'react'
+import { useEffect, useState, memo, lazy, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import './PostPage.css'
 import { useData } from '../hooks/useData'
 import { applyTheme, getCurrentTheme } from '../utils/theme'
 import 'katex/dist/katex.min.css'
 import Masonry from './Masonry'
-import PixelBlast from './PixelBlast'
 import { parseMarkdown } from '../utils/markdown'
+
+// three.js header effect loads after the post text
+const PixelBlast = lazy(() => import('./PixelBlast'))
 
 // 独立的返回按钮组件，避免影响主内容重新渲染
 const BackButton = memo(({ onBack }) => {
@@ -195,6 +197,7 @@ const PostPage = ({ post, onBack }) => {
                         <header className="posts-post-header">
                             {/* PixelBlast Background for Header */}
                             <div className="posts-header-background">
+                                <Suspense fallback={null}>
                                 <PixelBlast
                                     variant="circle"
                                     pixelSize={6}
@@ -215,6 +218,7 @@ const PostPage = ({ post, onBack }) => {
                                     transparent={true}
                                     className="posts-pixel-blast"
                                 />
+                                </Suspense>
                             </div>
                             <h1 className="posts-post-full-title">{post.title}</h1>
                             {post.subtitle && (
