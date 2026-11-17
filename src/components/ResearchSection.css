@@ -67,6 +67,33 @@
   }
 }
 
+/* Stacked (narrow): tighter inside an entry, more air plus a hairline between
+   entries, so each video reads as part of the text below it */
+@container (max-width: 559.98px) {
+  .pub-list {
+    gap: 0;
+  }
+
+  .pub-entry {
+    gap: 0.85rem;
+  }
+
+  .pub-entry + .pub-entry {
+    margin-top: 1.75rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--pub-hairline);
+  }
+
+  /* No video beside the text to match in height, so show the full TL;DR
+     (extra class so it beats the base clamp declared further down) */
+  .pub-entry .pub-tldr {
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+  }
+}
+
 /* ---------- Media ---------- */
 
 .pub-media {
@@ -75,10 +102,8 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 8px;
-  border: 1px solid var(--pub-hairline);
   background-color: var(--surface-color);
   isolation: isolate;
-  transition: border-color 0.35s ease;
 }
 
 .pub-media video,
@@ -93,15 +118,22 @@
   transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-/* Soft vignette so the chip reads and the frame sits into the dark page */
+/* No frame or resting vignette: the videos' empty areas are the page colour,
+   so the frame stays flat and its edges dissolve into the page. A bottom shade
+   fades in only with the hover chip. */
 .pub-media::after {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, transparent 58%, rgba(0, 0, 0, 0.5) 100%),
-    radial-gradient(120% 90% at 50% 40%, transparent 60%, rgba(0, 0, 0, 0.18) 100%);
+  background: linear-gradient(180deg, transparent 58%, rgba(0, 0, 0, 0.45) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
   pointer-events: none;
+}
+
+a.pub-media:hover::after,
+a.pub-media:focus-visible::after {
+  opacity: 1;
 }
 
 .pub-media-chip {
@@ -115,7 +147,7 @@
   padding: 0.32rem 0.7rem 0.32rem 0.75rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(17, 17, 17, 0.55);
+  background: rgba(17, 17, 17, 0.62);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   color: #fff;
@@ -128,11 +160,6 @@
 .pub-media-chip-arrow {
   display: inline-block;
   transition: transform 0.25s ease;
-}
-
-a.pub-media:hover,
-a.pub-media:focus-visible {
-  border-color: var(--pub-hairline-strong);
 }
 
 a.pub-media:hover video,
