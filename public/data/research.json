@@ -19,8 +19,8 @@
       "highlight": null,
       "tldr": "Learns when each image patch can stop updating, making visual geometry transformers **up to 2.16× faster**.",
       "media": {
-        "video": "/videos/research/geohalt-loop.mp4",
-        "poster": "/images/research/geohalt-poster.jpg",
+        "video": "/videos/research/geohalt-loop-dark.mp4",
+        "poster": "/images/research/geohalt-poster-dark.jpg",
         "startAt": 2.5
       },
       "links": {

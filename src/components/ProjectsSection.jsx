@@ -2,7 +2,9 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import ProjectMedia from './ProjectMedia'
 import './ProjectsSection.css'
 
-const ProjectsSection = ({ projects }) => {
+const ProjectsSection = ({ projects: allProjects }) => {
+  // Entries marked "hidden": true in projects.json stay in the data but aren't shown
+  const projects = allProjects?.filter(project => !project.hidden)
   const [activeVideo, setActiveVideo] = useState(null)
   const railRef = useRef(null)
   const [edges, setEdges] = useState({ atStart: true, atEnd: false })
