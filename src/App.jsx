@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, lazy, Suspense, Fragment } from 'react'
-import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 import PostsSection from './components/PostsSection'
 import AboutSection from './components/AboutSection'
@@ -406,7 +405,6 @@ function App() {
           <PostPage post={selectedPostPage} onBack={navigateToHome} />
         </Suspense>
         <Footer />
-        <Analytics />
       </>
     )
   }
@@ -547,7 +545,6 @@ function App() {
           <Footer />
         </main>
       </div>
-      <Analytics />
     </>
   )
 }
