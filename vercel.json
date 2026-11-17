@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/posts/:id",
+      "destination": "/writing/:id",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

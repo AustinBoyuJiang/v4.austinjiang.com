@@ -15,6 +15,16 @@ import { applyTheme, getSortedSections, getCurrentTheme } from './utils/theme'
 // Post pages pull in gsap, three.js and KaTeX; load them only when a post is opened
 const PostPage = lazy(() => import('./components/PostPage'))
 
+// Post pages live at /writing/<id>. Old /posts/<id> links still open the post
+// (Vercel also redirects them); markdown files themselves stay under /posts/.
+const POST_PATH_PREFIX = '/writing/'
+const LEGACY_POST_PATH_PREFIX = '/posts/'
+
+const getPostIdFromPath = (path) => {
+  const prefix = [POST_PATH_PREFIX, LEGACY_POST_PATH_PREFIX].find(p => path.startsWith(p))
+  return prefix ? decodeURIComponent(path.slice(prefix.length).replace(/\/$/, '')) : null
+}
+
 // Default sidebar width scales with the screen: 580px at 1440px and wider,
 // about 460px on a 1280px laptop, never below 380px, so the content column keeps its width
 const getDefaultSidebarWidth = () =>
@@ -64,13 +74,13 @@ function App() {
 
   // Handle URL routing for posts
   useEffect(() => {
-    const path = window.location.pathname
-    if (path.startsWith('/posts/') && posts && posts.length > 0) {
-      const postId = path.replace('/posts/', '')
+    const postId = getPostIdFromPath(window.location.pathname)
+    if (postId && posts && posts.length > 0) {
       const post = posts.find(p => p.id === postId)
       if (post && (post.type === 'markdown' || !post.type)) {
         // 只有markdown类型的文章才进行内部路由
-        navigateToPostPage(post)
+        // Replace rather than push, so an old /posts/ URL becomes /writing/ without a dead history entry
+        navigateToPostPage(post, { replace: true })
       } else if (post && post.type === 'external') {
         // 外部链接重定向到外部URL
         window.location.href = post.externalUrl
@@ -224,8 +234,8 @@ function App() {
       const path = window.location.pathname
       if (path === '/') {
         navigateToHome(false)
-      } else if (path.startsWith('/posts/') && posts && posts.length > 0) {
-        const postId = path.replace('/posts/', '')
+      } else if (getPostIdFromPath(path) && posts && posts.length > 0) {
+        const postId = getPostIdFromPath(path)
         const post = posts.find(p => p.id === postId)
         if (post) {
           setSelectedPostPage(post)
@@ -326,12 +336,17 @@ function App() {
     }
   }
 
-  const navigateToPostPage = (post) => {
+  const navigateToPostPage = (post, { replace = false } = {}) => {
     // 只有markdown类型的文章才进行内部路由
     if (post.type === 'markdown' || !post.type) { // 兼容旧格式
       setSelectedPostPage(post)
       setCurrentPage('post')
-      window.history.pushState(null, '', `/posts/${post.id}`)
+      const url = `${POST_PATH_PREFIX}${encodeURIComponent(post.id)}`
+      if (replace) {
+        window.history.replaceState(null, '', url)
+      } else {
+        window.history.pushState(null, '', url)
+      }
       window.scrollTo(0, 0)
     }
     // 外部链接在PostsSection组件中直接处理
