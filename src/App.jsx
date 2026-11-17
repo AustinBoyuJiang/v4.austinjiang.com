@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense, Fragment } from 'react'
+import { useState, useEffect, useRef, lazy, Suspense, Fragment } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 import PostsSection from './components/PostsSection'
@@ -15,6 +15,11 @@ import { applyTheme, getSortedSections, getCurrentTheme } from './utils/theme'
 // Post pages pull in gsap, three.js and KaTeX; load them only when a post is opened
 const PostPage = lazy(() => import('./components/PostPage'))
 
+// Default sidebar width scales with the screen: 580px at 1440px and wider,
+// about 460px on a 1280px laptop, never below 380px, so the content column keeps its width
+const getDefaultSidebarWidth = () =>
+  Math.round(Math.min(580, Math.max(380, window.innerWidth * 0.75 - 500)))
+
 function App() {
 
   const [currentPage, setCurrentPage] = useState('home')
@@ -24,9 +29,13 @@ function App() {
   const [isInitialLoad, setIsInitialLoad] = useState(true)
   const [isHintFadingOut, setIsHintFadingOut] = useState(false)
   const [activeSection, setActiveSection] = useState('')
-  const [sidebarWidth, setSidebarWidth] = useState(580)
+  const [sidebarWidth, setSidebarWidth] = useState(getDefaultSidebarWidth)
+  // Once the visitor drags the sidebar, keep their width instead of the screen-based default
+  const userResizedSidebar = useRef(false)
   const [isResizing, setIsResizing] = useState(false)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024)
+  // Collapsing only applies to the desktop sidebar; narrow screens always use the header layout
+  const sidebarCollapsed = isSidebarCollapsed && !isMobile
   const { profile, projects, research, posts, anime, settings, loading } = useData()
 
   // Apply theme when settings are loaded
@@ -154,6 +163,7 @@ function App() {
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 1024)
+      if (!userResizedSidebar.current) setSidebarWidth(getDefaultSidebarWidth())
     }
 
     window.addEventListener('resize', handleResize)
@@ -173,6 +183,7 @@ function App() {
       
       animationFrame = requestAnimationFrame(() => {
         const newWidth = Math.max(300, Math.min(800, e.clientX))
+        userResizedSidebar.current = true
         setSidebarWidth(newWidth)
       })
     }
@@ -386,7 +397,7 @@ function App() {
       <div className={`layout ${isInitialLoad ? 'initial-load' : ''}`}>
         {/* Left Sidebar */}
         <aside 
-          className={`sidebar ${isSidebarCollapsed ? 'collapsed' : ''} ${isInitialLoad ? 'fullscreen' : ''} ${isResizing ? 'resizing' : ''}`}
+          className={`sidebar ${sidebarCollapsed ? 'collapsed' : ''} ${isInitialLoad ? 'fullscreen' : ''} ${isResizing ? 'resizing' : ''}`}
           onClick={isInitialLoad && !isMobile ? handleInitialClick : undefined}
           style={
             isInitialLoad && !isMobile
@@ -487,7 +498,7 @@ function App() {
 
         {/* Right Main Content */}
         <main 
-          className={`main-content ${isSidebarCollapsed ? 'sidebar-collapsed' : ''} ${isInitialLoad ? 'hidden' : ''} ${isResizing ? 'resizing' : ''}`}
+          className={`main-content ${sidebarCollapsed ? 'sidebar-collapsed' : ''} ${isInitialLoad ? 'hidden' : ''} ${isResizing ? 'resizing' : ''}`}
           style={
             !isInitialLoad && !isSidebarCollapsed && !isMobile
               ? { marginLeft: `${sidebarWidth}px` }
