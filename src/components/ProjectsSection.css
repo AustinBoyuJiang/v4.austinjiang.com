@@ -1,26 +1,91 @@
 /* Projects Section Component Styles */
 
-#projects {
-  container-type: inline-size;
-}
-
-/* Three cards per row; the collapsed view shows exactly one row */
-.projects-grid {
+/* Horizontal rail: two and a half cards in view, the half card hints at more */
+.projects-rail {
+  --rail-gap: 1rem;
+  --rail-fade: 56px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  max-width: 1200px;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 2 * var(--rail-gap)) / 2.5);
+  gap: var(--rail-gap);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  /* Room for the card hover lift, which overflow would otherwise clip */
+  padding: 6px 0 10px;
+  margin: -6px 0 -10px;
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - var(--rail-fade)), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - var(--rail-fade)), transparent);
 }
 
-.sidebar-collapsed .projects-grid {
-  max-width: 1020px;
-  margin: 0 auto;
+.projects-rail::-webkit-scrollbar {
+  display: none;
 }
 
-/* Very narrow content column (sidebar dragged wide): fall back to two */
-@container (max-width: 600px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+/* Scrolled to the end: fade the partial card on the left instead */
+.projects-rail.at-end {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--rail-fade));
+  mask-image: linear-gradient(to right, transparent, #000 var(--rail-fade));
+}
+
+.projects-rail.at-start.at-end {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.projects-rail:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.projects-rail .project-card {
+  scroll-snap-align: start;
+}
+
+/* Previous / next buttons at the end of the section heading */
+.rail-controls {
+  order: 2;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.rail-button {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--text-primary) 14%, transparent);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.rail-button:hover:not(:disabled),
+.rail-button:focus-visible {
+  color: var(--text-primary);
+  border-color: color-mix(in srgb, var(--text-primary) 32%, transparent);
+  background: color-mix(in srgb, var(--text-primary) 5%, transparent);
+}
+
+.rail-button:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+.rail-button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* Touch devices swipe the rail directly */
+@media (hover: none) {
+  .rail-controls {
+    display: none;
   }
 }
 
@@ -226,7 +291,6 @@
   margin-bottom: 0.75rem;
   font-size: 0.83rem;
   line-height: 1.5;
-  flex-grow: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
@@ -321,20 +385,11 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 1rem !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-  }
-
-  .project-card {
-    width: 100% !important;
-    max-width: 350px !important;
-    margin: 0 auto !important;
+  /* Phones: one card with the next one peeking in */
+  .projects-rail {
+    --rail-fade: 32px;
+    grid-auto-columns: 84%;
+    gap: 0.85rem;
   }
 
   .project-content {

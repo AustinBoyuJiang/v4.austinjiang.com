@@ -7,12 +7,6 @@
   max-width: 100%;
 }
 
-/* Match posts width with projects when sidebar is collapsed */
-.sidebar-collapsed .posts-timeline {
-  max-width: 1020px;
-  margin: 0 auto;
-}
-
 .posts-timeline::before {
   content: '';
   position: absolute;
@@ -25,15 +19,17 @@
 
 .posts-year {
   position: relative;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .posts-year-title {
-  font-size: 1.4rem;
-  color: var(--primary-blue);
-  font-weight: 700;
-  margin-bottom: 1.2rem;
   position: relative;
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+  color: var(--primary-blue);
 }
 
 .posts-year-title::before {
@@ -52,21 +48,36 @@
 .posts-posts {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.95rem;
 }
 
+/* Compact row: date column, text, optional thumbnail */
 .posts-post-item {
   position: relative;
+  display: grid;
+  grid-template-columns: 3.4rem minmax(0, 1fr);
+  grid-template-areas:
+    'date body'
+    '.    tags';
+  column-gap: 0.75rem;
+  align-items: start;
   padding-left: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.posts-post-item.has-cover {
+  grid-template-columns: 3.4rem minmax(0, 1fr) 120px;
+  grid-template-areas:
+    'date body cover'
+    '.    tags cover';
 }
 
 .posts-post-item::before {
   content: '';
   position: absolute;
   left: -1.25rem;
-  top: 0.5rem;
+  top: 0.4rem;
   width: 8px;
   height: 8px;
   background-color: var(--border-color);
@@ -81,45 +92,30 @@
 }
 
 .posts-post-item:hover {
-  transform: translateX(0.5rem);
-}
-
-/* 外部链接样式 */
-.posts-post-item.external-link {
-  position: relative;
-}
-
-.posts-post-item.external-link::after {
-  content: '↗';
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  transition: all 0.3s ease;
-}
-
-.posts-post-item.external-link:hover::after {
-  color: var(--primary-blue);
-  transform: translate(2px, -2px);
+  transform: translateX(0.35rem);
 }
 
 .posts-post-date {
-  font-size: 0.75rem;
-  color: var(--text-muted);
+  grid-area: date;
+  padding-top: 0.12rem;
+  font-size: 0.74rem;
   font-weight: 500;
-  margin-bottom: 0.2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+
+.posts-post-body {
+  grid-area: body;
+  min-width: 0;
 }
 
 .posts-post-title {
-  font-size: 1rem;
-  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+  font-size: 0.94rem;
   font-weight: 600;
-  margin-bottom: 0.3rem;
-  line-height: 1.3;
+  line-height: 1.35;
+  color: var(--text-primary);
   transition: color 0.3s ease;
 }
 
@@ -127,11 +123,25 @@
   color: var(--primary-blue);
 }
 
+/* Outbound marker sits after the title instead of floating in the corner */
+.posts-external {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.posts-post-item:hover .posts-external {
+  color: var(--primary-blue);
+  transform: translate(2px, -2px);
+}
+
 .posts-post-excerpt {
-  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
   color: var(--text-secondary);
-  line-height: 1.4;
-  margin-bottom: 0.5rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
@@ -140,34 +150,34 @@
 }
 
 .posts-post-cover {
-  margin: 0.8rem 0;
-  border-radius: 8px;
+  grid-area: cover;
+  aspect-ratio: 16 / 9;
+  margin-top: 0.15rem;
+  border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  border: 1px solid color-mix(in srgb, var(--text-primary) 8%, transparent);
 }
 
 .posts-cover-image {
-  width: 100%;
-  height: auto;
-  max-height: 200px;
-  object-fit: cover;
   display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.3s ease;
 }
 
 .posts-post-item:hover .posts-cover-image {
-  transform: scale(1.02);
+  transform: scale(1.04);
 }
 
 .posts-section-author {
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  color: var(--text-secondary);
-  font-size: 0.8rem;
+  margin-right: 0.6rem;
+  font-size: 0.74rem;
   font-weight: 400;
-  margin-right: 0.8rem;
+  color: var(--text-secondary);
 }
 
 .posts-section-author svg {
@@ -175,9 +185,10 @@
 }
 
 .posts-post-tags {
+  grid-area: tags;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.45rem;
   align-items: center;
 }
 
@@ -199,12 +210,23 @@
   border-color: rgba(135, 206, 235, 0.22);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .posts-post-item,
+  .posts-external,
+  .posts-cover-image {
+    transition: none;
+  }
+
+  .posts-post-item:hover,
+  .posts-post-item:hover .posts-cover-image {
+    transform: none;
+  }
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .posts-timeline {
     padding-left: 1.5rem;
-    max-width: 100% !important;
-    margin: 0 !important;
   }
 
   .posts-timeline::before {
@@ -212,7 +234,7 @@
   }
 
   .posts-year-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .posts-year-title::before {
@@ -221,8 +243,17 @@
     height: 10px;
   }
 
+  /* Date moves above the text; thumbnail stays small on the right */
   .posts-post-item {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'date' 'body' 'tags';
+    row-gap: 0.15rem;
     padding-left: 0.8rem;
+  }
+
+  .posts-post-item.has-cover {
+    grid-template-columns: minmax(0, 1fr) 84px;
+    grid-template-areas: 'date date' 'body cover' 'tags tags';
   }
 
   .posts-post-item::before {
@@ -233,9 +264,5 @@
 
   .posts-post-title {
     font-size: 0.9rem;
-  }
-
-  .posts-cover-image {
-    max-height: 150px;
   }
 }

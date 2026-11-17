@@ -10,11 +10,6 @@
   max-width: 100%;
 }
 
-/* Match the posts/projects column width when the sidebar is collapsed */
-.sidebar-collapsed .research-content {
-  max-width: 1020px;
-  margin: 0 auto;
-}
 
 /* ---------- Research statement ---------- */
 
@@ -348,11 +343,6 @@ a.pub-media:focus-visible {
 }
 
 @media (max-width: 768px) {
-  .research-content {
-    max-width: 100% !important;
-    margin: 0 !important;
-  }
-
   .research-statement p {
     font-size: 0.92rem;
   }

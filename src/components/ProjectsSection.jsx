@@ -1,41 +1,39 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import ProjectMedia from './ProjectMedia'
 import './ProjectsSection.css'
 
 const ProjectsSection = ({ projects }) => {
-  const [isExpanded, setIsExpanded] = useState(false)
   const [activeVideo, setActiveVideo] = useState(null)
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+  const railRef = useRef(null)
+  const [edges, setEdges] = useState({ atStart: true, atEnd: false })
 
-  // Listen for window resize events with debouncing
+  // Track whether the rail can scroll further in either direction
+  const updateEdges = useCallback(() => {
+    const rail = railRef.current
+    if (!rail) return
+    const max = rail.scrollWidth - rail.clientWidth
+    setEdges({ atStart: rail.scrollLeft <= 2, atEnd: rail.scrollLeft >= max - 2 })
+  }, [])
+
   useEffect(() => {
-    let timeoutId = null
-    
-    const handleResize = () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId)
-      }
-      
-      timeoutId = setTimeout(() => {
-        const newIsMobile = window.innerWidth <= 768
-        setIsMobile(newIsMobile)
-        
-        // Reset expanded state when switching between mobile and desktop
-        if (newIsMobile !== isMobile) {
-          setIsExpanded(false)
-          setActiveVideo(null)
-        }
-      }, 150) // 150ms debounce
-    }
+    const rail = railRef.current
+    if (!rail) return
+    updateEdges()
+    const observer = new ResizeObserver(updateEdges)
+    observer.observe(rail)
+    return () => observer.disconnect()
+  }, [updateEdges, projects?.length])
 
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-      if (timeoutId) {
-        clearTimeout(timeoutId)
-      }
-    }
-  }, [isMobile])
+  // Step two cards at a time (2.5 are visible)
+  const scrollRail = (direction) => {
+    const rail = railRef.current
+    if (!rail) return
+    const card = rail.querySelector('.project-card')
+    const gap = parseFloat(getComputedStyle(rail).columnGap) || 0
+    const step = card ? (card.getBoundingClientRect().width + gap) * 2 : rail.clientWidth * 0.8
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    rail.scrollBy({ left: direction * step, behavior: reduceMotion ? 'auto' : 'smooth' })
+  }
 
   if (!projects || projects.length === 0) {
     return (
@@ -46,10 +44,7 @@ const ProjectsSection = ({ projects }) => {
     )
   }
 
-  // Collapsed view shows a single row of three
-  const ROW_SIZE = 3
-  const displayedProjects = isExpanded ? projects : projects.slice(0, ROW_SIZE)
-  const hasMoreItems = projects.length > ROW_SIZE
+  const canScroll = !(edges.atStart && edges.atEnd)
 
   const getLinkIcon = (type) => {
     switch (type) {
@@ -116,31 +111,43 @@ const ProjectsSection = ({ projects }) => {
   return (
     <section id="projects" className="section">
       <div className="section-header">
-        <h2 
-          className={`section-title ${hasMoreItems ? 'clickable' : ''}`}
-          onClick={hasMoreItems ? () => {
-            setIsExpanded(!isExpanded)
-            setActiveVideo(null)
-          } : undefined}
-          role={hasMoreItems ? "button" : undefined}
-          tabIndex={hasMoreItems ? 0 : undefined}
-          onKeyDown={hasMoreItems ? (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault()
-              setIsExpanded(!isExpanded)
-              setActiveVideo(null)
-            }
-          } : undefined}
-          aria-label={hasMoreItems ? `Projects section - ${isExpanded ? 'Click to show less' : 'Click to show more'}` : 'Projects section'}
-        >
-          Projects
-          {hasMoreItems && (
-            <div className={`expand-triangle ${isExpanded ? 'expanded' : ''}`}></div>
-          )}
-        </h2>
+        <h2 className="section-title">Projects</h2>
+        {canScroll && (
+          <div className="rail-controls">
+            <button
+              type="button"
+              className="rail-button"
+              onClick={() => scrollRail(-1)}
+              disabled={edges.atStart}
+              aria-label="Previous projects"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M15 6l-6 6 6 6" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              className="rail-button"
+              onClick={() => scrollRail(1)}
+              disabled={edges.atEnd}
+              aria-label="Next projects"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
-      <div className="projects-grid">
-        {displayedProjects.map(project => (
+      <div
+        ref={railRef}
+        className={`projects-rail ${edges.atStart ? 'at-start' : ''} ${edges.atEnd ? 'at-end' : ''}`}
+        onScroll={updateEdges}
+        tabIndex={0}
+        role="region"
+        aria-label="Projects, scroll horizontally"
+      >
+        {projects.map(project => (
           <div key={project.id || project.title} className="project-card">
             <ProjectMedia
               project={project}
@@ -190,18 +197,6 @@ const ProjectsSection = ({ projects }) => {
           </div>
         ))}
       </div>
-      
-      {/* View More Button */}
-      {!isExpanded && hasMoreItems && (
-        <div className="view-more-container">
-          <button 
-            onClick={() => setIsExpanded(true)}
-            className="view-more-button"
-          >
-            View More
-          </button>
-        </div>
-      )}
     </section>
   )
 }

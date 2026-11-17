@@ -25,7 +25,7 @@ function App() {
   const [sidebarWidth, setSidebarWidth] = useState(580)
   const [isResizing, setIsResizing] = useState(false)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024)
-  const { profile, projects, research, posts, anime, settings, loading, error } = useData()
+  const { profile, projects, research, posts, anime, settings, loading } = useData()
 
   // Apply theme when settings are loaded
   useEffect(() => {
@@ -344,21 +344,21 @@ function App() {
 
   // Render section component based on settings
   const renderSection = (section) => {
-    const commonProps = { key: section.id }
+    const key = section.id
     
     switch (section.component) {
       case 'AboutSection':
-        return <AboutSection {...commonProps} />
+        return <AboutSection key={key} />
       case 'ProjectsSection':
-        return <ProjectsSection {...commonProps} projects={projects || []} />
+        return <ProjectsSection key={key} projects={projects || []} />
       case 'ResearchSection':
-        return <ResearchSection {...commonProps} research={research} selfName={profile?.personal?.name} />
+        return <ResearchSection key={key} research={research} selfName={profile?.personal?.name} />
       case 'AnimeSection':
-        return <AnimeSection {...commonProps} anime={anime || []} isSidebarCollapsed={isSidebarCollapsed} />
+        return <AnimeSection key={key} anime={anime || []} />
       case 'PostsSection':
-        return <PostsSection {...commonProps} posts={posts || []} onPostClick={navigateToPostPage} />
+        return <PostsSection key={key} posts={posts || []} onPostClick={navigateToPostPage} />
       case 'ContactSection':
-        return <ContactSection {...commonProps} email={profile?.personal?.email} />
+        return <ContactSection key={key} email={profile?.personal?.email} />
       default:
         return null
     }

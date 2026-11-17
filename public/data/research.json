@@ -1,6 +1,6 @@
 {
   "statement": [
-    "I want to make **spatial and embodied intelligence efficient enough to scale**. My recent work asks where computation actually matters inside 3D foundation models, and how robots can keep improving by building executable structure rather than relying on more data alone."
+    "My research spans **spatial foundation models** and **embodied AI**, from efficient 3D reconstruction to agents for household robot tasks. More broadly, I'm interested in **computer vision** and **world models**, especially generative, interactive world models for games."
   ],
   "publications": [
     {

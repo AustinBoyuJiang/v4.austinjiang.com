@@ -1,6 +1,13 @@
 import './Footer.css'
 import { useData } from '../hooks/useData'
 
+// First year the site was published; the end year is stamped in at build time
+const SITE_START_YEAR = 2025
+const BUILD_YEAR = Number(__BUILD_YEAR__)
+const COPYRIGHT_YEARS = BUILD_YEAR > SITE_START_YEAR
+  ? `${SITE_START_YEAR}–${BUILD_YEAR}`
+  : `${SITE_START_YEAR}`
+
 const Footer = () => {
   const data = useData()
   
@@ -13,7 +20,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <p className="footer-text">
-          © 2025 Austin Jiang{' '}
+          © {COPYRIGHT_YEARS} Austin Jiang{' '}
           {(githubLink || linkedinLink || xLink) && (
             <span className="footer-social-section">
               <span className="footer-separator social-separator">·</span>

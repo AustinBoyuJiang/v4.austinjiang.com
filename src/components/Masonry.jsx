@@ -58,15 +58,13 @@ const preloadImages = async urls => {
   ));
 };
 
+// PostPage also passes ease, duration, stagger and blurToFocus for the
+// entrance animation; that animation is currently off, so they are not read.
 const Masonry = ({
   items,
-  ease = 'power3.out',
-  duration = 0.6,
-  stagger = 0.05,
   animateFrom = 'bottom',
   scaleOnHover = true,
   hoverScale = 0.95,
-  blurToFocus = true,
   colorShiftOnHover = false,
   columns: customColumns = null
 }) => {
@@ -79,21 +77,25 @@ const Masonry = ({
   // 检测是否为移动设备
   const isMobile = useMedia(['(max-width: 768px)'], [true], false);
   
+  // Custom breakpoint columns: the hook always runs so hook order never changes
+  const customMediaColumns = useMedia(
+    customColumns?.breakpoints || ['(min-width:1500px)', '(min-width:1200px)', '(min-width:769px)'],
+    customColumns?.values || [5, 4, 2],
+    customColumns?.default || 1
+  );
+
   // 如果提供了自定义列数配置，使用自定义的，但在移动端强制使用单列
   const columns = isMobile ? 1 : (customColumns ? (
-    typeof customColumns === 'number' ? customColumns : useMedia(
-      customColumns.breakpoints || ['(min-width:1500px)', '(min-width:1200px)', '(min-width:769px)'],
-      customColumns.values || [5, 4, 2],
-      customColumns.default || 1
-    )
+    typeof customColumns === 'number' ? customColumns : customMediaColumns
   ) : defaultColumns);
   
   const [containerRef, { width }] = useMeasure();
-  const [imagesReady, setImagesReady] = useState(false);
+  const [, setImagesReady] = useState(false);
   const [imageDimensions, setImageDimensions] = useState({});
-  const [isInitialized, setIsInitialized] = useState(false);
+  const [, setIsInitialized] = useState(false);
   
-  const getInitialPosition = item => {
+  // Starting position for the (currently disabled) entrance animation
+  const _getInitialPosition = item => {
     const containerRect = containerRef.current?.getBoundingClientRect();
     if (!containerRect) return { x: item.x || 0, y: item.y || 0 };
     
@@ -188,14 +190,15 @@ const Masonry = ({
     return newGrid;
   }, [columns, items, width, isMobile, imageDimensions]);
   
-  const hasMounted = useRef(false);
-  const prevColumns = useRef(columns);
-  const prevWidth = useRef(width);
+  // Previous-layout refs, reserved for animating column changes
+  const _hasMounted = useRef(false);
+  const _prevColumns = useRef(columns);
+  const _prevWidth = useRef(width);
   
   useLayoutEffect(() => {
     if (!width || grid.items.length === 0 || isMobile) return; // 移动端跳过GSAP布局
     
-    grid.items.forEach((item, index) => {
+    grid.items.forEach((item) => {
       const selector = `[data-key="${item.id}"]`;
       
       // 直接设置位置，确保元素始终可见

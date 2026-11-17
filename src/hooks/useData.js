@@ -81,7 +81,7 @@ export const useData = () => {
             },
             sections: [
               { id: "about", name: "About", enabled: true, order: 1, component: "AboutSection" },
-              { id: "posts", name: "Posts", enabled: true, order: 2, component: "PostsSection" },
+              { id: "posts", name: "Writing", enabled: true, order: 2, component: "PostsSection" },
               { id: "projects", name: "Projects", enabled: true, order: 3, component: "ProjectsSection" },
               { id: "research", name: "Research", enabled: false, order: 4, component: "ResearchSection" },
               { id: "contact", name: "Contact", enabled: true, order: 5, component: "ContactSection" },

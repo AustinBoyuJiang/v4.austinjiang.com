@@ -1,28 +1,19 @@
 import { useState, useEffect, useRef } from 'react'
 import './AnimeSection.css'
 
-const AnimeSection = ({ anime, isSidebarCollapsed }) => {
+const AnimeSection = ({ anime }) => {
   const [canvasPosition, setCanvasPosition] = useState({ x: 0, y: 0 })
   const [canvasScale, setCanvasScale] = useState(1)
   const [isDragging, setIsDragging] = useState(false)
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
-  const [imageLoaded, setImageLoaded] = useState({})
+  // Natural image sizes are recorded but not read yet
+  const [, setImageLoaded] = useState({})
   const [isInitialized, setIsInitialized] = useState(false)
   const canvasRef = useRef(null)
 
 
-
-  if (!anime || !anime.items || anime.items.length === 0) {
-    return (
-      <section id="anime" className="section">
-        <h2 className="section-title">Image Gallery</h2>
-        <div className="loading">Loading anime...</div>
-      </section>
-    )
-  }
-
   // Get config and items from new JSON structure
-  const config = anime.config || {}
+  const config = anime?.config || {}
   const canvasConfig = config.canvas || { width: 2000, height: 1500 }
   const titleConfig = config.title || {
     text: "My Favourite Animes",
@@ -32,7 +23,7 @@ const AnimeSection = ({ anime, isSidebarCollapsed }) => {
     rotation: -1,
     color: "#2C3E50"
   }
-  const displayedAnime = anime.items
+  const displayedAnime = anime?.items
 
   // Handle image loading to get natural dimensions
   const handleImageLoad = (id, naturalWidth, naturalHeight) => {
@@ -55,7 +46,8 @@ const AnimeSection = ({ anime, isSidebarCollapsed }) => {
     }
   }
 
-  const handleMouseMove = (e) => {
+  // Dragging is handled by the document listeners below; these stay for element-level use
+  const _handleMouseMove = (e) => {
     if (!isDragging) return
 
     const newX = e.clientX - dragStart.x
@@ -67,7 +59,7 @@ const AnimeSection = ({ anime, isSidebarCollapsed }) => {
     })
   }
 
-  const handleMouseUp = () => {
+  const _handleMouseUp = () => {
     setIsDragging(false)
   }
 
@@ -217,7 +209,15 @@ const AnimeSection = ({ anime, isSidebarCollapsed }) => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-
+  // Every hook above runs on each render; only bail out after them
+  if (!anime || !anime.items || anime.items.length === 0) {
+    return (
+      <section id="anime" className="section">
+        <h2 className="section-title">Image Gallery</h2>
+        <div className="loading">Loading anime...</div>
+      </section>
+    )
+  }
 
   return (
     <section id="anime" className="section">

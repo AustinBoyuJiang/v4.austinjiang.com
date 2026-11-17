@@ -81,7 +81,7 @@
         },
         {
             "id": "posts",
-            "name": "Posts",
+            "name": "Writing",
             "enabled": true,
             "order": 3,
             "component": "PostsSection"

@@ -223,7 +223,19 @@ const ResearchSection = ({ research, selfName }) => {
 
   const hasMoreItems = entries.length > VISIBLE_COUNT
   const displayed = isExpanded ? entries : entries.slice(0, VISIBLE_COUNT)
-  const toggle = () => setIsExpanded(expanded => !expanded)
+  // Expand or collapse; after collapsing, bring the section heading back into view
+  const toggle = () => {
+    const collapsing = isExpanded
+    setIsExpanded(!isExpanded)
+    if (!collapsing) return
+    requestAnimationFrame(() => {
+      const section = document.getElementById('research')
+      if (section && section.getBoundingClientRect().top < 0) {
+        const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+        section.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' })
+      }
+    })
+  }
 
   return (
     <section id="research" className="section">
@@ -263,10 +275,10 @@ const ResearchSection = ({ research, selfName }) => {
           </div>
         )}
 
-        {!isExpanded && hasMoreItems && (
+        {hasMoreItems && (
           <div className="view-more-container">
-            <button onClick={() => setIsExpanded(true)} className="view-more-button">
-              View More
+            <button onClick={toggle} className="view-more-button" aria-expanded={isExpanded}>
+              {isExpanded ? 'View Less' : 'View More'}
             </button>
           </div>
         )}
