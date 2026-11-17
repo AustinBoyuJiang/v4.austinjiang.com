@@ -74,7 +74,7 @@ export const getSectionComponent = (sectionId) => {
   const componentMap = {
     'about': 'AboutSection',
     'projects': 'ProjectsSection',
-    'publications': 'PublicationsSection',
+    'research': 'ResearchSection',
     'anime': 'AnimeSection',
     'posts': 'PostsSection',
     'contact': 'ContactSection'

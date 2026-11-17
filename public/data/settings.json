@@ -73,11 +73,11 @@
             "component": "AboutSection"
         },
         {
-            "id": "publications",
-            "name": "Publications",
+            "id": "research",
+            "name": "Research",
             "enabled": true,
             "order": 2,
-            "component": "PublicationsSection"
+            "component": "ResearchSection"
         },
         {
             "id": "posts",

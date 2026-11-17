@@ -87,11 +87,11 @@
             "component": "ProjectsSection"
         },
         {
-            "id": "publications",
-            "name": "Publications",
+            "id": "research",
+            "name": "Research",
             "enabled": false,
             "order": 4,
-            "component": "PublicationsSection"
+            "component": "ResearchSection"
         },
         {
             "id": "contact",

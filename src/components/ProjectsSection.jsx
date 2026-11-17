@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import ProjectMedia from './ProjectMedia'
 import './ProjectsSection.css'
 
-const ProjectsSection = ({ projects, isSidebarCollapsed }) => {
+const ProjectsSection = ({ projects }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const [activeVideo, setActiveVideo] = useState(null)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
@@ -46,28 +46,10 @@ const ProjectsSection = ({ projects, isSidebarCollapsed }) => {
     )
   }
 
-  // Adjust number of projects based on screen size and sidebar state
-  const getProjectsToShow = () => {
-    if (isExpanded) return projects
-    
-    if (isMobile) {
-      return projects.slice(0, 3) // Always show 3 on mobile
-    } else {
-      // Desktop: When sidebar is collapsed, show 3 projects; when expanded, show 4
-      const itemsToShow = isSidebarCollapsed ? 3 : 4
-      return projects.slice(0, itemsToShow)
-    }
-  }
-
-  const displayedProjects = getProjectsToShow()
-  
-  // Check if there are more items to show
-  const getMaxItems = () => {
-    if (isMobile) return 3
-    return isSidebarCollapsed ? 3 : 4
-  }
-  
-  const hasMoreItems = projects.length > getMaxItems()
+  // Collapsed view shows a single row of three
+  const ROW_SIZE = 3
+  const displayedProjects = isExpanded ? projects : projects.slice(0, ROW_SIZE)
+  const hasMoreItems = projects.length > ROW_SIZE
 
   const getLinkIcon = (type) => {
     switch (type) {

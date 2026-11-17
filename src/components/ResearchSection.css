@@ -1,19 +1,75 @@
-/* Publications Section Component Styles */
+/* Research Section Component Styles */
 
-.publications-list {
+.research-content {
   --pub-hairline: color-mix(in srgb, var(--text-primary) 9%, transparent);
   --pub-hairline-strong: color-mix(in srgb, var(--primary-color) 38%, transparent);
   container-type: inline-size;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.25rem;
   max-width: 100%;
 }
 
 /* Match the posts/projects column width when the sidebar is collapsed */
-.sidebar-collapsed .publications-list {
+.sidebar-collapsed .research-content {
   max-width: 1020px;
   margin: 0 auto;
+}
+
+/* ---------- Research statement ---------- */
+
+.research-statement {
+  max-width: 62ch;
+}
+
+.research-statement p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
+.research-statement p + p {
+  margin-top: 0.8rem;
+}
+
+.research-statement strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ---------- Entries ---------- */
+
+.pub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.pub-entry {
+  display: grid;
+  gap: 1.1rem;
+}
+
+/* Side by side once there is room: media left, text right */
+@container (min-width: 560px) {
+  .pub-entry {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+    gap: 1.6rem;
+    align-items: center;
+  }
+
+  .pub-entry--text {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@container (min-width: 880px) {
+  .pub-entry {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 2rem;
+  }
 }
 
 /* ---------- Media ---------- */
@@ -120,21 +176,7 @@ a.pub-media:focus-visible {
   outline-offset: 3px;
 }
 
-/* ---------- Featured entry ---------- */
-
-.pub-featured {
-  display: grid;
-  gap: 1.15rem;
-}
-
-/* Wide column (collapsed sidebar): media left, text right */
-@container (min-width: 880px) {
-  .pub-featured {
-    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-    gap: 2rem;
-    align-items: center;
-  }
-}
+/* ---------- Entry text ---------- */
 
 .pub-body {
   min-width: 0;
@@ -145,7 +187,7 @@ a.pub-media:focus-visible {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.45rem;
   font-size: 0.62rem;
   font-weight: 600;
   line-height: 1;
@@ -165,8 +207,8 @@ a.pub-media:focus-visible {
 }
 
 .pub-title {
-  margin: 0 0 0.55rem;
-  font-size: 1.22rem;
+  margin: 0 0 0.35rem;
+  font-size: 1.04rem;
   font-weight: 600;
   line-height: 1.32;
   letter-spacing: -0.012em;
@@ -188,9 +230,9 @@ a.pub-media:focus-visible {
 }
 
 .pub-authors {
-  margin: 0 0 0.2rem;
-  font-size: 0.86rem;
-  line-height: 1.5;
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.45;
   color: var(--text-secondary);
 }
 
@@ -203,19 +245,17 @@ a.pub-media:focus-visible {
   text-underline-offset: 3px;
 }
 
-.pub-affiliations {
-  margin: 0;
-  font-size: 0.78rem;
-  line-height: 1.5;
-  color: var(--text-muted);
-}
-
 .pub-tldr {
-  margin: 0.85rem 0 0;
-  font-size: 0.88rem;
-  line-height: 1.6;
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.55;
   color: var(--text-secondary);
   text-wrap: pretty;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .pub-tldr strong {
@@ -228,22 +268,21 @@ a.pub-media:focus-visible {
 .pub-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 1rem;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
 }
 
 .pub-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  min-height: 30px;
-  padding: 0.3rem 0.75rem;
+  min-height: 26px;
+  padding: 0.22rem 0.65rem;
   border-radius: 999px;
   border: 1px solid var(--pub-hairline);
   background: transparent;
   color: var(--text-secondary);
   font: inherit;
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-weight: 500;
   line-height: 1;
   cursor: pointer;
@@ -293,44 +332,6 @@ a.pub-media:focus-visible {
   white-space: pre;
 }
 
-/* ---------- Compact entries (2nd paper onward) ---------- */
-
-.pub-compact-list {
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid var(--pub-hairline);
-}
-
-.pub-compact {
-  display: grid;
-  grid-template-columns: 168px minmax(0, 1fr);
-  gap: 1.1rem;
-  align-items: start;
-  padding: 1.1rem 0;
-  border-bottom: 1px solid var(--pub-hairline);
-}
-
-.pub-compact--no-media {
-  grid-template-columns: minmax(0, 1fr);
-}
-
-.pub-media--compact {
-  border-radius: 6px;
-}
-
-.pub-compact .pub-title {
-  font-size: 1rem;
-  margin-bottom: 0.35rem;
-}
-
-.pub-compact .pub-authors {
-  font-size: 0.8rem;
-}
-
-.pub-compact .pub-links {
-  margin-top: 0.6rem;
-}
-
 /* ---------- Motion & small screens ---------- */
 
 @media (prefers-reduced-motion: reduce) {
@@ -347,9 +348,13 @@ a.pub-media:focus-visible {
 }
 
 @media (max-width: 768px) {
-  .publications-list {
+  .research-content {
     max-width: 100% !important;
     margin: 0 !important;
+  }
+
+  .research-statement p {
+    font-size: 0.92rem;
   }
 
   .pub-media {
@@ -363,19 +368,6 @@ a.pub-media:focus-visible {
   }
 
   .pub-title {
-    font-size: 1.05rem;
-  }
-
-  .pub-authors {
-    font-size: 0.82rem;
-  }
-
-  .pub-tldr {
-    font-size: 0.85rem;
-  }
-
-  .pub-compact {
-    grid-template-columns: 112px minmax(0, 1fr);
-    gap: 0.85rem;
+    font-size: 1.02rem;
   }
 }

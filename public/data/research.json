@@ -1,0 +1,59 @@
+{
+  "statement": [
+    "I want to make **spatial and embodied intelligence efficient enough to scale**. My recent work asks where computation actually matters inside 3D foundation models, and how robots can keep improving by building executable structure rather than relying on more data alone."
+  ],
+  "publications": [
+    {
+      "id": "geohalt",
+      "title": "GeoHalt: Adaptive Token Halting for Efficient Visual Geometry Transformers",
+      "shortName": "GeoHalt",
+      "authors": [
+        "Austin Jiang",
+        "Chengjie Huang",
+        "Guile Wu",
+        "Dongfeng Bai"
+      ],
+      "year": 2026,
+      "status": "preprint",
+      "venue": null,
+      "highlight": null,
+      "tldr": "Learns when each image patch can stop updating, making visual geometry transformers **up to 2.16× faster**.",
+      "media": {
+        "video": "/videos/research/geohalt-loop.mp4",
+        "poster": "/images/research/geohalt-poster.jpg",
+        "startAt": 2.5
+      },
+      "links": {
+        "project": "https://geohalt.github.io",
+        "paper": null,
+        "arxiv": null,
+        "code": null
+      },
+      "bibtex": "@article{jiang2026geohalt,\n  title   = {GeoHalt: Adaptive Token Halting for Efficient Visual Geometry Transformers},\n  author  = {Jiang, Austin and Huang, Chengjie and Wu, Guile and Bai, Dongfeng},\n  year    = {2026}\n}"
+    },
+    {
+      "id": "behavior-1k-2026",
+      "title": "Scaling by Structure: What Forms Can Scaling Take in Embodied AI?",
+      "shortName": "Scaling by Structure",
+      "authors": [
+        "Team “The North Star”, Huawei Noah's Ark Lab"
+      ],
+      "year": 2026,
+      "status": "technical-report",
+      "venue": "BEHAVIOR Challenge 2026",
+      "highlight": "1st place",
+      "tldr": "A frozen VLM coding agent that builds robot pipelines. **Ranked 1st** on all 100 BEHAVIOR-1K tasks.",
+      "media": {
+        "video": "/videos/research/behavior1k-loop.mp4",
+        "poster": "/images/research/behavior1k-poster.jpg",
+        "startAt": 3
+      },
+      "links": {
+        "project": "https://behavior1k-champion.com",
+        "report": "https://behavior1k-champion.com/assets/HiPhys-RSI_tech_report.pdf",
+        "leaderboard": "https://huggingface.co/spaces/behavior-1k/2026-challenge-leaderboard"
+      },
+      "bibtex": "@techreport{hiphysrsi2026,\n  title  = {Scaling by Structure: What Forms Can Scaling Take in Embodied AI?},\n  author = {Huawei Noah's Ark Lab EAI Team},\n  year   = {2026},\n  note   = {1st place, 2026 BEHAVIOR Challenge},\n  url    = {https://behavior1k-champion.com/assets/HiPhys-RSI_tech_report.pdf}\n}"
+    }
+  ]
+}

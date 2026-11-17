@@ -5,7 +5,7 @@ import PostsSection from './components/PostsSection'
 import PostPage from './components/PostPage'
 import AboutSection from './components/AboutSection'
 import ProjectsSection from './components/ProjectsSection'
-import PublicationsSection from './components/PublicationsSection'
+import ResearchSection from './components/ResearchSection'
 import AnimeSection from './components/AnimeSection'
 import ContactSection from './components/ContactSection'
 import ProfileBackground from './components/ProfileBackground'
@@ -25,7 +25,7 @@ function App() {
   const [sidebarWidth, setSidebarWidth] = useState(580)
   const [isResizing, setIsResizing] = useState(false)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024)
-  const { profile, projects, publications, posts, anime, settings, loading, error } = useData()
+  const { profile, projects, research, posts, anime, settings, loading, error } = useData()
 
   // Apply theme when settings are loaded
   useEffect(() => {
@@ -350,9 +350,9 @@ function App() {
       case 'AboutSection':
         return <AboutSection {...commonProps} />
       case 'ProjectsSection':
-        return <ProjectsSection {...commonProps} projects={projects || []} isSidebarCollapsed={isSidebarCollapsed} />
-      case 'PublicationsSection':
-        return <PublicationsSection {...commonProps} publications={publications || []} selfName={profile?.personal?.name} />
+        return <ProjectsSection {...commonProps} projects={projects || []} />
+      case 'ResearchSection':
+        return <ResearchSection {...commonProps} research={research} selfName={profile?.personal?.name} />
       case 'AnimeSection':
         return <AnimeSection {...commonProps} anime={anime || []} isSidebarCollapsed={isSidebarCollapsed} />
       case 'PostsSection':

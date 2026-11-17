@@ -4,7 +4,7 @@ export const useData = () => {
   const [data, setData] = useState({
     profile: null,
     projects: [],
-    publications: [],
+    research: null,
     posts: [],
     anime: [],
     settings: null,
@@ -15,19 +15,19 @@ export const useData = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [profileRes, projectsRes, publicationsRes, postsRes, animeRes, settingsRes] = await Promise.all([
+        const [profileRes, projectsRes, researchRes, postsRes, animeRes, settingsRes] = await Promise.all([
           fetch('/data/profile.json'),
           fetch('/data/projects.json'),
-          fetch('/data/publications.json'),
+          fetch('/data/research.json'),
           fetch('/data/posts.json'),
           fetch('/data/anime.json'),
           fetch('/data/settings.json')
         ])
 
-        const [profile, projects, publications, posts, anime, settings] = await Promise.all([
+        const [profile, projects, research, posts, anime, settings] = await Promise.all([
           profileRes.json(),
           projectsRes.json(),
-          publicationsRes.json(),
+          researchRes.json(),
           postsRes.json(),
           animeRes.json(),
           settingsRes.json()
@@ -36,7 +36,7 @@ export const useData = () => {
         setData({
           profile,
           projects,
-          publications,
+          research,
           posts,
           anime,
           settings,
@@ -83,7 +83,7 @@ export const useData = () => {
               { id: "about", name: "About", enabled: true, order: 1, component: "AboutSection" },
               { id: "posts", name: "Posts", enabled: true, order: 2, component: "PostsSection" },
               { id: "projects", name: "Projects", enabled: true, order: 3, component: "ProjectsSection" },
-              { id: "publications", name: "Publications", enabled: false, order: 4, component: "PublicationsSection" },
+              { id: "research", name: "Research", enabled: false, order: 4, component: "ResearchSection" },
               { id: "contact", name: "Contact", enabled: true, order: 5, component: "ContactSection" },
               { id: "anime", name: "Image Gallery", enabled: false, order: 6, component: "AnimeSection" }
             ],
@@ -136,18 +136,7 @@ export const useData = () => {
               }
             }
           ],
-          publications: [
-            {
-              id: "publication-one",
-              title: "Machine Learning Applications in Computer Vision",
-              details: "IEEE Conference on Computer Vision, 2024 - Research on applying deep learning techniques to improve object detection accuracy."
-            },
-            {
-              id: "publication-two",
-              title: "Optimizing Database Query Performance",
-              details: "ACM Database Systems Journal, 2024 - Analysis of indexing strategies and their impact on query execution time."
-            }
-          ],
+          research: null,
           posts: [
             {
               id: "first-post-2024",

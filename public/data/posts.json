@@ -6,6 +6,7 @@
     "excerpt": "Presents a hybrid sparse and parallel framework for 1D cellular automata in Wolfram Language. Dynamically switches between dense and sparse updates based on runtime prediction models, and utilizes multi-kernel parallel computation with halo exchange to reduce recomputation in localized activity.",
     "tags": [
       "WELP 2026",
+      "WTC 2026 Talk",
       "Wolfram Community"
     ],
     "type": "external",
@@ -68,6 +69,7 @@
     "excerpt": "Introduces a CA-based method for generating optimized 3D printer infill structures. Implements voxel-based modeling with Marching Cubes to produce STL files, achieving lightness, flexibility, and strength compared to traditional geometric patterns.",
     "tags": [
       "WELP 2025",
+      "WTC 2025 Talk",
       "Wolfram Community"
     ],
     "type": "external",
