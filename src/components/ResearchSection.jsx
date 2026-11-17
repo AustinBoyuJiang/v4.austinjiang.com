@@ -279,6 +279,9 @@ const ResearchSection = ({ research, selfName }) => {
           <div className="view-more-container">
             <button onClick={toggle} className="view-more-button" aria-expanded={isExpanded}>
               {isExpanded ? 'View Less' : 'View More'}
+              <svg className="view-more-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M3 4.75l3 3 3-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </button>
           </div>
         )}
