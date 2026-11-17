@@ -1,4 +1,6 @@
 import { lazy, Suspense } from 'react'
+import EffectBoundary from './EffectBoundary'
+import { supportsWebGL } from '../utils/webgl'
 import './StarryBackground.css'
 
 // WebGL effects load after first paint so they never block the page
@@ -9,6 +11,8 @@ const ProfileBackground = ({ children, className = '', style = {} }) => {
     // 可以通过这个变量切换背景类型
     // 'particles' = WebGL 3D粒子, 'pixels' = PixelBlast效果, 'css' = CSS星空
     const backgroundType = 'particles'
+    // Without WebGL, skip the effect (and its download); the content still renders on the plain background
+    const webglEffects = supportsWebGL()
 
     if (backgroundType === 'particles') {
         // WebGL 3D粒子背景
@@ -23,6 +27,8 @@ const ProfileBackground = ({ children, className = '', style = {} }) => {
                 zIndex: 1,
                 ...style
             }}>
+                {webglEffects && (
+                <EffectBoundary>
                 <Suspense fallback={null}>
                 <Particles
                     particleColors={['#87ceeb', '#5fb3d4', '#ffffff']}
@@ -38,6 +44,8 @@ const ProfileBackground = ({ children, className = '', style = {} }) => {
                     className={className}
                 />
                 </Suspense>
+                </EffectBoundary>
+                )}
                 {children && (
                     <div style={{
                         position: 'absolute',
@@ -66,6 +74,8 @@ const ProfileBackground = ({ children, className = '', style = {} }) => {
                 zIndex: 1,
                 ...style
             }}>
+                {webglEffects && (
+                <EffectBoundary>
                 <Suspense fallback={null}>
                 <PixelBlast
                     variant="circle"
@@ -88,6 +98,8 @@ const ProfileBackground = ({ children, className = '', style = {} }) => {
                     className={className}
                 />
                 </Suspense>
+                </EffectBoundary>
+                )}
                 {children && (
                     <div style={{
                         position: 'absolute',

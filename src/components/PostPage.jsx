@@ -5,7 +5,9 @@ import { useData } from '../hooks/useData'
 import { applyTheme, getCurrentTheme } from '../utils/theme'
 import 'katex/dist/katex.min.css'
 import Masonry from './Masonry'
+import EffectBoundary from './EffectBoundary'
 import { parseMarkdown } from '../utils/markdown'
+import { supportsWebGL } from '../utils/webgl'
 
 // three.js header effect loads after the post text
 const PixelBlast = lazy(() => import('./PixelBlast'))
@@ -197,6 +199,9 @@ const PostPage = ({ post, onBack }) => {
                         <header className="posts-post-header">
                             {/* PixelBlast Background for Header */}
                             <div className="posts-header-background">
+                                {/* Without WebGL (or if it fails to start) the header just stays plain */}
+                                {supportsWebGL() && (
+                                <EffectBoundary>
                                 <Suspense fallback={null}>
                                 <PixelBlast
                                     variant="circle"
@@ -219,6 +224,8 @@ const PostPage = ({ post, onBack }) => {
                                     className="posts-pixel-blast"
                                 />
                                 </Suspense>
+                                </EffectBoundary>
+                                )}
                             </div>
                             <h1 className="posts-post-full-title">{post.title}</h1>
                             {post.subtitle && (
