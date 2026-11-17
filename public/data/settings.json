@@ -73,25 +73,25 @@
             "component": "AboutSection"
         },
         {
+            "id": "publications",
+            "name": "Publications",
+            "enabled": true,
+            "order": 2,
+            "component": "PublicationsSection"
+        },
+        {
             "id": "posts",
             "name": "Posts",
             "enabled": true,
-            "order": 2,
+            "order": 3,
             "component": "PostsSection"
         },
         {
             "id": "projects",
             "name": "Projects",
             "enabled": true,
-            "order": 3,
-            "component": "ProjectsSection"
-        },
-        {
-            "id": "publications",
-            "name": "Publications",
-            "enabled": false,
             "order": 4,
-            "component": "PublicationsSection"
+            "component": "ProjectsSection"
         },
         {
             "id": "contact",

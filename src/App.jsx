@@ -352,7 +352,7 @@ function App() {
       case 'ProjectsSection':
         return <ProjectsSection {...commonProps} projects={projects || []} isSidebarCollapsed={isSidebarCollapsed} />
       case 'PublicationsSection':
-        return <PublicationsSection {...commonProps} publications={publications || []} />
+        return <PublicationsSection {...commonProps} publications={publications || []} selfName={profile?.personal?.name} />
       case 'AnimeSection':
         return <AnimeSection {...commonProps} anime={anime || []} isSidebarCollapsed={isSidebarCollapsed} />
       case 'PostsSection':
