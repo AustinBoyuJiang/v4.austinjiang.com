@@ -39,12 +39,18 @@
 .pub-list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 
 .pub-entry {
   display: grid;
   gap: 1.1rem;
+}
+
+/* A hairline with equal space either side between entries */
+.pub-entry + .pub-entry {
+  margin-top: 1.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--pub-hairline);
 }
 
 /* Side by side once there is room: media left, text right */
@@ -67,21 +73,11 @@
   }
 }
 
-/* Stacked (narrow): tighter inside an entry, more air plus a hairline between
-   entries, so each video reads as part of the text below it */
+/* Stacked (narrow): tighter inside an entry, so each video reads as part of
+   the text below it */
 @container (max-width: 559.98px) {
-  .pub-list {
-    gap: 0;
-  }
-
   .pub-entry {
     gap: 0.85rem;
-  }
-
-  .pub-entry + .pub-entry {
-    margin-top: 1.75rem;
-    padding-top: 1.75rem;
-    border-top: 1px solid var(--pub-hairline);
   }
 
   /* No video beside the text to match in height, so show the full TL;DR
