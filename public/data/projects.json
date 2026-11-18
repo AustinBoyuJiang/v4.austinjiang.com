@@ -11,7 +11,7 @@
       "plume": "https://plume.hackmit.org/project/mwccd-ccvio-rnwtv-ovjkt",
       "github": "https://github.com/c4bae/hackmit2026"
     },
-    "image": "/images/projects/honkpack-poster-v3.webp"
+    "image": "/images/projects/honkpack-poster-v3.jpg"
   },
   {
     "title": "Rewrite",
@@ -25,7 +25,7 @@
       "devpost": "https://devpost.com/software/rewrite-2snpat",
       "github": "https://github.com/NoahCodes23/TreeHacks2026"
     },
-    "image": "/images/projects/rewrite-poster-v2.webp"
+    "image": "/images/projects/rewrite-poster-v2.jpg"
   },
   {
     "title": "ADaptiv",
@@ -106,7 +106,7 @@
     "hidden": true,
     "title": "Binary Combinator",
     "description": "Binary Combinator is a Mathematica library that implements SK combinator constructions for binary bitwise operations, translating theoretical results into a practical, modular, and well-documented toolkit.",
-    "image": "/images/projects/binaryCombinator.png",
+    "image": "/images/projects/binaryCombinator.jpg",
     "date": "Aug 2024",
     "tags": [
       "Open-Source",
@@ -135,7 +135,7 @@
     "hidden": true,
     "title": "Happy Hackers Programming Challenge",
     "description": "A rated DMOJ contest I organized and authored, featuring 6  problems ranging from CCC Senior to IOI level and attracting 200+ participants.",
-    "image": "/images/projects/hhpc1.png",
+    "image": "/images/projects/hhpc1.jpg",
     "date": "Jan 2024",
     "tags": [
       "Competitive Programming"
@@ -176,7 +176,7 @@
     "hidden": true,
     "title": "Competitive Programming Solutions",
     "description": "My solutions to problems from USACO, CCC, Codeforces, DMOJ, and other competitions.",
-    "image": "/images/projects/cp-sol.png",
+    "image": "/images/projects/cp-sol.jpg",
     "date": "2022 - Present",
     "tags": [
       "Competitive Programming"
@@ -189,7 +189,7 @@
     "hidden": true,
     "title": "FeaChat",
     "description": "FeaChat is the first full-stack software I developed during COVID-19 using Python.",
-    "image": "/images/projects/feachat.png",
+    "image": "/images/projects/feachat.jpg",
     "date": "Apr 2021",
     "tags": [
       "Independent Project"
