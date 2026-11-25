@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import './ResearchSection.css'
 
 const STATUS_LABELS = {
@@ -17,7 +17,10 @@ const LINK_LABELS = {
   leaderboard: 'Leaderboard',
 }
 
-const VISIBLE_COUNT = 3
+// The list shows about two entries at a time and scrolls inside itself after
+// that, with a short peek of the next entry so it reads as scrollable.
+const WINDOW_ENTRIES = 2
+const PEEK_PX = 36
 
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
@@ -214,48 +217,59 @@ const ResearchEntry = ({ entry, selfName }) => {
   )
 }
 
-const ResearchSection = ({ research, selfName }) => {
-  const [isExpanded, setIsExpanded] = useState(false)
+const useScrollWindow = (count) => {
+  const listRef = useRef(null)
+  const [scrollable, setScrollable] = useState(false)
+  const [edges, setEdges] = useState({ atStart: true, atEnd: false })
 
+  const updateEdges = useCallback(() => {
+    const list = listRef.current
+    if (!list) return
+    const atStart = list.scrollTop <= 1
+    const atEnd = list.scrollTop + list.clientHeight >= list.scrollHeight - 1
+    setEdges(prev => (prev.atStart === atStart && prev.atEnd === atEnd ? prev : { atStart, atEnd }))
+  }, [])
+
+  useLayoutEffect(() => {
+    const list = listRef.current
+    if (!list) return
+
+    const measure = () => {
+      const entries = list.children
+      if (entries.length <= WINDOW_ENTRIES) {
+        list.style.removeProperty('--pub-window')
+        setScrollable(false)
+        return
+      }
+      // Up to the top of the next entry's content, plus a short peek of it
+      const next = entries[WINDOW_ENTRIES]
+      const padTop = parseFloat(getComputedStyle(next).paddingTop) || 0
+      list.style.setProperty('--pub-window', `${Math.round(next.offsetTop + padTop + PEEK_PX)}px`)
+      setScrollable(true)
+      updateEdges()
+    }
+
+    measure()
+    if (!('ResizeObserver' in window)) return
+    const observer = new ResizeObserver(measure)
+    observer.observe(list)
+    Array.from(list.children).forEach(child => observer.observe(child))
+    return () => observer.disconnect()
+  }, [count, updateEdges])
+
+  return { listRef, scrollable, edges, updateEdges }
+}
+
+const ResearchSection = ({ research, selfName }) => {
   const statement = research?.statement || []
   const entries = research?.publications || []
+  const { listRef, scrollable, edges, updateEdges } = useScrollWindow(entries.length)
   if (statement.length === 0 && entries.length === 0) return null
-
-  const hasMoreItems = entries.length > VISIBLE_COUNT
-  const displayed = isExpanded ? entries : entries.slice(0, VISIBLE_COUNT)
-  // Expand or collapse; after collapsing, bring the section heading back into view
-  const toggle = () => {
-    const collapsing = isExpanded
-    setIsExpanded(!isExpanded)
-    if (!collapsing) return
-    requestAnimationFrame(() => {
-      const section = document.getElementById('research')
-      if (section && section.getBoundingClientRect().top < 0) {
-        const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
-        section.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' })
-      }
-    })
-  }
 
   return (
     <section id="research" className="section">
       <div className="section-header">
-        <h2
-          className={`section-title ${hasMoreItems ? 'clickable' : ''}`}
-          onClick={hasMoreItems ? toggle : undefined}
-          role={hasMoreItems ? 'button' : undefined}
-          tabIndex={hasMoreItems ? 0 : undefined}
-          onKeyDown={hasMoreItems ? (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault()
-              toggle()
-            }
-          } : undefined}
-          aria-label={hasMoreItems ? `Research section - ${isExpanded ? 'Click to show less' : 'Click to show more'}` : undefined}
-        >
-          Research
-          {hasMoreItems && <div className={`expand-triangle ${isExpanded ? 'expanded' : ''}`}></div>}
-        </h2>
+        <h2 className="section-title">Research</h2>
       </div>
 
       <div className="research-content">
@@ -267,25 +281,23 @@ const ResearchSection = ({ research, selfName }) => {
           </div>
         )}
 
-        {displayed.length > 0 && (
-          <div className="pub-list">
-            {displayed.map(entry => (
+        {entries.length > 0 && (
+          <div
+            ref={listRef}
+            className={[
+              'pub-list',
+              scrollable && 'is-scrollable',
+              scrollable && !edges.atStart && 'is-scrolled',
+              scrollable && edges.atEnd && 'is-at-end',
+            ].filter(Boolean).join(' ')}
+            onScroll={scrollable ? updateEdges : undefined}
+            {...(scrollable ? { tabIndex: 0, role: 'region', 'aria-label': 'Research projects' } : {})}
+          >
+            {entries.map(entry => (
               <ResearchEntry key={entry.id} entry={entry} selfName={selfName} />
             ))}
           </div>
         )}
-
-        {hasMoreItems && (
-          <div className="view-more-container">
-            <button onClick={toggle} className="view-more-button" aria-expanded={isExpanded}>
-              {isExpanded ? 'View Less' : 'View More'}
-              <svg className="view-more-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                <path d="M3 4.75l3 3 3-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-          </div>
-        )}
-
       </div>
     </section>
   )

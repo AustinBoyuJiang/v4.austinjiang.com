@@ -37,8 +37,37 @@
 /* ---------- Entries ---------- */
 
 .pub-list {
+  position: relative;
   display: flex;
   flex-direction: column;
+}
+
+/* More than two entries: the list becomes a window about two entries tall
+   (height set from the entries in ResearchSection.jsx) and scrolls inside.
+   The edges fade where there is more to scroll to. */
+.pub-list.is-scrollable {
+  --pub-fade-top: 0px;
+  --pub-fade-bottom: 64px;
+  max-height: min(var(--pub-window, 36rem), 78vh);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--text-primary) 22%, transparent) transparent;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 var(--pub-fade-top), #000 calc(100% - var(--pub-fade-bottom)), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 var(--pub-fade-top), #000 calc(100% - var(--pub-fade-bottom)), transparent 100%);
+}
+
+.pub-list.is-scrollable.is-scrolled {
+  --pub-fade-top: 28px;
+}
+
+.pub-list.is-scrollable.is-at-end {
+  --pub-fade-bottom: 0px;
+}
+
+.pub-list.is-scrollable:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 .pub-entry {
