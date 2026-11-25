@@ -111,7 +111,6 @@
   height: 100%;
   object-fit: cover;
   transform: scale(1.001);
-  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 /* No frame or resting vignette: the videos' empty areas are the page colour,
@@ -156,11 +155,6 @@ a.pub-media:focus-visible::after {
 .pub-media-chip-arrow {
   display: inline-block;
   transition: transform 0.25s ease;
-}
-
-a.pub-media:hover video,
-a.pub-media:hover img {
-  transform: scale(1.025);
 }
 
 a.pub-media:hover .pub-media-chip,
@@ -353,15 +347,8 @@ a.pub-media:focus-visible {
 /* ---------- Motion & small screens ---------- */
 
 @media (prefers-reduced-motion: reduce) {
-  .pub-media video,
-  .pub-media img,
   .pub-media-chip-arrow {
     transition: none;
-  }
-
-  a.pub-media:hover video,
-  a.pub-media:hover img {
-    transform: none;
   }
 }
 
