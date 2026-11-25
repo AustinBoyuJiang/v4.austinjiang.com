@@ -4,6 +4,31 @@
   ],
   "publications": [
     {
+      "id": "retrowam",
+      "title": "RetroWAM: World Action Models Self-Calibrate Their Robots by Reading, Not Imagining",
+      "shortName": "RetroWAM",
+      "authors": [
+        "Austin Jiang"
+      ],
+      "year": 2026,
+      "status": "preprint",
+      "venue": null,
+      "highlight": null,
+      "tldr": "Reads what a robot actually did from its own video and self-calibrates it online, lifting success **from 0 to 38 of 40** tasks.",
+      "media": {
+        "video": "/videos/research/retrowam-loop-dark.mp4",
+        "poster": "/images/research/retrowam-poster-dark.jpg",
+        "startAt": 3.4
+      },
+      "links": {
+        "project": "https://retro-wam.github.io",
+        "paper": null,
+        "arxiv": null,
+        "code": null
+      },
+      "bibtex": "@article{jiang2026retrowam,\n  title   = {RetroWAM: World Action Models Self-Calibrate Their Robots by Reading, Not Imagining},\n  author  = {Jiang, Austin},\n  year    = {2026}\n}"
+    },
+    {
       "id": "geohalt",
       "title": "GeoHalt: Adaptive Token Halting for Efficient Visual Geometry Transformers",
       "shortName": "GeoHalt",
