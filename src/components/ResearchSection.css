@@ -221,7 +221,7 @@ a.pub-media:focus-visible {
 }
 
 .pub-meta-primary {
-  color: var(--primary-color);
+  color: var(--text-secondary);
 }
 
 .pub-title {
