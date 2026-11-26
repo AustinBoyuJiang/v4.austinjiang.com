@@ -21,6 +21,8 @@ const LINK_LABELS = {
 // that, with a short peek of the next entry so it reads as scrollable.
 const WINDOW_ENTRIES = 2
 const PEEK_PX = 36
+// Pixels per line for wheels that report in lines (Firefox with some mice)
+const LINE_PX = 32
 
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
@@ -217,6 +219,16 @@ const ResearchEntry = ({ entry, selfName }) => {
   )
 }
 
+// What actually scrolls the page: the window on wide screens, but <body> in the
+// narrow layout, where html and body are pinned to the viewport height.
+const pageScroller = (el) => {
+  for (let node = el.parentElement; node && node !== document.documentElement; node = node.parentElement) {
+    const { overflowY } = getComputedStyle(node)
+    if (/auto|scroll|overlay/.test(overflowY) && node.scrollHeight > node.clientHeight + 1) return node
+  }
+  return document.scrollingElement || document.documentElement
+}
+
 const useScrollWindow = (count) => {
   const listRef = useRef(null)
   const [scrollable, setScrollable] = useState(false)
@@ -256,6 +268,36 @@ const useScrollWindow = (count) => {
     Array.from(list.children).forEach(child => observer.observe(child))
     return () => observer.disconnect()
   }, [count, updateEdges])
+
+  // Browsers lock a wheel or trackpad gesture to the scroller it started in, so once
+  // the list hits its top or bottom the rest of that gesture goes nowhere until the
+  // hand stops. Pass whatever the list can't use on to the page instead.
+  useEffect(() => {
+    const list = listRef.current
+    if (!list || !scrollable) return
+
+    const onWheel = (event) => {
+      if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return
+      const unit = event.deltaMode === 1 ? LINE_PX : event.deltaMode === 2 ? list.clientHeight : 1
+      const delta = event.deltaY * unit
+      // How far the list itself can still move this way (signed, like delta)
+      const room = delta > 0 ? list.scrollHeight - list.clientHeight - list.scrollTop : -list.scrollTop
+      const leftover = delta > 0 ? Math.max(0, delta - room) : Math.min(0, delta - room)
+      if (Math.abs(leftover) < 1) return
+
+      // Move both scrollers ourselves when the browser lets us, so the page never
+      // gets the leftover twice. Later events in a gesture can't be cancelled; the
+      // browser then scrolls only the list, and the page still gets the rest here.
+      if (event.cancelable) {
+        event.preventDefault()
+        list.scrollTop += room
+      }
+      pageScroller(list).scrollTop += leftover
+    }
+
+    list.addEventListener('wheel', onWheel, { passive: false })
+    return () => list.removeEventListener('wheel', onWheel)
+  }, [scrollable])
 
   return { listRef, scrollable, edges, updateEdges }
 }
