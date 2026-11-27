@@ -23,6 +23,10 @@ const WINDOW_ENTRIES = 2
 const PEEK_PX = 36
 // Pixels per line for wheels that report in lines (Firefox with some mice)
 const LINE_PX = 32
+// A flick carried on into the page keeps this share of its speed each millisecond,
+// as on iOS, and stops below FLING_MIN_SPEED (px per ms).
+const FLING_FRICTION = 0.998
+const FLING_MIN_SPEED = 0.02
 
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
@@ -229,6 +233,34 @@ const pageScroller = (el) => {
   return document.scrollingElement || document.documentElement
 }
 
+// Keep a flick going on the page, slowing it the way a native one does. Any new
+// touch or wheel stops it, as does the returned function.
+const flingPage = (scroller, velocity) => {
+  let frame = 0
+  let last = performance.now()
+  let pos = scroller.scrollTop
+  const stop = () => {
+    cancelAnimationFrame(frame)
+    window.removeEventListener('touchstart', stop)
+    window.removeEventListener('wheel', stop)
+  }
+  const step = (now) => {
+    // A frame's timestamp can be a touch older than performance.now() above
+    const dt = Math.max(0, Math.min(now - last, 32))
+    last = now
+    velocity *= FLING_FRICTION ** dt
+    pos += velocity * dt
+    scroller.scrollTop = pos
+    // Done once it has all but stopped, or the page can't go any further
+    if (Math.abs(velocity) < FLING_MIN_SPEED || Math.abs(scroller.scrollTop - pos) > 1) return stop()
+    frame = requestAnimationFrame(step)
+  }
+  window.addEventListener('touchstart', stop, { passive: true })
+  window.addEventListener('wheel', stop, { passive: true })
+  frame = requestAnimationFrame(step)
+  return stop
+}
+
 const useScrollWindow = (count) => {
   const listRef = useRef(null)
   const [scrollable, setScrollable] = useState(false)
@@ -269,14 +301,112 @@ const useScrollWindow = (count) => {
     return () => observer.disconnect()
   }, [count, updateEdges])
 
-  // Browsers lock a wheel or trackpad gesture to the scroller it started in, so once
-  // the list hits its top or bottom the rest of that gesture goes nowhere until the
-  // hand stops. Pass whatever the list can't use on to the page instead.
+  useScrollHandoff(listRef, scrollable)
+
+  return { listRef, scrollable, edges, updateEdges }
+}
+
+// Browsers lock a scroll gesture to the scroller it started in, so once the list hits
+// its top or bottom the rest of a wheel, trackpad or finger gesture went nowhere until
+// the hand stopped. Pass whatever the list can't use on to the page instead.
+const useScrollHandoff = (listRef, enabled) => {
   useEffect(() => {
     const list = listRef.current
-    if (!list || !scrollable) return
+    if (!list || !enabled) return
+
+    // Whether the list can't move any further in the direction of a signed delta
+    const atEdge = (delta) =>
+      delta > 0 ? list.scrollTop >= list.scrollHeight - list.clientHeight - 1 : list.scrollTop <= 1
+
+    let stopFling = null
+    const fling = (velocity) => {
+      stopFling?.()
+      stopFling = Math.abs(velocity) >= FLING_MIN_SPEED ? flingPage(pageScroller(list), velocity) : null
+    }
+
+    // Touch only where CSS keeps the browser from passing a swipe to the page by
+    // itself (overscroll-behavior: none on touch screens), so the page never moves
+    // twice. Elsewhere the browser's own behaviour is left alone.
+    let touch = null
+    // The list still gliding after a flick, watched in case it runs out of room
+    let coast = null
+
+    const onTouchStart = (event) => {
+      coast = null
+      const point = event.touches[0]
+      touch =
+        event.touches.length === 1 && getComputedStyle(list).overscrollBehaviorY === 'none'
+          ? {
+              x0: point.clientX, y0: point.clientY, y: point.clientY, t: event.timeStamp,
+              axis: null, velocity: 0, finger: 0, listStart: list.scrollTop, paged: 0,
+            }
+          : null
+    }
+
+    const onTouchMove = (event) => {
+      if (!touch || event.touches.length !== 1) return
+      const { clientX, clientY } = event.touches[0]
+      if (!touch.axis) {
+        const dx = Math.abs(clientX - touch.x0)
+        const dy = Math.abs(clientY - touch.y0)
+        if (dx + dy < 6) return
+        touch.axis = dx > dy ? 'x' : 'y'
+      }
+      if (touch.axis !== 'y') return
+
+      // Finger up scrolls content down: positive, like a wheel's deltaY
+      const delta = touch.y - clientY
+      const dt = event.timeStamp - touch.t
+      touch.y = clientY
+      touch.t = event.timeStamp
+      touch.finger += delta
+      if (dt > 0) touch.velocity = 0.8 * (delta / dt) + 0.2 * touch.velocity
+
+      // The browser scrolls the list on its own thread, so this can run before or
+      // after it has. Settle up only at the list's edge, and settle the running
+      // total: whatever the finger moved that neither the list nor the page took.
+      if (!delta || !atEdge(delta)) return
+      const owed = touch.finger - (list.scrollTop - touch.listStart) - touch.paged
+      if (owed * delta <= 0) return
+      pageScroller(list).scrollTop += owed
+      touch.paged += owed
+    }
+
+    const onTouchEnd = (event) => {
+      if (!touch || event.touches.length) return
+      // A finger that rested before lifting isn't a flick
+      const velocity = event.timeStamp - touch.t > 100 ? 0 : touch.velocity
+      touch = null
+      if (!velocity) return
+      if (atEdge(velocity)) fling(velocity)
+      else coast = { top: list.scrollTop, t: performance.now(), velocity }
+    }
+
+    const onTouchCancel = () => {
+      touch = null
+    }
+
+    // A flick inside the list that glides into its edge carries on into the page
+    const onScroll = () => {
+      if (!coast || touch) return
+      const now = performance.now()
+      const dt = now - coast.t
+      if (dt > 200) {
+        coast = null // the glide ended short of the edge
+        return
+      }
+      if (atEdge(coast.velocity)) {
+        fling(coast.velocity)
+        coast = null
+        return
+      }
+      if (dt > 0) coast.velocity = 0.7 * ((list.scrollTop - coast.top) / dt) + 0.3 * coast.velocity
+      coast.top = list.scrollTop
+      coast.t = now
+    }
 
     const onWheel = (event) => {
+      coast = null
       if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return
       const unit = event.deltaMode === 1 ? LINE_PX : event.deltaMode === 2 ? list.clientHeight : 1
       const delta = event.deltaY * unit
@@ -295,11 +425,20 @@ const useScrollWindow = (count) => {
       pageScroller(list).scrollTop += leftover
     }
 
-    list.addEventListener('wheel', onWheel, { passive: false })
-    return () => list.removeEventListener('wheel', onWheel)
-  }, [scrollable])
-
-  return { listRef, scrollable, edges, updateEdges }
+    const listeners = [
+      ['wheel', onWheel, { passive: false }],
+      ['touchstart', onTouchStart, { passive: true }],
+      ['touchmove', onTouchMove, { passive: true }],
+      ['touchend', onTouchEnd, { passive: true }],
+      ['touchcancel', onTouchCancel, { passive: true }],
+      ['scroll', onScroll, { passive: true }],
+    ]
+    listeners.forEach(([type, handler, options]) => list.addEventListener(type, handler, options))
+    return () => {
+      listeners.forEach(([type, handler]) => list.removeEventListener(type, handler))
+      stopFling?.()
+    }
+  }, [listRef, enabled])
 }
 
 const ResearchSection = ({ research, selfName }) => {

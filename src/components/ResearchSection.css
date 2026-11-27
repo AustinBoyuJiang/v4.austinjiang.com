@@ -70,6 +70,15 @@
   border-radius: 4px;
 }
 
+/* Touch screens: the component passes a swipe on to the page once the list runs out
+   (see useScrollHandoff), so the browser mustn't as well. This also stops the list
+   itself bouncing at its ends. */
+@media (pointer: coarse) {
+  .pub-list.is-scrollable {
+    overscroll-behavior-y: none;
+  }
+}
+
 .pub-entry {
   display: grid;
   gap: 1.1rem;
