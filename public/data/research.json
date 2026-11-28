@@ -27,7 +27,7 @@
         "arxiv": null,
         "code": null
       },
-      "bibtex": "@article{jiang2026retrowam,\n  title   = {RetroWAM: World Action Models Self-Calibrate Their Robots by Reading, Not Imagining},\n  author  = {Jiang, Austin},\n  year    = {2026}\n}"
+      "bibtex": "@article{jiang2026retrowam,\n  title   = {RetroWAM: World Action Models Self-Calibrate Their Robots by Reading, Not Imagining},\n  author  = {Jiang, Austin and Xie, Eric},\n  year    = {2026}\n}"
     },
     {
       "id": "geohalt",
