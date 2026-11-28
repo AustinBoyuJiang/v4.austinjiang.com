@@ -1,6 +1,6 @@
 {
   "statement": [
-    "My research spans **spatial foundation models** and **embodied AI**, from efficient 3D reconstruction to agents for household robot tasks. More broadly, I'm interested in **computer vision** and **world models**, especially generative, interactive world models for games."
+    "My research spans **spatial foundation models** and **embodied AI**, from efficient 3D reconstruction to world action models that let robots self-calibrate. More broadly, I'm interested in **computer vision** and **world models**, especially generative, interactive ones for games."
   ],
   "publications": [
     {
